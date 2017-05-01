@@ -10,7 +10,7 @@ angular.module('classroomApp', ['ui.router'])
       .state('home', {
         url: '/home',
         templateUrl: '../views/home.html',
-        controller: 'loginCtrl'
+        controller: 'homeCtrl'
       })
       .state('class', {
         url: '/class',

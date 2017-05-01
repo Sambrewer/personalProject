@@ -8,7 +8,7 @@ const express = require('express')
 
 const port = 3000;
 const conn = massive.connectSync({
-  connectionString: "postgres://postgres:@localhost/personalproj"
+  connectionString: "postgres://postgres:Blink-182@localhost/personalproj"
 })
 const corsOptions = {
   origin: 'http://localhost:3000'
@@ -29,8 +29,22 @@ app.use(bodyParser.json());
 app.post('/api/users', (req, res) => {
   let data = [req.body.username, req.body.password]
   db.read_user(data, (err, user) => {
-    console.log(user);
+    req.session.currentUser = user;
+    // console.log(req.session.currentUser);
     res.send(user)
   })
 })
-app.listen(port, console.log('app is listening on', port))
+app.get('/api/users', (req, res) => {
+  res.send(req.session.currentUser)
+})
+app.get('/api/students', (req, res) => {
+  console.log(req.session.currentUser);
+  let userId = parseInt(req.session.currentUser[0].id);
+  console.log(userId);
+  db.read_students([userId], (err, students) => {
+    if (!err) {
+      res.send(students)
+    }
+  })
+})
+app.listen(port, console.log(`app listening on ${port}`))

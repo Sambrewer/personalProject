@@ -9,7 +9,7 @@ angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $
   }).state('home', {
     url: '/home',
     templateUrl: '../views/home.html',
-    controller: 'loginCtrl'
+    controller: 'homeCtrl'
   }).state('class', {
     url: '/class',
     parent: 'home',
@@ -24,36 +24,62 @@ angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $
 angular.module('classroomApp').service('mainSvc', function ($http) {
   var baseUrl = 'http://localhost:3000/';
   this.login = function (user) {
-    console.log(user);
+    // console.log(user);
 
     return $http({
       method: 'POST',
       url: baseUrl + 'api/users',
       data: user
     }).then(function (response) {
-      console.log(response);
+      //  console.log(response);
       return response;
+    });
+  };
+  this.getUser = function () {
+    return $http.get(baseUrl + 'api/users').then(function (response) {
+      console.log(response.data[0]);
+      return response.data[0];
+    });
+  };
+  this.getStudents = function () {
+    return $http.get(baseUrl + 'api/students').then(function (response) {
+      console.log(response);
+      return response.data;
     });
   };
 });
 'use strict';
 
-angular.module('classroomApp').controller('classCtrl', function ($scope) {});
+angular.module('classroomApp').controller('classCtrl', function ($scope, mainSvc) {
+  $scope.getStudents = function () {
+    mainSvc.getStudents().then(function (response) {
+      $scope.class = response;
+    });
+  };
+  $scope.getStudents();
+});
 'use strict';
 
-angular.module('classroomApp').controller('homeCtrl', function ($scope, $window) {
+angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc) {
   var screenWidth = $window.innerWidth;
   if (screenWidth <= 600) {
     $scope.show = false;
   } else {
     $scope.show = true;
   }
+  $scope.getUser = function () {
+    mainSvc.getUser().then(function (response) {
+      $scope.currentUser = response;
+      console.log($scope.currentUser);
+    });
+    // console.log($scope.currentUser);
+  };
+  $scope.getUser();
 });
 'use strict';
 
 angular.module('classroomApp').controller('loginCtrl', function ($scope, mainSvc, $location) {
   $scope.login = function (user) {
-    console.log(user);
     mainSvc.login(user).then(function (response) {
       if (response.data) {
         $location.path('/home');
@@ -63,7 +89,5 @@ angular.module('classroomApp').controller('loginCtrl', function ($scope, mainSvc
       }
     });
   };
-  console.log($scope.currentUser.name);
-  $scope.test = 'working';
 });
 //# sourceMappingURL=bundle.js.map

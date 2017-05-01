@@ -24,6 +24,20 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data;
     })
   }
+  this.getAssignments = () => {
+    return $http.get(baseUrl + 'api/assignments').then((response) => {
+      return response.data;
+    })
+  }
+  this.addScore = (score) => {
+    return $http({
+      method: 'POST',
+      url: baseUrl + 'api/scores',
+      data: score
+    }).then((response) => {
+      return response.data;
+    })
+  }
   this.addAssignment = (assignment) => {
     return $http({
       method: 'POST',

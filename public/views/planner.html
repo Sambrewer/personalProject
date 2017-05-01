@@ -11,17 +11,21 @@
         <div class="form-group">
           <label for="subjSel">Subject: </label>
           <select class="form-control" id="subjSel" ng-model="assign.subj">
-            <option value="english">English</option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
+            <option>Literacy</option>
+            <option>Math</option>
+            <option>Writing</option>
+            <option>Reading</option>
+            <option>Science</option>
           </select>
-          <label for="assType">Category: </label>
-          <select class="form-control" id="assType" ng-model="assign.type">
+          <label for="assignmentType">Category: </label>
+          <select class="form-control" id="assignmentType" ng-model="assign.type">
             <option>Test</option>
             <option>Quiz</option>
             <option>Homework</option>
             <option>In Class Work</option>
           </select>
+          <label for="assignmentName">Name: </label>
+          <input type="text" ng-model="assign.name" placeholder="Reading Comprehension 1">
         </div>
       </div>
       <div class="modal-footer">

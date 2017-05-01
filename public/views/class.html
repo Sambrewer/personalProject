@@ -1,7 +1,7 @@
 <div class="classWrapper">
   <ul ng-repeat="student in class">
     <li>{{student.name}} {{student.email}}</li>
-    <button class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="addScore(student.id)">Add Score <i class="fa fa-plus"></i></button></li>
+    <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Score <i class="fa fa-plus"></i></button></li>
   </ul>
 </div>
 <div id="myModal" class="modal fade">
@@ -12,15 +12,19 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="stuSel">Student Name: </label>
-            <select class="form-control" id="stuSel">
-              <option ng-repeat="student in class">{{student.name}}</option>
+            <select ng-model="studentid" class="form-control" ng-options="student.id as student.name for student in class" id="stuSel">
+              <!-- <option ng-repeat="student in class" value="{{student.id}}">{{student.name}}</option> -->
+            </select>
+            <label for="assignName">Name of Assignment: </label>
+            <select ng-model="assignmentid" class="form-control" ng-options="assignment.id as assignment.name for assignment in assignments" id="assignName">
+              <!-- <option ng-repeat="assignment in assignments" value="{{assignmentid}}">{{assignment.name}}</option> -->
             </select>
           <label for="score">Score: </label>
-          <input type="text" id="score" placeholder="1-100">
+          <input ng-model="score" type="text" id="score" placeholder="1-100">
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="submitScore(studentid, assignmentid, score)">Submit</button>
       </div>
     </div>
   </div>

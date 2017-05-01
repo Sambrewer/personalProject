@@ -52,6 +52,20 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
+  this.getAssignments = function () {
+    return $http.get(baseUrl + 'api/assignments').then(function (response) {
+      return response.data;
+    });
+  };
+  this.addScore = function (score) {
+    return $http({
+      method: 'POST',
+      url: baseUrl + 'api/scores',
+      data: score
+    }).then(function (response) {
+      return response.data;
+    });
+  };
   this.addAssignment = function (assignment) {
     return $http({
       method: 'POST',
@@ -69,9 +83,27 @@ angular.module('classroomApp').controller('classCtrl', function ($scope, mainSvc
   $scope.getStudents = function () {
     mainSvc.getStudents().then(function (response) {
       $scope.class = response;
+      // console.log(response, 'students');
     });
   };
   $scope.getStudents();
+  $scope.getAssignments = function () {
+    mainSvc.getAssignments().then(function (response) {
+      $scope.assignments = response;
+      console.log(response, 'assignments');
+    });
+  };
+  $scope.getAssignments();
+  $scope.submitScore = function (student, assignmentid, score) {
+    var scoreObj = {};
+    scoreObj.studentid = student;
+    scoreObj.assignmentid = assignmentid;
+    scoreObj.score = score;
+    console.log(scoreObj, student);
+    mainSvc.addScore(scoreObj).then(function (response) {
+      alert(response);
+    });
+  };
 });
 'use strict';
 

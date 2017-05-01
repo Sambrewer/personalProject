@@ -15,6 +15,11 @@ angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $
     parent: 'home',
     templateUrl: '../views/class.html',
     controller: 'classCtrl'
+  }).state('planner', {
+    url: '/planner',
+    parent: 'home',
+    templateUrl: '../views/planner.html',
+    controller: 'plannerCtrl'
   });
 
   $urlRouterProvider.otherwise('/');
@@ -47,6 +52,16 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
+  this.addAssignment = function (assignment) {
+    return $http({
+      method: 'POST',
+      url: baseUrl + 'api/assignments',
+      data: assignment
+    }).then(function (response) {
+      console.log(response);
+      return response.data;
+    });
+  };
 });
 'use strict';
 
@@ -60,7 +75,7 @@ angular.module('classroomApp').controller('classCtrl', function ($scope, mainSvc
 });
 'use strict';
 
-angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc) {
+angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc, $location) {
   var screenWidth = $window.innerWidth;
   if (screenWidth <= 600) {
     $scope.show = false;
@@ -70,11 +85,12 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
   $scope.getUser = function () {
     mainSvc.getUser().then(function (response) {
       $scope.currentUser = response;
-      console.log($scope.currentUser);
+      console.log(response);
     });
     // console.log($scope.currentUser);
   };
   $scope.getUser();
+  console.log($scope.currentUser);
 });
 'use strict';
 
@@ -87,6 +103,15 @@ angular.module('classroomApp').controller('loginCtrl', function ($scope, mainSvc
       } else {
         alert('Incorrect Username/Password');
       }
+    });
+  };
+});
+'use strict';
+
+angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainSvc) {
+  $scope.addAssignment = function (assignment) {
+    mainSvc.addAssignment(assignment).then(function (response) {
+      alert(response);
     });
   };
 });

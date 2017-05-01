@@ -8,13 +8,10 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
   $scope.getUser = function() {
     mainSvc.getUser().then(function(response) {
       $scope.currentUser = response;
-      if ($scope.currentUser = undefined) {
-        $location.path('/')
-        alert('You have been logged out')
-      }
-      console.log($scope.currentUser);
+      console.log(response);
     })
     // console.log($scope.currentUser);
   }
   $scope.getUser()
+  console.log($scope.currentUser);
 })

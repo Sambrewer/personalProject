@@ -24,4 +24,14 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data;
     })
   }
+  this.addAssignment = (assignment) => {
+    return $http({
+      method: 'POST',
+      url: baseUrl + 'api/assignments',
+      data: assignment
+    }).then((response) => {
+      console.log(response);
+      return response.data;
+    })
+  }
 })

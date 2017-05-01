@@ -47,4 +47,12 @@ app.get('/api/students', (req, res) => {
     }
   })
 })
+app.post('/api/assignments', (req, res) => {
+  let data = [req.body.subj, req.body.type];
+  db.add_assignment(data, (err, assignments) => {
+    if (!err) {
+      res.status(200).send('Saved Successfully')
+    }
+  })
+})
 app.listen(port, console.log(`app listening on ${port}`))

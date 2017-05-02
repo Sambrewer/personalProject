@@ -2,7 +2,7 @@ angular.module('classroomApp').controller('classCtrl', ($scope, mainSvc) => {
   $scope.getStudents = () => {
     mainSvc.getStudents().then((response) => {
       $scope.class = response;
-      // console.log(response, 'students');
+      console.log(response, 'students');
     })
   }
   $scope.getStudents()

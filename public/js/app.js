@@ -25,7 +25,8 @@ angular.module('classroomApp', ['ui.router'])
         controller: 'plannerCtrl'
       })
       .state('scores', {
-        url: '/class/:id',
+        url: 'scores/:id',
+        parent: 'home',
         templateUrl: '../views/scores.html',
         controller: 'scoresCtrl'
       })

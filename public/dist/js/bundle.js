@@ -21,7 +21,8 @@ angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $
     templateUrl: '../views/planner.html',
     controller: 'plannerCtrl'
   }).state('scores', {
-    url: '/class/:id',
+    url: 'scores/:id',
+    parent: 'home',
     templateUrl: '../views/scores.html',
     controller: 'scoresCtrl'
   });
@@ -87,7 +88,7 @@ angular.module('classroomApp').controller('classCtrl', function ($scope, mainSvc
   $scope.getStudents = function () {
     mainSvc.getStudents().then(function (response) {
       $scope.class = response;
-      // console.log(response, 'students');
+      console.log(response, 'students');
     });
   };
   $scope.getStudents();
@@ -154,6 +155,17 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
 'use strict';
 
 angular.module('classroomApp').controller('scoresCtrl', function ($scope, $stateParams, mainSvc) {
-   console.log($stateParams);
+  $scope.getStudent = function () {
+    mainSvc.getStudents().then(function (response) {
+      var students = response;
+      var student = {};
+      for (var i = 0; i < students.length; i++) {
+        if (students[i].id === parseInt($stateParams.id)) {
+          student = students[i];
+        }
+      }
+      $scope.student = student;
+    });
+  };
 });
 //# sourceMappingURL=bundle.js.map

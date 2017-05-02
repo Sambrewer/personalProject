@@ -59,6 +59,9 @@ app.post('/api/assignments', (req, res) => {
   db.add_assignment(data, (err, assignments) => {
     if (!err) {
       res.status(200).send('Saved Successfully')
+    } else {
+      console.log(err);
+      res.send('error')
     }
   })
 })

@@ -20,6 +20,10 @@ angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $
     parent: 'home',
     templateUrl: '../views/planner.html',
     controller: 'plannerCtrl'
+  }).state('scores', {
+    url: '/class/:id',
+    templateUrl: '../views/scores.html',
+    controller: 'scoresCtrl'
   });
 
   $urlRouterProvider.otherwise('/');
@@ -146,5 +150,10 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
       alert(response);
     });
   };
+});
+'use strict';
+
+angular.module('classroomApp').controller('scoresCtrl', function ($scope, $stateParams, mainSvc) {
+   console.log($stateParams);
 });
 //# sourceMappingURL=bundle.js.map

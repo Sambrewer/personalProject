@@ -15,6 +15,14 @@
           <label for="stuSel">Student Name: </label>
             <select ng-model="studentid" class="form-control" ng-options="student.id as student.name for student in class" id="stuSel">
             </select>
+            <label for="subjSel">Subject: </label>
+            <select class="form-control" id="subjSel" ng-model="subj">
+              <option>Literacy</option>
+              <option>Math</option>
+              <option>Writing</option>
+              <option>Reading</option>
+              <option>Science</option>
+            </select>
             <label for="assignName">Name of Assignment: </label>
             <select ng-model="assignmentid" class="form-control" ng-options="assignment.id as assignment.name for assignment in assignments" id="assignName">
             </select>
@@ -23,7 +31,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="submitScore(studentid, assignmentid, score)">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="submitScore(studentid, assignmentid, score, subj)">Submit</button>
       </div>
     </div>
   </div>

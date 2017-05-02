@@ -1,1 +1,8 @@
-<h1>this is the scores</h1>
+<h1>Student Performance</h1>
+<h1>{{student.name}}</h1>
+<ul ng-repeat="score in scores">
+  <li>Subject: {{score.subject}}</li>
+  <li>Assignment Name: {{score.name}}</li>
+  <li>Student Score: {{score.score}}</li>
+</ul>
+<svg width="960" height="500"></svg>

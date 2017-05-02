@@ -45,7 +45,13 @@ app.get('/api/assignments', (req, res) => {
     res.send(assignments)
   })
 })
-
+app.get('/api/scores', (req, res) => {
+  db.read_scores((err, scores) => {
+    if (!err) {
+      res.send(scores)
+    }
+  })
+})
 app.post('/api/users', (req, res) => {
   let data = [req.body.username, req.body.password]
   db.read_user(data, (err, user) => {
@@ -60,20 +66,20 @@ app.post('/api/assignments', (req, res) => {
     if (!err) {
       res.status(200).send('Saved Successfully')
     } else {
-      console.log(err);
+      // console.log(err);
       res.send('error')
     }
   })
 })
 app.post('/api/scores', (req, res) => {
-  let data = [parseInt(req.body.studentid), parseInt(req.body.assignmentid), parseInt(req.body.score)]
+  let data = [parseInt(req.body.studentid), parseInt(req.body.assignmentid), parseInt(req.body.score), req.body.subj]
   console.log(data);
   console.log(req.body);
   db.add_score(data, (err, score) => {
     if (!err) {
       res.status(200).send('Score Saved')
     } else {
-      console.log(err);
+      // console.log(err);
     }
   })
 })

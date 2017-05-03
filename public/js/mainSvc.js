@@ -34,6 +34,11 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data;
     })
   }
+  this.getScoreTotals = () => {
+    return $http.get(baseUrl + 'api/scores/total').then((response) => {
+      return response.data;
+    })
+  }
   this.addScore = (score) => {
     return $http({
       method: 'POST',

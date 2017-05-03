@@ -67,6 +67,11 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
+  this.getScoreTotals = function () {
+    return $http.get(baseUrl + 'api/scores/total').then(function (response) {
+      return response.data;
+    });
+  };
   this.addScore = function (score) {
     return $http({
       method: 'POST',
@@ -177,26 +182,22 @@ angular.module('classroomApp').controller('scoresCtrl', function ($scope, $state
   $scope.getStudent();
   $scope.getScores = function () {
     var scores = [];
+    //  console.log('I fired');
     mainSvc.getScore().then(function (response) {
-      //  console.log($scope.student, response);
-      for (var i = 0; i < response.length; i++) {
-        if (response[i].studentid === parseInt($scope.student.id)) {
-          scores.push(response[i]);
-        }
-      }
-      console.log(scores);
-      $scope.scores = scores;
+      //  console.log(response);
+      $scope.scores = response;
+      //  console.log($scope.scoresArray);
+      //  console.log(scores);
     });
   };
   $scope.getScores();
 
-  var svg = d3.select("svg"),
-      margin = { top: 20, right: 20, bottom: 30, left: 40 },
-      width = +svg.attr("width") - margin.left - margin.right,
-      height = +svg.attr("height") - margin.top - margin.bottom;
-
-  var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-      y = d3.scaleLinear().rangeRound([height, 0]);
-  var g = svg.append("g").attr("transform", 'translate(' + margin.left + ', ' + margin.top + ')');
+  $scope.graphScoreTotals = function () {
+    mainSvc.getScoreTotals().then(function (response) {
+      $scope.scoreTotals = response;
+    });
+  };
+  $scope.graphScoreTotals();
 });
+"use strict";
 //# sourceMappingURL=bundle.js.map

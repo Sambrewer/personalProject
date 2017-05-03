@@ -52,6 +52,11 @@ app.get('/api/scores', (req, res) => {
     }
   })
 })
+app.get('/api/scores/total', (req, res) => {
+  db.read_score_totals((err, totals) => {
+    res.send(totals)
+  })
+})
 app.post('/api/users', (req, res) => {
   let data = [req.body.username, req.body.password]
   db.read_user(data, (err, user) => {

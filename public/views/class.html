@@ -1,9 +1,11 @@
 <div class="classWrapper">
-  <ul ng-repeat="student in class">
-    <li>{{student.name}} {{student.email}}</li>
-    <button data-toggle="modal" data-target="#myModal">Add Score <i class="fa fa-plus"></i></button></li>
-    <li><button ui-sref="scores({id: student.id})">See Scores</button></li>
-  </ul>
+  <div class="studentContainer">
+    <div ng-repeat="student in class">
+      <h1>{{student.name}}</h1>
+      <button data-toggle="modal" data-target="#myModal">Add Score <i class="fa fa-plus"></i></button>
+      <button ui-sref="scores({id: student.id})">See Scores</button>
+    </div>
+  </div>
 </div>
 <div id="myModal" class="modal fade">
   <div class="modal-dialog">
@@ -15,16 +17,8 @@
           <label for="stuSel">Student Name: </label>
             <select ng-model="studentid" class="form-control" ng-options="student.id as student.name for student in class" id="stuSel">
             </select>
-            <label for="subjSel">Subject: </label>
-            <select class="form-control" id="subjSel" ng-model="subj">
-              <option>Literacy</option>
-              <option>Math</option>
-              <option>Writing</option>
-              <option>Reading</option>
-              <option>Science</option>
-            </select>
             <label for="assignName">Name of Assignment: </label>
-            <select ng-model="assignmentid" class="form-control" ng-options="assignment.id as assignment.name for assignment in assignments" id="assignName">
+            <select ng-model="assignmentid" class="form-control" ng-options='assignment.id as (assignment.name + " " + assignment.subject) for assignment in assignments' id="assignName">
             </select>
           <label for="score">Score: </label>
           <input ng-model="score" type="text" id="score" placeholder="1-100">

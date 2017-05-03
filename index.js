@@ -45,16 +45,30 @@ app.get('/api/assignments', (req, res) => {
     res.send(assignments)
   })
 })
-app.get('/api/scores', (req, res) => {
-  db.read_scores((err, scores) => {
+app.get('/api/scores/:id', (req, res) => {
+  let id = [parseInt(req.params.id)]
+  console.log(req.params.id);
+  db.read_scores(id, (err, scores) => {
     if (!err) {
       res.send(scores)
+    } else {
+      console.log(err);
     }
   })
 })
-app.get('/api/scores/total', (req, res) => {
-  db.read_score_totals((err, totals) => {
-    res.send(totals)
+
+app.get('/test/:id', (req, res) => {
+  console.log('hello');
+  let id = [parseInt(req.params.id)]
+  db.read_score_totals(id, (err, totals) => {
+    // console.log(totals);
+    if (!err) {
+      res.send(totals)
+      console.log(totals);
+    } else {
+      console.log(err);
+      res.send(err)
+    }
   })
 })
 app.post('/api/users', (req, res) => {
@@ -77,9 +91,9 @@ app.post('/api/assignments', (req, res) => {
   })
 })
 app.post('/api/scores', (req, res) => {
-  let data = [parseInt(req.body.studentid), parseInt(req.body.assignmentid), parseInt(req.body.score), req.body.subj]
-  console.log(data);
-  console.log(req.body);
+  let data = [parseInt(req.body.studentid), parseInt(req.body.assignmentid), parseInt(req.body.score)]
+  // console.log(data);
+  // console.log(req.body);
   db.add_score(data, (err, score) => {
     if (!err) {
       res.status(200).send('Score Saved')

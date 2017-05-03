@@ -1,5 +1,68 @@
-svg {
-  background: black; }
+.classWrapper {
+  background: url("../images/gab.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh; }
+  .classWrapper .studentContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px; }
+    .classWrapper .studentContainer div {
+      height: 20vh;
+      width: 150px;
+      margin-bottom: 15px;
+      background: white;
+      border-radius: 5px;
+      padding: 5px; }
+      .classWrapper .studentContainer div h1 {
+        margin-bottom: 10px; }
+      .classWrapper .studentContainer div button {
+        background: black;
+        color: white;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px; }
+
+.chartsContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+
+.modal .close {
+  margin-top: 15px;
+  margin-right: 15px; }
+
+.modal h4 {
+  margin-top: 15px;
+  margin-left: 15px; }
+
+.modal .form-control {
+  margin-bottom: 15px; }
+
+.behaveCard {
+  height: 50px;
+  width: 400px; }
+
+#outStanding {
+  background: violet; }
+
+#greatJob {
+  background: indigo; }
+
+#goodDay {
+  background: blue; }
+
+#readyToLearn {
+  background: green; }
+
+#stopAndThink {
+  background: yellow; }
+
+#teachersChoice {
+  background: orange; }
+
+#parentContact {
+  background: red; }
 
 .header-wrapper {
   height: 175px;

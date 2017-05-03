@@ -18,8 +18,6 @@ angular.module('classroomApp').controller('classCtrl', ($scope, mainSvc) => {
     scoreObj.studentid = student;
     scoreObj.assignmentid = assignmentid;
     scoreObj.score = score;
-    scoreObj.subj = subj;
-    // console.log(scoreObj, student);
     mainSvc.addScore(scoreObj).then((response) => {
       alert(response)
     })

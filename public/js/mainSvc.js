@@ -14,13 +14,13 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   }
   this.getUser = function() {
     return $http.get(baseUrl + 'api/users').then(function(response) {
-      console.log(response.data[0]);
+      // console.log(response.data[0]);
       return response.data[0]
     })
   }
   this.getStudents = function() {
     return $http.get(baseUrl + 'api/students').then(function(response) {
-      console.log(response);
+      // console.log(response);
       return response.data;
     })
   }
@@ -29,14 +29,16 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data;
     })
   }
-  this.getScore = ()=>{
-    return $http.get(baseUrl + 'api/scores').then((response) => {
+  this.getScore = (id)=>{
+    return $http.get(`${baseUrl}api/scores/${id}`).then((response) => {
       return response.data;
     })
   }
-  this.getScoreTotals = () => {
-    return $http.get(baseUrl + 'api/scores/total').then((response) => {
-      return response.data;
+  this.getGrades = (id)=>{
+    console.log('get grades');
+    return $http.get(`${baseUrl}test/${id}`).then((response) => {
+      console.log('Get Request', response.data);
+      return response.data
     })
   }
   this.addScore = (score) => {

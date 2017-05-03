@@ -1,4 +1,4 @@
-angular.module('classroomApp').controller('scoresCtrl', ($scope, $stateParams, mainSvc) => {
+angular.module('classroomApp').controller('scoresCtrl', ($scope, $stateParams, mainSvc, $location) => {
    $scope.getStudent = () => {
      mainSvc.getStudents().then((response) => {
        let students = response;
@@ -15,20 +15,89 @@ angular.module('classroomApp').controller('scoresCtrl', ($scope, $stateParams, m
    $scope.getStudent();
    $scope.getScores = () => {
      let scores = [];
-    //  console.log('I fired');
-     mainSvc.getScore().then((response) => {
+     let id = parseInt($stateParams.id)
+     mainSvc.getScore(id).then((response) => {
       //  console.log(response);
        $scope.scores = response
-      //  console.log($scope.scoresArray);
-      //  console.log(scores);
+      if (response.length < 1) {
+        alert('No scores for this student')
+        $location.path('/home/class')
+      } else {
+        let rawData = response;
+        let literacyScore = []
+          , mathScore = []
+          , writingScore = []
+          , readingScore = []
+          , scienceScore = []
+        for (let i = 0; i < rawData.length; i++) {
+          if (rawData[i].subject === "Math") {
+            mathScore.push([rawData[i].name, rawData[i].score])
+          }
+          if (rawData[i].subject === "Literacy") {
+            literacyScore.push([rawData[i].name, rawData[i].score])
+          }
+          if (rawData[i].subject === "Writing") {
+            writingScore.push([rawData[i].name, rawData[i].score])
+          }
+          if (rawData[i].subject === "Reading") {
+            readingScore.push([rawData[i].name, rawData[i].score])
+          }
+          if (rawData[i].subject === "Science") {
+            scienceScore.push([rawData[i].name, rawData[i].score])
+          }
+        }
+          if (mathScore.length > 0) {
+            console.log(mathScore);
+            var mthChart = new JSChart('mathChart', 'bar');
+            mthChart.setDataArray(mathScore);
+            mthChart.setTitle('Math')
+            mthChart.draw()
+          }
+          if (literacyScore.length > 0) {
+            var litChart = new JSChart('literacyChart', 'bar');
+            litChart.setDataArray(literacyScore);
+            litChart.setTitle('Literacy')
+            litChart.draw()
+          }
+          if (writingScore.length > 0) {
+            var writChart = new JSChart('writingChart', 'bar');
+            writChart.setDataArray(writingScore);
+            writChart.setTitle('Writing')
+            writChart.draw()
+          }
+          if (readingScore.length > 0) {
+            var readChart = new JSChart('readingChart', 'bar');
+            readChart.setDataArray(readingScore);
+            readChart.setTitle('Reading')
+            readChart.draw()
+          }
+          if (scienceScore.length > 0) {
+            var sciChart = new JSChart('scienceChart', 'bar');
+            sciChart.setDataArray(scienceScore);
+            sciChart.setTitle('Science')
+            sciChart.draw()
+          }
+        }
      })
    }
    $scope.getScores()
 
-   $scope.graphScoreTotals = () => {
-     mainSvc.getScoreTotals().then((response) => {
-       $scope.scoreTotals = response;
+   $scope.getGrades = () => {
+     let id = parseInt($stateParams.id)
+    //  console.log('getting grades', $stateParams.id);
+     mainSvc.getGrades(id).then((response) => {
+       let grades = [];
+      //  console.log(response);
+       for (let i = 0; i < response.length; i++) {
+          grades.push([response[i].subject, parseInt(response[i].score)])
+       }
+       let gradesChart = new JSChart('gradeChart', 'bar');
+       gradesChart.setDataArray(grades)
+       gradesChart.setTitle('Grades')
+       gradesChart.draw()
+
+       console.log(grades);
      })
    }
-   $scope.graphScoreTotals();
+   $scope.getGrades();
 })

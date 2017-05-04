@@ -1,17 +1,21 @@
-<div class="header-wrapper">
-  <h1>{{currentUser.name}}</h1>
-  <img src="../images/pic.jpg" alt="profile pic" /> <p>I don't know what text I want to go here but it will go here dangit</p>
-</div>
-<button ng-click="show = !show" class="menuButton"><i class="fa fa-bars"></i></button>
-<div class="menuBar" ng-show="show">
-  <ul>
-    <li><a ui-sref="home">Home</a></li>
-    <li><a ui-sref="class">Students</a></li>
-    <li><a ui-sref="planner">Planner</a></li>
-    <li><a ui-sref="classroom">Classroom</a></li>
-    <li><a ui-sref="login">Log Out</a></li>
-  </ul>
-</div>
-<ui-view>
-  <h1>This is where I want the daily schedule to show</h1>
-</ui-view>
+<section class="homeWrapper">
+  <div class="header-wrapper">
+    <h1>{{currentUser.name}}</h1>
+    <img src="../images/pic.jpg" alt="profile pic" /> <p>I don't know what text I want to go here but it will go here dangit</p>
+  </div>
+  <button ng-click="show = !show" class="menuButton"><i class="fa fa-bars"></i></button>
+  <div class="menuBar" ng-show="show">
+    <ul>
+      <li><a ui-sref="home">Home</a></li>
+      <li><a ui-sref="class">Students</a></li>
+      <li><a ui-sref="planner">Planner</a></li>
+      <li><a ui-sref="classroom">Classroom</a></li>
+      <li><a ui-sref="login">Log Out</a></li>
+    </ul>
+  </div>
+  <div class="viewsWrapper">
+    <ui-view>
+      <h1>This is where I want the daily schedule to show</h1>
+    </ui-view>
+  </div>
+</section>

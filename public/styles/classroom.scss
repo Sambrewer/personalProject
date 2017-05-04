@@ -1,17 +1,27 @@
+body {
+  overflow: hidden;
+}
+.behaviourWrapper {
+  background: grey;
+  // overflow: scroll;
+  // height: 100vh;
+}
 .behaveCard {
   width: 50vw;
   height: 14vh;
   display: flex;
   margin: auto;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  border: 1px solid black;
+  padding-left: 10px;
   .studentCard {
     height: 4em;
     width: 6em;
     background: rgba(255, 255, 255, 0.75);
     text-align: center;
     position: relative;
-    border: 1px, solid, black;
+    border: 1px solid black;
     .up {
       position: absolute;
       left: 0;

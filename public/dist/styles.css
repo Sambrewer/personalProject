@@ -39,20 +39,28 @@
 .modal .form-control {
   margin-bottom: 15px; }
 
+body {
+  overflow: hidden; }
+
+.behaviourWrapper {
+  background: grey; }
+
 .behaveCard {
   width: 50vw;
   height: 14vh;
   display: flex;
   margin: auto;
-  justify-content: space-around;
-  align-items: center; }
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding-left: 10px; }
   .behaveCard .studentCard {
     height: 4em;
     width: 6em;
     background: rgba(255, 255, 255, 0.75);
     text-align: center;
     position: relative;
-    border: 1px, solid, black; }
+    border: 1px solid black; }
     .behaveCard .studentCard .up {
       position: absolute;
       left: 0;
@@ -89,8 +97,15 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; }
 
+.homeWrapper {
+  overflow: hidden; }
+
+.viewsWrapper {
+  overflow: scroll;
+  overflow-x: hidden; }
+
 .header-wrapper {
-  height: 175px;
+  height: 22.5vh;
   width: 100vw;
   padding: 15px;
   background: black;
@@ -121,15 +136,24 @@
   border: none; }
 
 .menuBar {
-  height: 100vh;
+  height: 77.5vh;
   width: 200px;
   background-color: green;
   display: flex;
   flex-direction: column;
-  float: left; }
+  float: left;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 20px; }
+  .menuBar li {
+    margin-bottom: 15px; }
   .menuBar a {
     color: black;
     text-decoration: none; }
+
+.viewsWrapper {
+  overflow: auto;
+  height: 77.5vh; }
 
 @media (min-width: 600px) {
   .menuButton {

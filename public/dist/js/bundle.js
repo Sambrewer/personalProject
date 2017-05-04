@@ -79,6 +79,12 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
+  this.getBehaviour = function () {
+    return $http.get(baseUrl + 'behaviour').then(function (response) {
+      console.log('service', response.data);
+      return response.data;
+    });
+  };
   this.addScore = function (score) {
     return $http({
       method: 'POST',
@@ -93,6 +99,16 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       method: 'POST',
       url: baseUrl + 'api/assignments',
       data: assignment
+    }).then(function (response) {
+      console.log(response);
+      return response.data;
+    });
+  };
+  this.behaveUpdate = function (behave) {
+    return $http({
+      method: 'PUT',
+      url: baseUrl + 'api/behave',
+      data: behave
     }).then(function (response) {
       console.log(response);
       return response.data;
@@ -128,8 +144,81 @@ angular.module('classroomApp').controller('classCtrl', function ($scope, mainSvc
 });
 'use strict';
 
-angular.module('classroomApp').controller('classroomCtrl', function ($scope) {
+angular.module('classroomApp').controller('classroomCtrl', function ($scope, mainSvc) {
   $scope.test = "connected";
+  $scope.out = [];
+  $scope.grj = [];
+  $scope.gdd = [];
+  $scope.rtl = [];
+  $scope.sat = [];
+  $scope.tch = [];
+  $scope.pct = [];
+  $scope.moveUp = function (id, behaveid) {
+    var behaveUp = {};
+    behaveUp.id = id;
+    behaveUp.behaveid = behaveid + 1;
+    console.log(behaveUp);
+    mainSvc.behaveUpdate(behaveUp).then(function (response) {
+      $scope.getStuds().then(function (response) {
+        $scope.sortStuds(response);
+      });
+    });
+  };
+  $scope.moveDown = function (id, behaveid) {
+    var behaveUp = {};
+    behaveUp.id = id;
+    behaveUp.behaveid = behaveid - 1;
+    console.log(behaveUp);
+    mainSvc.behaveUpdate(behaveUp).then(function (response) {
+      $scope.getStuds().then(function (response) {
+        $scope.sortStuds(response);
+      });
+    });
+  };
+  $scope.sortStuds = function (arr) {
+    $scope.out = [];
+    $scope.grj = [];
+    $scope.gdd = [];
+    $scope.rtl = [];
+    $scope.sat = [];
+    $scope.tch = [];
+    $scope.pct = [];
+    for (var i = 0; i < arr.length; i++) {
+      switch (arr[i].behaveid) {
+        case 1:
+          $scope.pct.push(arr[i]);
+          break;
+        case 2:
+          $scope.tch.push(arr[i]);
+          break;
+        case 3:
+          $scope.sat.push(arr[i]);
+          break;
+        case 4:
+          $scope.rtl.push(arr[i]);
+          break;
+        case 5:
+          $scope.gdd.push(arr[i]);
+          break;
+        case 6:
+          $scope.grj.push(arr[i]);
+          break;
+        case 7:
+          $scope.out.push(arr[i]);
+          break;
+        default:
+          $scope.rtl.push(arr[i]);
+      }
+    }
+  };
+  $scope.getStuds = function () {
+    mainSvc.getBehaviour().then(function (response) {
+      console.log('controller', response);
+      $scope.studArr = response;
+      $scope.sortStuds($scope.studArr);
+    });
+  };
+  $scope.getStuds();
 });
 'use strict';
 

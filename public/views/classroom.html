@@ -1,22 +1,64 @@
 <div id="outStanding" class="behaveCard">
   <h1>Outstanding!</h1>
+  <div ng-repeat="student in out" class="studentCard">
+    <div>{{student.name}}</div>
+    <div>
+      <button class="up" class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+    </div>
+  </div>
 </div>
 <div id="greatJob" class="behaveCard">
   <h1>Great Job!</h1>
+  <div ng-repeat="student in grj" class="studentCard">
+    <div>{{student.name}}</div>
+    <div>
+      <button class="up" ng-click="moveUp(student.id, student.behaveid)"><i class="fa fa-arrow-up"></i></button><button class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+    </div>
+  </div>
 </div>
 <div id="goodDay" class="behaveCard">
   <h1>Good Day!</h1>
+  <div ng-repeat="student in gdd" class="studentCard">
+    <div>{{student.name}}</div>
+    <div>
+      <button class="up" ng-click="moveUp(student.id, student.behaveid)"><i class="fa fa-arrow-up"></i></button><button class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+    </div>
+  </div>
 </div>
 <div id="readyToLearn" class="behaveCard">
   <h1>Ready To Learn!</h1>
+  <div ng-repeat="student in rtl" class="studentCard">
+    <div>{{student.name}}</div>
+    <div>
+      <button class="up" ng-click="moveUp(student.id, student.behaveid)"><i class="fa fa-arrow-up"></i></button><button class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+    </div>
+  </div>
 </div>
 <div id="stopAndThink" class="behaveCard">
   <h1>Stop and Think</h1>
+  <div ng-repeat="student in sat" class="studentCard">
+    <div>{{student.name}}</div>
+    <div>
+      <button class="up" ng-click="moveUp(student.id, student.behaveid)"><i class="fa fa-arrow-up"></i></button><button class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+    </div>
+  </div>
 </div>
 <div id="teachersChoice" class="behaveCard">
   <h1>Teacher's Choice</h1>
+  <div ng-repeat="student in tch" class="studentCard">
+    <div>{{student.name}}</div>
+    <div>
+      <button class="up" ng-click="moveUp(student.id, student.behaveid)"><i class="fa fa-arrow-up"></i></button><button class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+    </div>
+  </div>
 </div>
 <div id="parentContact" class="behaveCard">
   <h1>Parent Contact</h1>
+  <div ng-repeat="student in pct" class="studentCard">
+    <div>{{student.name}}</div>
+    <div>
+      <button class="up" ng-click="moveUp(student.id, student.behaveid)"><i class="fa fa-arrow-up"></i></button>
+    </div>
+  </div>
 </div>
 {{test}}

@@ -41,6 +41,12 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data
     })
   }
+  this.getBehaviour = () => {
+    return $http.get(`${baseUrl}behaviour`).then((response) => {
+      console.log('service', response.data);
+      return response.data
+    })
+  }
   this.addScore = (score) => {
     return $http({
       method: 'POST',
@@ -58,6 +64,16 @@ angular.module('classroomApp').service('mainSvc', function($http) {
     }).then((response) => {
       console.log(response);
       return response.data;
+    })
+  }
+  this.behaveUpdate = (behave) => {
+    return $http({
+      method: 'PUT',
+      url: `${baseUrl}api/behave`,
+      data: behave
+    }).then((response) => {
+      console.log(response);
+      return response.data
     })
   }
 })

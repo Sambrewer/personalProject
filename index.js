@@ -71,6 +71,17 @@ app.get('/test/:id', (req, res) => {
     }
   })
 })
+app.get('/behaviour', (req, res) => {
+  let id = parseInt(req.session.currentUser[0].id)
+  db.read_behaviour([id], (err, behaviour) => {
+    if (!err) {
+      res.send(behaviour)
+    } else {
+      console.log(err);
+      res.send(err)
+    }
+  })
+})
 app.post('/api/users', (req, res) => {
   let data = [req.body.username, req.body.password]
   db.read_user(data, (err, user) => {
@@ -99,6 +110,17 @@ app.post('/api/scores', (req, res) => {
       res.status(200).send('Score Saved')
     } else {
       // console.log(err);
+    }
+  })
+})
+app.put('/api/behave', (req, res) => {
+  let data = [parseInt(req.body.id), parseInt(req.body.behaveid)]
+  db.update_behaviour(data, (err, behaves) => {
+    if (!err) {
+      res.send('Moved')
+    } else {
+      console.log(err);
+      res.send(err)
     }
   })
 })

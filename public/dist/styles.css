@@ -40,11 +40,34 @@
   margin-bottom: 15px; }
 
 .behaveCard {
-  height: 50px;
-  width: 400px; }
+  width: 50vw;
+  height: 14vh;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  align-items: center; }
+  .behaveCard .studentCard {
+    height: 4em;
+    width: 6em;
+    background: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    position: relative;
+    border: 1px, solid, black; }
+    .behaveCard .studentCard .up {
+      position: absolute;
+      left: 0;
+      bottom: 0; }
+    .behaveCard .studentCard .down {
+      position: absolute;
+      right: 0;
+      bottom: 0; }
+    .behaveCard .studentCard button {
+      border: none; }
 
 #outStanding {
-  background: violet; }
+  background: violet;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px; }
 
 #greatJob {
   background: indigo; }
@@ -62,7 +85,9 @@
   background: orange; }
 
 #parentContact {
-  background: red; }
+  background: red;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; }
 
 .header-wrapper {
   height: 175px;

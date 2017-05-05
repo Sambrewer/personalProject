@@ -82,6 +82,16 @@ app.get('/behaviour', (req, res) => {
     }
   })
 })
+app.get(`/api/lesson`, (req, res) => {
+  let id = parseInt(req.session.currentUser[0].id)
+  db.read_lesson([id], (err, lesson) => {
+    if (!err) {
+      res.send(lesson)
+    } else {
+      res.send(err)
+    }
+  })
+})
 app.post('/api/users', (req, res) => {
   let data = [req.body.username, req.body.password]
   db.read_user(data, (err, user) => {

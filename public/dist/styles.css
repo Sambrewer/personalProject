@@ -109,7 +109,8 @@ body {
   width: 100vw;
   padding: 15px;
   background: black;
-  color: white; }
+  color: white;
+  border-bottom: 1px solid black; }
   .header-wrapper h1 {
     font-size: 2em;
     margin-bottom: 15px; }
@@ -144,7 +145,8 @@ body {
   float: left;
   text-align: center;
   font-size: 1.5em;
-  padding: 20px; }
+  padding: 20px;
+  border-right: 1px solid black; }
   .menuBar li {
     margin-bottom: 15px; }
   .menuBar a {
@@ -154,6 +156,14 @@ body {
 .viewsWrapper {
   overflow: auto;
   height: 77.5vh; }
+  .viewsWrapper h1 {
+    font-size: 1.5em; }
+
+.lessonCard {
+  height: 22.5vh;
+  border: 2px solid black; }
+  .lessonCard h1 {
+    font-size: 1.5em; }
 
 @media (min-width: 600px) {
   .menuButton {

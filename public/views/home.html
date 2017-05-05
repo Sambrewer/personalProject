@@ -6,16 +6,52 @@
   <button ng-click="show = !show" class="menuButton"><i class="fa fa-bars"></i></button>
   <div class="menuBar" ng-show="show">
     <ul>
-      <li><a ui-sref="home">Home</a></li>
-      <li><a ui-sref="class">Students</a></li>
+      <li><a ui-sref="home">Lesson Plan</a></li>
+      <li><a ui-sref="class">Student Performance</a></li>
       <li><a ui-sref="planner">Planner</a></li>
-      <li><a ui-sref="classroom">Classroom</a></li>
+      <li><a ui-sref="classroom">Behaviour</a></li>
       <li><a ui-sref="login">Log Out</a></li>
     </ul>
   </div>
   <div class="viewsWrapper">
     <ui-view>
-      <h1>This is where I want the daily schedule to show</h1>
+      <h1>Lesson Plan</h1>
+      <div class="lessonWrapper">
+        <div class="row">
+          <div class="col-md-4 objective lessonCard">
+            <h1>Objective</h1>
+            <p>{{lesson.objective}}</p>
+          </div>
+          <div class="col-md-8 verification lessonCard">
+            <h1>Verification</h1>
+            <p>{{lesson.verification}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 inform lessonCard">
+            <h1>Information</h1>
+            <p>{{lesson.info}}</p>
+          </div>
+          <div class="col-md-8 activity lessonCard">
+            <h1>Activity</h1>
+            <p>{{lesson.activity}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 reqMat lessonCard">
+            <h1>Required Materials</h1>
+            <ul>
+              <li ng-repeat="mat in lesson.requiredmats">{{mat}}</li>
+            </ul>
+          </div>
+          <div class="col-md-8 resources lessonCard">
+            <h1>Other Resources</h1>
+            <ul>
+              <li ng-repeat="misc in lesson.other">{{misc}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </ui-view>
   </div>
 </section>

@@ -1,16 +1,16 @@
 <h1>what do we want to be able to plan</h1>
 <button data-toggle="modal" data-target="#assignModal">New Assignment</button>
-
+<button data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</button>
 
 <div class="modal fade" id="assignModal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+      <button class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
       <h4 class="modal-title">New Assignment</h4>
       <div class="modal-body">
         <div class="form-group">
           <label for="subjSel">Subject: </label>
-          <select class="form-control" id="subjSel" ng-model="assign.subj">
+          <select class="form-control" id="subjSel" ng-model="assign.subj" required>
             <option>Literacy</option>
             <option>Math</option>
             <option>Writing</option>
@@ -18,19 +18,74 @@
             <option>Science</option>
           </select>
           <label for="assignmentType">Category: </label>
-          <select class="form-control" id="assignmentType" ng-model="assign.type">
+          <select class="form-control" id="assignmentType" ng-model="assign.type" required>
             <option>Test</option>
             <option>Quiz</option>
             <option>Homework</option>
             <option>In Class Work</option>
           </select>
           <label for="assignmentName">Name: </label>
-          <input type="text" ng-model="assign.name" placeholder="Reading Comprehension 1">
+          <input type="text" ng-model="assign.name" placeholder="Reading Comprehension 1" required>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addAssignment(assign)">Submit</button>
       </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="lessonModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+        <h4 class="modal-title">New Lesson Plan</h4>
+        <div class="modal-body">
+          <div class="form-group">
+            <div>
+              <label for="obj">Objective</label>
+              <input type="text" ng-model="newLesson.objective" placeholder="Lesson Goals" required>
+            </div>
+            <div>
+              <label for="info">Information</label>
+              <input type="text" ng-model="newLesson.info" placeholder="The lesson is about..." required>
+            </div>
+            <div>
+              <label for="activity">Activity</label>
+              <input type="text" ng-model="newLesson.activity" placeholder="Activity for the lesson" required>
+            </div>
+              <label for="verification">Verification</label>
+              <select class="form-control" ng-model="newLesson.verification">
+                <option ng-repeat="assignment in assignments">{{assignment.name}} {{assignment.subject}}</option>
+            </select>
+              <div>
+                <input type="checkbox" id="pencil" name="mats" ng-model="newLesson.reqMatsPen" value="pencil">
+                <label for="pencil">Pencil</label>
+              </div>
+              <div>
+                <input type="checkbox" id="paper" name="mats" ng-model="newLesson.reqMatsPap" value="paper">
+                <label for="paper">Paper</label>
+              </div>
+              <div>
+                <input type="checkbox" id="book" name="mats" ng-model="newLesson.reqMatsBook" value="book">
+                <label for="book">Book</label>
+              </div>
+              <div>
+                <input type="checkbox" id="scissors" name="mats" ng-model="newLesson.reqMatsSci" value="scissors">
+                <label for="scissors">Scissors</label>
+              </div>
+              <div>
+                <input type="checkbox" id="glue" name="mats" ng-model="newLesson.reqMatsGlue" value="glue">
+                <label for="glue">Glue</label>
+              </div>
+              <div>
+                <input type="checkbox" id="crayons" name="mats" ng-model="newLesson.reqMatsCray" value="crayons">
+                <label for="crayons">Crayons</label>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addAssignment(assign)">Submit</button>
+        </div>
     </div>
   </div>
 </div>

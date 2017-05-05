@@ -85,6 +85,11 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
+  this.getLesson = function () {
+    return $http.get(baseUrl + 'api/lesson').then(function (response) {
+      return response.data[0];
+    });
+  };
   this.addScore = function (score) {
     return $http({
       method: 'POST',
@@ -240,7 +245,13 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
     // console.log($scope.currentUser);
   };
   $scope.getUser();
-  // console.log($scope.currentUser);
+  $scope.getLesson = function () {
+    mainSvc.getLesson().then(function (response) {
+      console.log(response);
+      $scope.lesson = response;
+    });
+  };
+  $scope.getLesson();
 });
 'use strict';
 
@@ -264,6 +275,12 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
       alert(response);
     });
   };
+  $scope.getAssignments = function () {
+    mainSvc.getAssignments().then(function (response) {
+      $scope.assignments = response;
+    });
+  };
+  $scope.getAssignments();
 });
 'use strict';
 

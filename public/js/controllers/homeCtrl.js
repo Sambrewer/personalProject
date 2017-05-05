@@ -16,5 +16,11 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
     // console.log($scope.currentUser);
   }
   $scope.getUser()
-  // console.log($scope.currentUser);
+  $scope.getLesson = () => {
+    mainSvc.getLesson().then((response) => {
+      console.log(response);
+      $scope.lesson = response;
+    })
+  }
+  $scope.getLesson();
 })

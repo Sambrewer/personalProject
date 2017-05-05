@@ -4,4 +4,10 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
       alert(response)
     })
   }
+  $scope.getAssignments = () => {
+    mainSvc.getAssignments().then((response) => {
+      $scope.assignments = response;
+    })
+  }
+  $scope.getAssignments()
 })

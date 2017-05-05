@@ -109,6 +109,15 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
+  this.addLesson = function (lesson) {
+    return $http({
+      method: 'POST',
+      url: baseUrl + 'api/lesson',
+      data: lesson
+    }).then(function (response) {
+      return response.data;
+    });
+  };
   this.behaveUpdate = function (behave) {
     return $http({
       method: 'PUT',
@@ -281,6 +290,38 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     });
   };
   $scope.getAssignments();
+  $scope.addLesson = function (newLesson) {
+    var addMats = [];
+    var addedLesson = {};
+    if (newLesson.reqMatsPen) {
+      addMats.push('Pencil');
+    }
+    if (newLesson.reqMatsPap) {
+      addMats.push('Paper');
+    }
+    if (newLesson.reqMatsBook) {
+      addMats.push('Book');
+    }
+    if (newLesson.reqMatsSci) {
+      addMats.push('Scissors');
+    }
+    if (newLesson.reqMatsGlue) {
+      addMats.push('Glue');
+    }
+    if (newLesson.reqMatsCray) {
+      addMats.push('Crayons');
+    }
+    addedLesson.name = newLesson.name;
+    addedLesson.activity = newLesson.activity;
+    addedLesson.info = newLesson.info;
+    addedLesson.objective = newLesson.objective;
+    addedLesson.requiredMats = addMats;
+    addedLesson.verification = newLesson.verification;
+    addedLesson.misc = newLesson.misc.split(',');
+    mainSvc.addLesson(addedLesson).then(function (response) {
+      alert(response);
+    });
+  };
 });
 'use strict';
 

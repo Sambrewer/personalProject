@@ -123,6 +123,16 @@ app.post('/api/scores', (req, res) => {
     }
   })
 })
+app.post(`/api/lesson`, (req, res) => {
+  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc]
+  db.add_lesson(data, (err, lesson) => {
+    if (!err) {
+      res.send('Lesson Added')
+    } else {
+      res.send(err);
+    }
+  })
+})
 app.put('/api/behave', (req, res) => {
   let data = [parseInt(req.body.id), parseInt(req.body.behaveid)]
   db.update_behaviour(data, (err, behaves) => {

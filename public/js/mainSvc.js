@@ -71,6 +71,15 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data;
     })
   }
+  this.addLesson = (lesson) => {
+    return $http({
+      method: 'POST',
+      url: `${baseUrl}api/lesson`,
+      data: lesson
+    }).then((response) => {
+      return response.data;
+    })
+  }
   this.behaveUpdate = (behave) => {
     return $http({
       method: 'PUT',

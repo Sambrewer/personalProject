@@ -35,9 +35,11 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     addedLesson.activity = newLesson.activity
     addedLesson.info = newLesson.info
     addedLesson.objective = newLesson.objective
-    addedLesson.requiredMats = addMats;
-    addedLesson.verification = newLesson.verification;
+    addedLesson.requiredMats = addMats
+    addedLesson.verification = newLesson.verification
     addedLesson.misc = newLesson.misc.split(',')
+    addedLesson.timeStart = newLesson.timeStart
+    addedLesson.timeEnd = newLesson.timeEnd
     mainSvc.addLesson(addedLesson).then((response) => {
       alert(response);
     })

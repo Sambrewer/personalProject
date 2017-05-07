@@ -1,0 +1,39 @@
+<section class="lessonSection">
+  <h1>{{lesson.name}}</h1>
+  <div class="lessonWrapper">
+    <div class="row">
+      <div class="col-md-4 objective lessonCard">
+        <h1>Objective</h1>
+        <p>{{lesson.objective}}</p>
+      </div>
+      <div class="col-md-8 verification lessonCard">
+        <h1>Verification</h1>
+        <p>{{lesson.verification}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 inform lessonCard">
+        <h1>Information</h1>
+        <p>{{lesson.info}}</p>
+      </div>
+      <div class="col-md-8 activity lessonCard">
+        <h1>Activity</h1>
+        <p>{{lesson.activity}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 reqMat lessonCard">
+        <h1>Required Materials</h1>
+        <ul>
+          <li ng-repeat="mat in lesson.requiredmats">{{mat}}</li>
+        </ul>
+      </div>
+      <div class="col-md-8 resources lessonCard">
+        <h1>Other Resources</h1>
+        <ul>
+          <li ng-repeat="misc in lesson.other">{{misc}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

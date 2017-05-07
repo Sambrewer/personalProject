@@ -85,9 +85,34 @@
                 <input type="checkbox" id="crayons" name="mats" ng-model="newLesson.reqMatsCray" value="crayons">
                 <label for="crayons">Crayons</label>
               </div>
-              <label>Additional Materials:</label>
-              <input type="text" ng-model="newLesson.misc">
-              <caption>Seperate Entries with a comma</caption>
+              <div>
+                <label>Additional Materials:</label>
+                <input type="text" ng-model="newLesson.misc">
+                <caption>Seperate Entries with a comma</caption>
+              </div>
+              <div>
+                <label>Time:</label>
+                <select class="form-control" ng-model="newLesson.timeStart">
+                  <option value="1">8:00</option>
+                  <option value="2">9:00</option>
+                  <option value="3">10:00</option>
+                  <option value="4">11:00</option>
+                  <option value="5">12:00</option>
+                  <option value="6">1:00</option>
+                  <option value="7">2:00</option>
+                  <option value="8">3:00</option>
+                </select>
+                <select class="form-control" ng-model="newLesson.timeEnd">
+                  <option value="1">8:00</option>
+                  <option value="2">9:00</option>
+                  <option value="3">10:00</option>
+                  <option value="4">11:00</option>
+                  <option value="5">12:00</option>
+                  <option value="6">1:00</option>
+                  <option value="7">2:00</option>
+                  <option value="8">3:00</option>
+                </select>
+              </div>
           </div>
         </div>
         <div class="modal-footer">

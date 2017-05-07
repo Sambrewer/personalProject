@@ -1,12 +1,12 @@
 <section class="homeWrapper">
   <div class="header-wrapper">
     <h1>{{currentUser.name}}</h1>
-    <img src="../images/pic.jpg" alt="profile pic" /> <p>I don't know what text I want to go here but it will go here dangit</p>
+    <img src="../images/pic.jpg" alt="profile pic" />
   </div>
   <button ng-click="show = !show" class="menuButton"><i class="fa fa-bars"></i></button>
   <div class="menuBar" ng-show="show">
     <ul>
-      <li><a ui-sref="home">Lesson Plan</a></li>
+      <li><a ui-sref="home" ng-click="getLesson()">Lesson Plan</a></li>
       <li><a ui-sref="class">Student Performance</a></li>
       <li><a ui-sref="planner">Planner</a></li>
       <li><a ui-sref="classroom">Behaviour</a></li>
@@ -15,41 +15,11 @@
   </div>
   <div class="viewsWrapper">
     <ui-view>
-      <h1>Lesson Plan</h1>
-      <div class="lessonWrapper">
-        <div class="row">
-          <div class="col-md-4 objective lessonCard">
-            <h1>Objective</h1>
-            <p>{{lesson.objective}}</p>
-          </div>
-          <div class="col-md-8 verification lessonCard">
-            <h1>Verification</h1>
-            <p>{{lesson.verification}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 inform lessonCard">
-            <h1>Information</h1>
-            <p>{{lesson.info}}</p>
-          </div>
-          <div class="col-md-8 activity lessonCard">
-            <h1>Activity</h1>
-            <p>{{lesson.activity}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 reqMat lessonCard">
-            <h1>Required Materials</h1>
-            <ul>
-              <li ng-repeat="mat in lesson.requiredmats">{{mat}}</li>
-            </ul>
-          </div>
-          <div class="col-md-8 resources lessonCard">
-            <h1>Other Resources</h1>
-            <ul>
-              <li ng-repeat="misc in lesson.other">{{misc}}</li>
-            </ul>
-          </div>
+      <div class="homeViewWrapper">
+        <div class="timeBlock" ng-repeat="lesson in lessons">
+          <h3>{{lesson.name}}</h3>
+          <p>{{lesson.startTime}} - {{lesson.endTime}}</p> <br>
+          <button ui-sref="lesson({id: lesson.id})">View Lesson</button>
         </div>
       </div>
     </ui-view>

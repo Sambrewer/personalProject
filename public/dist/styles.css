@@ -159,11 +159,40 @@ body {
   .viewsWrapper h1 {
     font-size: 1.5em; }
 
-.lessonCard {
+.lessonSection h1 {
+  font-size: 2em; }
+
+.lessonSection .lessonCard {
   height: 22.5vh;
   border: 2px solid black; }
-  .lessonCard h1 {
+  .lessonSection .lessonCard h1 {
+    font-size: 2em; }
+  .lessonSection .lessonCard p {
     font-size: 1.5em; }
+  .lessonSection .lessonCard li {
+    font-size: 1.5em; }
+
+.homeViewWrapper {
+  margin: auto;
+  margin-top: 10px;
+  width: 500px;
+  border: 3px ridge black;
+  border-radius: 15px; }
+  .homeViewWrapper .timeBlock {
+    height: 9.5vh;
+    border-bottom: 3px dotted grey; }
+    .homeViewWrapper .timeBlock p {
+      margin-left: 10px;
+      margin-bottom: 5px; }
+    .homeViewWrapper .timeBlock h3 {
+      margin-top: 10px;
+      margin-left: 10px;
+      font-size: 1em;
+      margin-bottom: 5px; }
+    .homeViewWrapper .timeBlock button {
+      margin-left: 10px; }
+  .homeViewWrapper .timeBlock:nth-child(7) {
+    border-bottom: none; }
 
 @media (min-width: 600px) {
   .menuButton {

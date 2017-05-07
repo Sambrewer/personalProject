@@ -36,6 +36,12 @@ angular.module('classroomApp', ['ui.router'])
         templateUrl: '../views/scores.html',
         controller: 'scoresCtrl'
       })
+      .state('lesson', {
+        url: '/lesson/:id',
+        parent: 'home',
+        templateUrl: '../views/lesson.html',
+        controller: 'lessonCtrl'
+      })
 
     $urlRouterProvider
       .otherwise('/')

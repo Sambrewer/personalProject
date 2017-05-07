@@ -30,6 +30,11 @@ angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $
     parent: 'home',
     templateUrl: '../views/scores.html',
     controller: 'scoresCtrl'
+  }).state('lesson', {
+    url: '/lesson/:id',
+    parent: 'home',
+    templateUrl: '../views/lesson.html',
+    controller: 'lessonCtrl'
   });
 
   $urlRouterProvider.otherwise('/');
@@ -87,7 +92,8 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
   };
   this.getLesson = function () {
     return $http.get(baseUrl + 'api/lesson').then(function (response) {
-      return response.data[0];
+      console.log(response.data[0]);
+      return response.data;
     });
   };
   this.addScore = function (score) {
@@ -256,11 +262,81 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
   $scope.getUser();
   $scope.getLesson = function () {
     mainSvc.getLesson().then(function (response) {
-      console.log(response);
-      $scope.lesson = response;
+      $scope.lessons = response;
+      for (var i = 0; i < $scope.lessons.length; i++) {
+        switch ($scope.lessons[i].timeid) {
+          case 1:
+            $scope.lessons[i].startTime = '8:00';
+            break;
+          case 2:
+            $scope.lessons[i].startTime = '9:00';
+            break;
+          case 3:
+            $scope.lessons[i].startTime = '10:00';
+            break;
+          case 4:
+            $scope.lessons[i].startTime = '11:00';
+            break;
+          case 5:
+            $scope.lessons[i].startTime = '12:00';
+            break;
+          case 6:
+            $scope.lessons[i].startTime = '1:00';
+            break;
+          case 7:
+            $scope.lessons[i].startTime = '2:00';
+            break;
+          case 8:
+            $scope.lessons[i].startTime = '3:00';
+        }
+        switch ($scope.lessons[i].timeendid) {
+          case 1:
+            $scope.lessons[i].endTime = '8:00';
+            break;
+          case 2:
+            $scope.lessons[i].endTime = '9:00';
+            break;
+          case 3:
+            $scope.lessons[i].endTime = '10:00';
+            break;
+          case 4:
+            $scope.lessons[i].endTime = '11:00';
+            break;
+          case 5:
+            $scope.lessons[i].endTime = '12:00';
+            break;
+          case 6:
+            $scope.lessons[i].endTime = '1:00';
+            break;
+          case 7:
+            $scope.lessons[i].endTime = '2:00';
+            break;
+          case 8:
+            $scope.lessons[i].endTime = '3:00';
+        }
+      }
     });
   };
+
   $scope.getLesson();
+});
+'use strict';
+
+angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSvc, $stateParams) {
+  $scope.getThisLesson = function () {
+    var id = parseInt($stateParams.id);
+    mainSvc.getLesson().then(function (response) {
+      console.log($stateParams.id);
+      console.log(id);
+      for (var i = 0; i < response.length; i++) {
+        if (id = response[i].id) {
+          return $scope.lesson = response[i];
+          console.log($scope.lesson.id);
+        }
+      }
+    });
+  };
+  $scope.getThisLesson();
 });
 'use strict';
 
@@ -318,6 +394,8 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     addedLesson.requiredMats = addMats;
     addedLesson.verification = newLesson.verification;
     addedLesson.misc = newLesson.misc.split(',');
+    addedLesson.timeStart = newLesson.timeStart;
+    addedLesson.timeEnd = newLesson.timeEnd;
     mainSvc.addLesson(addedLesson).then(function (response) {
       alert(response);
     });

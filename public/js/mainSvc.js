@@ -49,7 +49,8 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   }
   this.getLesson = () => {
     return $http.get(`${baseUrl}api/lesson`).then((response) => {
-      return response.data[0]
+      console.log(response.data[0]);
+      return response.data
     })
   }
   this.addScore = (score) => {

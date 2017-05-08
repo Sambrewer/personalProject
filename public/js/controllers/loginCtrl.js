@@ -9,4 +9,9 @@ angular.module('classroomApp').controller('loginCtrl', function($scope, mainSvc,
       }
     })
   }
+  $scope.addTeacher = (teacher) => {
+    mainSvc.addTeacher(teacher).then((response) => {
+      alert(response)
+    })
+  }
 })

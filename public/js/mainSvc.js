@@ -49,7 +49,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   }
   this.getLesson = () => {
     return $http.get(`${baseUrl}api/lesson`).then((response) => {
-      console.log(response.data[0]);
+      console.log(response.data);
       return response.data
     })
   }
@@ -81,6 +81,24 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data;
     })
   }
+  this.addStudent = (student) => {
+    return $http({
+      method: 'POST',
+      url: `${baseUrl}api/students`,
+      data: student
+    }).then((response) => {
+      return response.data;
+    })
+  }
+  this.addTeacher = (teacher) => {
+    return $http({
+      method: `POST`,
+      url: `${baseUrl}api/teachers`,
+      data: teacher
+    }).then((response) => {
+      return response.data
+    })
+  }
   this.behaveUpdate = (behave) => {
     return $http({
       method: 'PUT',
@@ -89,6 +107,26 @@ angular.module('classroomApp').service('mainSvc', function($http) {
     }).then((response) => {
       console.log(response);
       return response.data
+    })
+  }
+  this.deleteAssignment = (id) => {
+    return $http.delete(`${baseUrl}api/assignment/${id}`)
+    .then((response) => {
+      return response.data
+    })
+  }
+  this.deleteLesson = (id) => {
+    return $http.delete(`${baseUrl}api/lesson/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      return response.data
+    })
+  }
+  this.deleteStudent = (id) => {
+    return $http.delete(`${baseUrl}api/student/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
     })
   }
 })

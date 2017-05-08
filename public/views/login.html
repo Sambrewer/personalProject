@@ -1,9 +1,45 @@
 <div class="login-page">
   <div class="login-wrapper">
+    <h1>Classroom Manager</h1>
     <form>
       <input type="text" ng-model="user.username" placeholder="Username">
       <input type="password" ng-model="user.password" placeholder="Password">
-      <button ng-click="login(user)" type="submit">Log In</button>
+      <div class="buttonWrapper">
+        <button data-toggle="modal" data-target="#teacherModal">Create User</button>
+        <button ng-click="login(user)" type="submit">Log In</button>
+      </div>
     </form>
+  </div>
+</div>
+
+<div class="modal fade" id="teacherModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+      <h4 class="modal-title">New Teacher</h4>
+      <div class="modal-body">
+        <div class="form-group">
+          <div>
+            <label>First and Last Name:</label> <br>
+            <input type="text" ng-model="teach.name">
+          </div>
+          <div>
+            <label>Username:</label> <br>
+            <input type="text" ng-model="teach.username">
+          </div>
+          <div>
+            <label>Password:</label> <br>
+            <input type="password" ng-model="teach.password">
+          </div>
+          <div>
+            <label>Profile Pic URL:</label> <br>
+            <input type="text" ng-model="teach.imgurl">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addTeacher(teach)">Submit</button>
+      </div>
+    </div>
   </div>
 </div>

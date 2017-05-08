@@ -110,13 +110,13 @@ app.post('/api/assignments', (req, res) => {
 })
 app.post('/api/scores', (req, res) => {
   let data = [parseInt(req.body.studentid), parseInt(req.body.assignmentid), parseInt(req.body.score)]
-  // console.log(data);
-  // console.log(req.body);
+  console.log(data, 'add score');
+  console.log(req.body);
   db.add_score(data, (err, score) => {
     if (!err) {
       res.status(200).send('Score Saved')
     } else {
-      // console.log(err);
+      console.log(err, 'add score error');
     }
   })
 })
@@ -130,6 +130,18 @@ app.post(`/api/lesson`, (req, res) => {
     }
   })
 })
+app.post(`/api/students`, (req, res) => {
+  let data = [req.body.name, req.body.guardian, req.body.email, parseInt(req.session.currentUser[0].id)]
+  db.add_student(data, (err, student) => {
+    (!err)?res.send('Student Added'):res.send(err)
+  })
+})
+app.post(`/api/teachers`, (req, res) => {
+  let data = [req.body.name, req.body.username, req.body.password, req.body.imgurl]
+  db.add_teacher(data, (err, teacher) => {
+    (!err)?res.send('User Created'):res.send(err)
+  })
+})
 app.put('/api/behave', (req, res) => {
   let data = [parseInt(req.body.id), parseInt(req.body.behaveid)]
   db.update_behaviour(data, (err, behaves) => {
@@ -139,6 +151,30 @@ app.put('/api/behave', (req, res) => {
       console.log(err);
       res.send(err)
     }
+  })
+})
+app.delete('/api/assignment/:id', (req, res) => {
+  let id = parseInt(req.params.id)
+  // console.log(id);
+  db.remove_assignment([id], (err, assign) => {
+    if (!err) {
+      res.send('Assignment Removed')
+    } else {
+      // console.log(err);
+      res.send(err)
+    }
+  })
+})
+app.delete('/api/lesson/:id', (req, res) => {
+  let id = parseInt(req.params.id)
+  db.remove_lesson([id], (err, less) => {
+    (!err)? res.send('Lesson Plan Deleted') : res.send(err)
+  })
+})
+app.delete(`/api/student/:id`, (req, res) => {
+  let id = [parseInt(req.params.id)]
+  db.remove_student(id, (err, stud) => {
+    (!err)? res.send('Student Removed') : res.sed(err)
   })
 })
 app.listen(port, console.log(`app listening on ${port}`))

@@ -1,7 +1,5 @@
 .classWrapper {
-  background: url("../images/gab.jpg") no-repeat;
-  background-size: cover;
-  height: 100vh; }
+  background-size: cover; }
   .classWrapper .studentContainer {
     display: flex;
     justify-content: space-around;
@@ -11,9 +9,10 @@
       height: 20vh;
       width: 150px;
       margin-bottom: 15px;
-      background: white;
+      background: green;
       border-radius: 5px;
-      padding: 5px; }
+      padding: 5px;
+      position: relative; }
       .classWrapper .studentContainer div h1 {
         margin-bottom: 10px; }
       .classWrapper .studentContainer div button {
@@ -22,6 +21,12 @@
         margin-bottom: 10px;
         border: none;
         border-radius: 5px; }
+      .classWrapper .studentContainer div .addScore {
+        position: absolute;
+        bottom: 35px; }
+      .classWrapper .studentContainer div .seeScore {
+        position: absolute;
+        bottom: 5px; }
 
 .chartsContainer {
   display: flex;
@@ -106,11 +111,15 @@ body {
 
 .header-wrapper {
   height: 22.5vh;
+  text-align: center;
   width: 100vw;
   padding: 15px;
   background: black;
   color: white;
-  border-bottom: 1px solid black; }
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
   .header-wrapper h1 {
     font-size: 2em;
     margin-bottom: 15px; }
@@ -119,7 +128,8 @@ body {
     width: 75px;
     float: left;
     margin-left: 20px;
-    margin-right: 15px; }
+    margin-right: 15px;
+    float: none; }
   .header-wrapper p {
     width: 150px;
     height: auto;
@@ -179,19 +189,18 @@ body {
   border: 3px ridge black;
   border-radius: 15px; }
   .homeViewWrapper .timeBlock {
-    height: 9.5vh;
     border-bottom: 3px dotted grey; }
     .homeViewWrapper .timeBlock p {
-      margin-left: 10px;
-      margin-bottom: 5px; }
+      margin-left: 10px; }
     .homeViewWrapper .timeBlock h3 {
       margin-top: 10px;
       margin-left: 10px;
       font-size: 1em;
       margin-bottom: 5px; }
     .homeViewWrapper .timeBlock button {
-      margin-left: 10px; }
-  .homeViewWrapper .timeBlock:nth-child(7) {
+      margin-left: 10px;
+      margin-bottom: 10px; }
+  .homeViewWrapper .timeBlock:nth-last-child(1) {
     border-bottom: none; }
 
 @media (min-width: 600px) {
@@ -217,9 +226,13 @@ body {
     align-items: center;
     flex-direction: column;
     border-radius: 20px; }
+    .login-page .login-wrapper h1 {
+      font-size: 3em;
+      text-align: center; }
     .login-page .login-wrapper form {
       display: flex;
-      flex-direction: column; }
+      flex-direction: column;
+      margin-top: 50px; }
     .login-page .login-wrapper input {
       font-size: 1.5em;
       height: 5vh;
@@ -230,10 +243,38 @@ body {
       color: white;
       font-size: 1.25em;
       height: 7.5vh;
-      width: 15vw;
+      width: 10vw;
       align-self: flex-end;
       border: none;
       border-radius: 15px; }
+    .login-page .login-wrapper .buttonWrapper {
+      display: flex;
+      justify-content: space-between; }
+
+.control {
+  background: grey;
+  display: flex;
+  justify-content: space-around;
+  height: 30px; }
+
+.plannerWrapper {
+  display: flex;
+  justify-content: space-around; }
+  .plannerWrapper .listCard {
+    width: 25vw;
+    border: 2px solid black;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    border-radius: 5px; }
+    .plannerWrapper .listCard button {
+      height: 2em;
+      width: 2em;
+      font-size: 1.25em; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

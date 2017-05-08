@@ -1,6 +1,32 @@
-<h1>what do we want to be able to plan</h1>
-<button data-toggle="modal" data-target="#assignModal">New Assignment</button>
-<button data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</button>
+<div class="control">
+  <button data-toggle="modal" data-target="#assignModal">New Assignment</button>
+  <button data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</button>
+  <button data-toggle="modal" data-target="#studentModal">Add Student</button>
+</div>
+<div class="plannerWrapper">
+  <div class="listWrapper">
+    <h1>Assignments:</h1>
+    <div ng-repeat="assignment in assignments"  class="listCard">
+      <p>{{assignment.name}}</p>
+      <button ng-click="removeAssignment(assignment.id)"><i class="fa fa-trash-o"></i></button>
+    </div>
+  </div>
+  <div class="listWrapper">
+    <h1>Lesson Plans:</h1>
+    <div ng-repeat="lesson in lessons" class="listCard">
+      <p>{{lesson.name}}</p>
+      <button ng-click="removeLesson(lesson.id)"><i class="fa fa-trash-o"></i></button>
+    </div>
+  </div>
+  <div class="listWrapper">
+    <h1>Students:</h1>
+    <div ng-repeat="student in students" class="listCard">
+      <p>{{student.name}}</p>
+      <button ng-click="removeStudent(student.id)"><i class="fa fa-trash-o"></i></button>
+    </div>
+  </div>
+</div>
+
 
 <div class="modal fade" id="assignModal">
   <div class="modal-dialog">
@@ -118,6 +144,33 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addLesson(newLesson)">Submit</button>
         </div>
+      </div>
+    </div>
+  </div>
+<div class="modal fade" id="studentModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+      <h4>New Student</h4>
+      <div class="modal-body">
+        <div class="form-group">
+          <div>
+            <label>Name:</label><br>
+            <input type="text" ng-model="newStud.name">
+          </div>
+          <div>
+            <label>Legal Guardian:</label><br>
+            <input type="text" ng-model="newStud.guardian">
+          </div>
+          <div>
+            <label>Guardian Email:</label><br>
+            <input type="text" ng-model="newStud.email">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" ng-click="addStudent(newStud)">Submit</button>
+      </div>
     </div>
   </div>
 </div>

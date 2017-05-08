@@ -1,7 +1,7 @@
 .classWrapper {
-  background: url('../images/gab.jpg')no-repeat;
+  // background: url('../images/gab.jpg')no-repeat;
   background-size: cover;
-  height: 100vh;
+  // height: 100vh;
   .studentContainer {
     display: flex;
     justify-content: space-around;
@@ -11,9 +11,10 @@
       height: 20vh;
       width: 150px;
       margin-bottom: 15px;
-      background: white;
+      background: green;
       border-radius: 5px;
       padding: 5px;
+      position: relative;
       h1 {
         margin-bottom: 10px;
       }
@@ -23,6 +24,14 @@
         margin-bottom: 10px;
         border: none;
         border-radius: 5px;
+      }
+      .addScore {
+        position: absolute;
+        bottom: 35px;
+      }
+      .seeScore {
+        position: absolute;
+        bottom: 5px;
       }
     }
   }

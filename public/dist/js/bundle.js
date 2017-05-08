@@ -92,7 +92,7 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
   };
   this.getLesson = function () {
     return $http.get(baseUrl + 'api/lesson').then(function (response) {
-      console.log(response.data[0]);
+      console.log(response.data);
       return response.data;
     });
   };
@@ -124,6 +124,24 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
+  this.addStudent = function (student) {
+    return $http({
+      method: 'POST',
+      url: baseUrl + 'api/students',
+      data: student
+    }).then(function (response) {
+      return response.data;
+    });
+  };
+  this.addTeacher = function (teacher) {
+    return $http({
+      method: 'POST',
+      url: baseUrl + 'api/teachers',
+      data: teacher
+    }).then(function (response) {
+      return response.data;
+    });
+  };
   this.behaveUpdate = function (behave) {
     return $http({
       method: 'PUT',
@@ -131,6 +149,23 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       data: behave
     }).then(function (response) {
       console.log(response);
+      return response.data;
+    });
+  };
+  this.deleteAssignment = function (id) {
+    return $http.delete(baseUrl + 'api/assignment/' + id).then(function (response) {
+      return response.data;
+    });
+  };
+  this.deleteLesson = function (id) {
+    return $http.delete(baseUrl + 'api/lesson/' + id).then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  };
+  this.deleteStudent = function (id) {
+    return $http.delete(baseUrl + 'api/student/' + id).then(function (response) {
+      console.log(response.data);
       return response.data;
     });
   };
@@ -351,21 +386,28 @@ angular.module('classroomApp').controller('loginCtrl', function ($scope, mainSvc
       }
     });
   };
+  $scope.addTeacher = function (teacher) {
+    mainSvc.addTeacher(teacher).then(function (response) {
+      alert(response);
+    });
+  };
 });
 'use strict';
 
 angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainSvc) {
-  $scope.addAssignment = function (assignment) {
-    mainSvc.addAssignment(assignment).then(function (response) {
-      alert(response);
-    });
-  };
+
   $scope.getAssignments = function () {
     mainSvc.getAssignments().then(function (response) {
       $scope.assignments = response;
     });
   };
   $scope.getAssignments();
+  $scope.addAssignment = function (assignment) {
+    mainSvc.addAssignment(assignment).then(function (response) {
+      alert(response);
+      $scope.getAssignments();
+    });
+  };
   $scope.addLesson = function (newLesson) {
     var addMats = [];
     var addedLesson = {};
@@ -398,6 +440,43 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     addedLesson.timeEnd = newLesson.timeEnd;
     mainSvc.addLesson(addedLesson).then(function (response) {
       alert(response);
+    });
+  };
+  $scope.getLessons = function () {
+    mainSvc.getLesson().then(function (response) {
+      $scope.lessons = response;
+      console.log($scope.lessons);
+    });
+  };
+  $scope.getLessons();
+  $scope.getStudents = function () {
+    mainSvc.getStudents().then(function (response) {
+      $scope.students = response;
+    });
+  };
+  $scope.getStudents();
+  $scope.removeAssignment = function (id) {
+    mainSvc.deleteAssignment(id).then(function (response) {
+      alert(response);
+      $scope.getAssignments();
+    });
+  };
+  $scope.addStudent = function (stud) {
+    mainSvc.addStudent(stud).then(function (response) {
+      alert(response);
+      $scope.getStudents();
+    });
+  };
+  $scope.removeLesson = function (id) {
+    mainSvc.deleteLesson(id).then(function (response) {
+      alert(response);
+      $scope.getLessons();
+    });
+  };
+  $scope.removeStudent = function (id) {
+    mainSvc.deleteStudent(id).then(function (response) {
+      alert(response);
+      $scope.getStudents();
     });
   };
 });

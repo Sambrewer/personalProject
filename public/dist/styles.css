@@ -1,32 +1,31 @@
-.classWrapper {
-  background-size: cover; }
-  .classWrapper .studentContainer {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 10px; }
-    .classWrapper .studentContainer div {
-      height: 20vh;
-      width: 150px;
-      margin-bottom: 15px;
-      background: green;
-      border-radius: 5px;
-      padding: 5px;
-      position: relative; }
-      .classWrapper .studentContainer div h1 {
-        margin-bottom: 10px; }
-      .classWrapper .studentContainer div button {
-        background: black;
-        color: white;
-        margin-bottom: 10px;
-        border: none;
-        border-radius: 5px; }
-      .classWrapper .studentContainer div .addScore {
-        position: absolute;
-        bottom: 35px; }
-      .classWrapper .studentContainer div .seeScore {
-        position: absolute;
-        bottom: 5px; }
+.classWrapper .studentContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px; }
+  .classWrapper .studentContainer div {
+    border: 1px solid black;
+    height: 20vh;
+    width: 150px;
+    margin-bottom: 15px;
+    background: green;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative; }
+    .classWrapper .studentContainer div h1 {
+      margin-bottom: 10px; }
+    .classWrapper .studentContainer div button {
+      background: black;
+      color: white;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px; }
+    .classWrapper .studentContainer div .addScore {
+      position: absolute;
+      bottom: 35px; }
+    .classWrapper .studentContainer div .seeScore {
+      position: absolute;
+      bottom: 5px; }
 
 .chartsContainer {
   display: flex;
@@ -65,17 +64,21 @@ body {
     background: rgba(255, 255, 255, 0.75);
     text-align: center;
     position: relative;
-    border: 1px solid black; }
+    border: 1px solid black;
+    padding: 3px; }
     .behaveCard .studentCard .up {
       position: absolute;
-      left: 0;
-      bottom: 0; }
+      left: 3px;
+      bottom: 3px; }
     .behaveCard .studentCard .down {
       position: absolute;
-      right: 0;
-      bottom: 0; }
+      right: 3px;
+      bottom: 3px; }
     .behaveCard .studentCard button {
-      border: none; }
+      background: black;
+      color: #ddd;
+      border: none;
+      border-radius: 50%; }
 
 #outStanding {
   background: violet;
@@ -110,11 +113,11 @@ body {
   overflow-x: hidden; }
 
 .header-wrapper {
-  height: 22.5vh;
+  height: 20vh;
   text-align: center;
   width: 100vw;
   padding: 15px;
-  background: black;
+  background: #013D83;
   color: white;
   border-bottom: 1px solid black;
   display: flex;
@@ -147,7 +150,7 @@ body {
   border: none; }
 
 .menuBar {
-  height: 77.5vh;
+  height: 80vh;
   width: 200px;
   background-color: green;
   display: flex;
@@ -157,17 +160,25 @@ body {
   font-size: 1.5em;
   padding: 20px;
   border-right: 1px solid black; }
-  .menuBar li {
-    margin-bottom: 15px; }
-  .menuBar a {
-    color: black;
-    text-decoration: none; }
+  .menuBar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; }
+    .menuBar ul li {
+      margin-bottom: 15px; }
+      .menuBar ul li a {
+        color: black;
+        text-decoration: none; }
 
 .viewsWrapper {
   overflow: auto;
-  height: 77.5vh; }
+  height: 80vh;
+  background: grey; }
   .viewsWrapper h1 {
-    font-size: 1.5em; }
+    text-align: center;
+    font-size: 1.3em;
+    margin-top: 20px; }
 
 .lessonSection h1 {
   font-size: 2em; }
@@ -187,15 +198,20 @@ body {
   margin-top: 10px;
   width: 500px;
   border: 3px ridge black;
-  border-radius: 15px; }
+  border-radius: 15px;
+  background: white; }
   .homeViewWrapper .timeBlock {
+    display: flex;
+    justify-content: space-between;
     border-bottom: 3px dotted grey; }
     .homeViewWrapper .timeBlock p {
-      margin-left: 10px; }
+      margin-left: 10px;
+      margin-right: 10px; }
     .homeViewWrapper .timeBlock h3 {
       margin-top: 10px;
       margin-left: 10px;
-      font-size: 1em;
+      margin-right: 10px;
+      font-size: 1.5em;
       margin-bottom: 5px; }
     .homeViewWrapper .timeBlock button {
       margin-left: 10px;
@@ -210,7 +226,8 @@ body {
     display: block; } }
 
 .login-page {
-  background: black;
+  background: url("../images/logbg.jpeg") no-repeat;
+  background-size: cover;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -218,7 +235,7 @@ body {
   align-items: center; }
   .login-page .login-wrapper {
     background: rgba(255, 255, 255, 0.75);
-    width: 75%;
+    width: 80%;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -241,7 +258,7 @@ body {
     .login-page .login-wrapper button {
       background: black;
       color: white;
-      font-size: 1.25em;
+      font-size: 1em;
       height: 7.5vh;
       width: 10vw;
       align-self: flex-end;
@@ -252,15 +269,19 @@ body {
       justify-content: space-between; }
 
 .control {
-  background: grey;
+  background: black;
   display: flex;
   justify-content: space-around;
-  height: 30px; }
+  height: 50px;
+  padding: 10px; }
+  .control button {
+    height: 30px; }
 
 .plannerWrapper {
   display: flex;
   justify-content: space-around; }
   .plannerWrapper .listCard {
+    background: white;
     width: 25vw;
     border: 2px solid black;
     margin-bottom: 5px;

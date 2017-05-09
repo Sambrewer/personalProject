@@ -16,9 +16,21 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
     // console.log($scope.currentUser);
   }
   $scope.getUser()
+  let today = new Date();
+  let todayMonth = today.getMonth() + 1;
+  let todayDate = today.getDate()
+  let todayYear = today.getFullYear()
+  $scope.date = `${todayMonth}/${todayDate}/${todayYear}`  
+  console.log(today.getDate());
   $scope.getLesson = () => {
     mainSvc.getLesson().then((response) => {
-      $scope.lessons = response
+      $scope.lessons = [];
+      for (let i = 0; i < response.length; i++) {
+        if (response[i].date === today.getDate()) {
+          $scope.lessons.push(response[i])
+          console.log(response[i]);
+        }
+      }
       for (let i = 0; i < $scope.lessons.length; i++) {
         switch ($scope.lessons[i].timeid) {
           case 1:

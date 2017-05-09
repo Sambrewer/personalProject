@@ -1,13 +1,13 @@
 .classWrapper {
-  // background: url('../images/gab.jpg')no-repeat;
-  background-size: cover;
-  // height: 100vh;
+  // background: grey;
+  // background-size: cover;
   .studentContainer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 10px;
     div {
+      border: 1px solid black;
       height: 20vh;
       width: 150px;
       margin-bottom: 15px;

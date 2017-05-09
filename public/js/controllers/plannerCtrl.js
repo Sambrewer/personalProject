@@ -33,15 +33,23 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     if (newLesson.reqMatsCray) {
       addMats.push('Crayons')
     }
+    if (newLesson.misc !== []) {
+      addedLesson.misc = newLesson.misc.split(',')
+    }
+    let date =
     addedLesson.name = newLesson.name
     addedLesson.activity = newLesson.activity
     addedLesson.info = newLesson.info
     addedLesson.objective = newLesson.objective
     addedLesson.requiredMats = addMats
     addedLesson.verification = newLesson.verification
-    addedLesson.misc = newLesson.misc.split(',')
+
     addedLesson.timeStart = newLesson.timeStart
     addedLesson.timeEnd = newLesson.timeEnd
+    addedLesson.year = newLesson.date.getFullYear()
+    addedLesson.date = newLesson.date.getDate()
+    addedLesson.month = newLesson.date.getMonth()
+    console.log(addedLesson);
     mainSvc.addLesson(addedLesson).then((response) => {
       alert(response);
     })

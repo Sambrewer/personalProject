@@ -121,6 +121,7 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       url: baseUrl + 'api/lesson',
       data: lesson
     }).then(function (response) {
+      console.log(response.data);
       return response.data;
     });
   };
@@ -149,6 +150,16 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       data: behave
     }).then(function (response) {
       console.log(response);
+      return response.data;
+    });
+  };
+  this.updateLesson = function (upLess, id) {
+    console.log(id);
+    return $http({
+      method: 'PUT',
+      url: baseUrl + 'api/lesson/' + id,
+      data: upLess
+    }).then(function (response) {
       return response.data;
     });
   };
@@ -295,59 +306,71 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
     // console.log($scope.currentUser);
   };
   $scope.getUser();
+  var today = new Date();
+  var todayMonth = today.getMonth() + 1;
+  var todayDate = today.getDate();
+  var todayYear = today.getFullYear();
+  $scope.date = todayMonth + '/' + todayDate + '/' + todayYear;
+  console.log(today.getDate());
   $scope.getLesson = function () {
     mainSvc.getLesson().then(function (response) {
-      $scope.lessons = response;
-      for (var i = 0; i < $scope.lessons.length; i++) {
-        switch ($scope.lessons[i].timeid) {
-          case 1:
-            $scope.lessons[i].startTime = '8:00';
-            break;
-          case 2:
-            $scope.lessons[i].startTime = '9:00';
-            break;
-          case 3:
-            $scope.lessons[i].startTime = '10:00';
-            break;
-          case 4:
-            $scope.lessons[i].startTime = '11:00';
-            break;
-          case 5:
-            $scope.lessons[i].startTime = '12:00';
-            break;
-          case 6:
-            $scope.lessons[i].startTime = '1:00';
-            break;
-          case 7:
-            $scope.lessons[i].startTime = '2:00';
-            break;
-          case 8:
-            $scope.lessons[i].startTime = '3:00';
+      $scope.lessons = [];
+      for (var i = 0; i < response.length; i++) {
+        if (response[i].date === today.getDate()) {
+          $scope.lessons.push(response[i]);
+          console.log(response[i]);
         }
-        switch ($scope.lessons[i].timeendid) {
+      }
+      for (var _i = 0; _i < $scope.lessons.length; _i++) {
+        switch ($scope.lessons[_i].timeid) {
           case 1:
-            $scope.lessons[i].endTime = '8:00';
+            $scope.lessons[_i].startTime = '8:00';
             break;
           case 2:
-            $scope.lessons[i].endTime = '9:00';
+            $scope.lessons[_i].startTime = '9:00';
             break;
           case 3:
-            $scope.lessons[i].endTime = '10:00';
+            $scope.lessons[_i].startTime = '10:00';
             break;
           case 4:
-            $scope.lessons[i].endTime = '11:00';
+            $scope.lessons[_i].startTime = '11:00';
             break;
           case 5:
-            $scope.lessons[i].endTime = '12:00';
+            $scope.lessons[_i].startTime = '12:00';
             break;
           case 6:
-            $scope.lessons[i].endTime = '1:00';
+            $scope.lessons[_i].startTime = '1:00';
             break;
           case 7:
-            $scope.lessons[i].endTime = '2:00';
+            $scope.lessons[_i].startTime = '2:00';
             break;
           case 8:
-            $scope.lessons[i].endTime = '3:00';
+            $scope.lessons[_i].startTime = '3:00';
+        }
+        switch ($scope.lessons[_i].timeendid) {
+          case 1:
+            $scope.lessons[_i].endTime = '8:00';
+            break;
+          case 2:
+            $scope.lessons[_i].endTime = '9:00';
+            break;
+          case 3:
+            $scope.lessons[_i].endTime = '10:00';
+            break;
+          case 4:
+            $scope.lessons[_i].endTime = '11:00';
+            break;
+          case 5:
+            $scope.lessons[_i].endTime = '12:00';
+            break;
+          case 6:
+            $scope.lessons[_i].endTime = '1:00';
+            break;
+          case 7:
+            $scope.lessons[_i].endTime = '2:00';
+            break;
+          case 8:
+            $scope.lessons[_i].endTime = '3:00';
         }
       }
     });
@@ -372,6 +395,43 @@ angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSv
     });
   };
   $scope.getThisLesson();
+  $scope.getAssignments = function () {
+    mainSvc.getAssignments().then(function (response) {
+      $scope.assignments = response;
+    });
+  };
+  $scope.getAssignments();
+
+  $scope.updateLesson = function (upLess, id) {
+    // console.log(id);
+    var addMats = [];
+    var addedLesson = {};
+    if (upLess.reqMatsPen) {
+      addMats.push('Pencil');
+    }
+    if (upLess.reqMatsPap) {
+      addMats.push('Paper');
+    }
+    if (upLess.reqMatsBook) {
+      addMats.push('Book');
+    }
+    if (upLess.reqMatsSci) {
+      addMats.push('Scissors');
+    }
+    if (upLess.reqMatsGlue) {
+      addMats.push('Glue');
+    }
+    if (upLess.reqMatsCray) {
+      addMats.push('Crayons');
+    }
+    upLess.misc = upLess.misc.split(',');
+    upLess.date = upLess.date.getDate();
+    upLess.requiredMats = addMats;
+    mainSvc.updateLesson(upLess, id).then(function (response) {
+      alert(response);
+      $scope.getThisLesson();
+    });
+  };
 });
 'use strict';
 
@@ -429,15 +489,22 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     if (newLesson.reqMatsCray) {
       addMats.push('Crayons');
     }
-    addedLesson.name = newLesson.name;
+    if (newLesson.misc !== []) {
+      addedLesson.misc = newLesson.misc.split(',');
+    }
+    var date = addedLesson.name = newLesson.name;
     addedLesson.activity = newLesson.activity;
     addedLesson.info = newLesson.info;
     addedLesson.objective = newLesson.objective;
     addedLesson.requiredMats = addMats;
     addedLesson.verification = newLesson.verification;
-    addedLesson.misc = newLesson.misc.split(',');
+
     addedLesson.timeStart = newLesson.timeStart;
     addedLesson.timeEnd = newLesson.timeEnd;
+    addedLesson.year = newLesson.date.getFullYear();
+    addedLesson.date = newLesson.date.getDate();
+    addedLesson.month = newLesson.date.getMonth();
+    console.log(addedLesson);
     mainSvc.addLesson(addedLesson).then(function (response) {
       alert(response);
     });

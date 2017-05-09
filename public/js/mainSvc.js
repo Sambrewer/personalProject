@@ -78,6 +78,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       url: `${baseUrl}api/lesson`,
       data: lesson
     }).then((response) => {
+      console.log(response.data);
       return response.data;
     })
   }
@@ -107,6 +108,16 @@ angular.module('classroomApp').service('mainSvc', function($http) {
     }).then((response) => {
       console.log(response);
       return response.data
+    })
+  }
+  this.updateLesson = (upLess, id) => {
+    console.log(id);
+    return $http({
+      method: 'PUT',
+      url: `${baseUrl}api/lesson/${id}`,
+      data: upLess
+    }).then((response) => {
+      return response.data;
     })
   }
   this.deleteAssignment = (id) => {

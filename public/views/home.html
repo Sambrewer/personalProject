@@ -2,7 +2,8 @@
   <div class="header-wrapper">
     <div>
       <h1>{{currentUser.name}}</h1>
-      <img src="../images/pic.jpg" alt="profile pic" />
+      <h3>{{currentUser.username}}</h3>
+      <h3>Room {{currentUser.id}}</h3>
     </div>
     <div>
       <img src="../images/edulogo.png" alt="logo">
@@ -21,11 +22,18 @@
   </div>
   <div class="viewsWrapper">
     <ui-view>
+      <h1>{{date}}</h1>
       <div class="homeViewWrapper">
         <div class="timeBlock" ng-repeat="lesson in lessons">
-          <h3>{{lesson.name}}</h3>
-          <p>{{lesson.startTime}} - {{lesson.endTime}}</p> <br>
-          <button ui-sref="lesson({id: lesson.id})">View Lesson</button>
+          <div>
+            <h3>{{lesson.name}}</h3>
+            <p>{{lesson.startTime}} - {{lesson.endTime}}</p> <br>
+            <button ui-sref="lesson({id: lesson.id})">View Lesson</button>
+          </div>
+          <div>
+            <h3>{{lesson.subject}}</h3>
+            <p>{{lesson.verification}}</p>
+          </div>
         </div>
       </div>
     </ui-view>

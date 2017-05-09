@@ -121,7 +121,8 @@ app.post('/api/scores', (req, res) => {
   })
 })
 app.post(`/api/lesson`, (req, res) => {
-  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id)]
+  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id), req.body.year, req.body.date, req.body.month]
+  console.log(data, req.body);
   db.add_lesson(data, (err, lesson) => {
     if (!err) {
       res.send('Lesson Added')
@@ -147,6 +148,19 @@ app.put('/api/behave', (req, res) => {
   db.update_behaviour(data, (err, behaves) => {
     if (!err) {
       res.send('Moved')
+    } else {
+      console.log(err);
+      res.send(err)
+    }
+  })
+})
+app.put(`/api/lesson/:id`, (req, res) => {
+  let data = [req.body.name, req.body.objective, req.body.info, req.body.activity, req.body.verification, req.body.requiredMats, req.body.misc, req.body.timeStart, req.body.timeEnd, req.body.date, parseInt(req.params.id)]
+  console.log(req.params.id);
+  console.log(data);
+  db.update_lesson(data, (err, lesson) => {
+    if (!err) {
+      res.send('Update Successful')
     } else {
       console.log(err);
       res.send(err)

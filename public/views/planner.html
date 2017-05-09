@@ -15,7 +15,10 @@
     <h1>Lesson Plans:</h1>
     <div ng-repeat="lesson in lessons" class="listCard">
       <p>{{lesson.name}}</p>
-      <button ng-click="removeLesson(lesson.id)"><i class="fa fa-trash-o"></i></button>
+      <div>
+        <button ui-sref="lesson({id: lesson.id})"><i class="fa fa-pencil-square-o"></i></button>
+        <button ng-click="removeLesson(lesson.id)"><i class="fa fa-trash-o"></i></button>
+      </div>
     </div>
   </div>
   <div class="listWrapper">
@@ -84,7 +87,7 @@
               <input type="text" ng-model="newLesson.activity" placeholder="Activity for the lesson" required>
             </div>
               <label for="verification">Verification</label><br />
-              <select class="form-control" ng-model="newLesson.verification" ng-options='assignment.name as (assignment.name + " " + assignment.subject) for assignment in assignments'>
+              <select class="form-control" ng-model="newLesson.verification" ng-options='assignment.name as (assignment.name + " " + assignment.subject) for assignment in assignments' required>
             </select>
             <label>Required Materials</label>
               <div>
@@ -113,12 +116,16 @@
               </div>
               <div>
                 <label>Additional Materials:</label>
-                <input type="text" ng-model="newLesson.misc">
+                <input type="text" ng-model="newLesson.misc" required>
                 <caption>Seperate Entries with a comma</caption>
               </div>
               <div>
+                <label>Subject:</label><br>
+                <input type="text" ng-model="newLesson.subject" required>
+              </div>
+              <div>
                 <label>Time:</label>
-                <select class="form-control" ng-model="newLesson.timeStart">
+                <select class="form-control" ng-model="newLesson.timeStart" required>
                   <option value="1">8:00</option>
                   <option value="2">9:00</option>
                   <option value="3">10:00</option>
@@ -128,7 +135,7 @@
                   <option value="7">2:00</option>
                   <option value="8">3:00</option>
                 </select>
-                <select class="form-control" ng-model="newLesson.timeEnd">
+                <select class="form-control" ng-model="newLesson.timeEnd" required>
                   <option value="1">8:00</option>
                   <option value="2">9:00</option>
                   <option value="3">10:00</option>
@@ -138,6 +145,10 @@
                   <option value="7">2:00</option>
                   <option value="8">3:00</option>
                 </select>
+              </div>
+              <div>
+                <label>Date:</label>
+                <input type="date" ng-model="newLesson.date" required>
               </div>
           </div>
         </div>

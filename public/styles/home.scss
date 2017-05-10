@@ -38,7 +38,7 @@
   height: 50px;
   width: 50px;
   position: absolute;
-  left: 20px;
+  right: 20px;
   bottom: 40px;
   font-size: 32px;
   color: green;
@@ -47,7 +47,8 @@
 }
 .menuBar {
   height: 80vh;
-  width: 12.5vw;
+  width: 200px;
+  position: fixed;
   background-color: green;
   display: flex;
   flex-direction: column;
@@ -63,9 +64,12 @@
     height: 100%;
     li {
       margin-bottom: 15px;
-      a {
-        color: black;
-        text-decoration: none;
+      // width: 12.5vw;
+      .menuBarLink {
+        display: flex;
+        flex-wrap: wrap;
+        width: 12vw;
+        font-size: 1em;
       }
     }
   }
@@ -74,10 +78,17 @@
   overflow: auto;
   height: 80vh;
   background: grey;
-  h1 {
-    text-align: center;
-    font-size: 1.3em;
-    margin-top: 20px;
+  // align-items: center;
+  .weekWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .dayWrapper {
+      height: 200px;
+      width: 15vw;
+      background: white;
+      display: inline-block;
+    }
   }
 }
 .lessonSection {
@@ -98,6 +109,7 @@
     }
   }
 }
+
 .homeViewWrapper {
   margin: auto;
   margin-top: 10px;
@@ -137,5 +149,6 @@
   }
   .menuBar {
     display: block;
+    position: relative;
   }
 }

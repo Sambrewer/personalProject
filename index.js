@@ -121,12 +121,13 @@ app.post('/api/scores', (req, res) => {
   })
 })
 app.post(`/api/lesson`, (req, res) => {
-  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id), req.body.year, req.body.date, req.body.month]
+  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id), req.body.date, req.body.subject, req.body.day]
   console.log(data, req.body);
   db.add_lesson(data, (err, lesson) => {
     if (!err) {
       res.send('Lesson Added')
     } else {
+      console.log(err);
       res.send(err);
     }
   })

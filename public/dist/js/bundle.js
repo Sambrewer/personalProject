@@ -50,6 +50,11 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
     parent: 'planner',
     templateUrl: '../views/students.html',
     contoller: 'plannerCtrl'
+  }).state('dayView', {
+    url: '/:day',
+    parent: 'home',
+    templateUrl: '../views/dayView.html',
+    controller: 'dayViewCtrl'
   });
 
   $urlRouterProvider.otherwise('/');
@@ -95,19 +100,19 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
   this.getGrades = function (id) {
     console.log('get grades');
     return $http.get(baseUrl + 'test/' + id).then(function (response) {
-      console.log('Get Request', response.data);
+      // console.log('Get Request', response.data);
       return response.data;
     });
   };
   this.getBehaviour = function () {
     return $http.get(baseUrl + 'behaviour').then(function (response) {
-      console.log('service', response.data);
+      // console.log('service', response.data);
       return response.data;
     });
   };
   this.getLesson = function () {
     return $http.get(baseUrl + 'api/lesson').then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     });
   };
@@ -126,7 +131,7 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       url: baseUrl + 'api/assignments',
       data: assignment
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
       return response.data;
     });
   };
@@ -136,7 +141,7 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       url: baseUrl + 'api/lesson',
       data: lesson
     }).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     });
   };
@@ -164,7 +169,7 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       url: baseUrl + 'api/behave',
       data: behave
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
       return response.data;
     });
   };
@@ -185,13 +190,13 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
   };
   this.deleteLesson = function (id) {
     return $http.delete(baseUrl + 'api/lesson/' + id).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     });
   };
   this.deleteStudent = function (id) {
     return $http.delete(baseUrl + 'api/student/' + id).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     });
   };
@@ -303,6 +308,23 @@ angular.module('classroomApp').controller('classroomCtrl', function ($scope, mai
 });
 'use strict';
 
+angular.module('classroomApp').controller('dayViewCtrl', function ($scope, $stateParams, mainSvc, $state) {
+  $scope.dayLessons = [];
+  console.log($stateParams.day);
+  $scope.getLessons = function () {
+    mainSvc.getLesson().then(function (response) {
+      for (var i = 0; i < response.length; i++) {
+        console.log($scope.lessons);
+        if (response[i].day === parseInt($stateParams.day)) {
+          $scope.dayLessons.push(response[i]);
+        }
+      }
+    });
+  };
+  $scope.getLessons();
+});
+'use strict';
+
 angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc, $location) {
   var screenWidth = $window.innerWidth;
   if (screenWidth <= 600) {
@@ -325,67 +347,94 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
   var todayMonth = today.getMonth() + 1;
   var todayDate = today.getDate();
   var todayYear = today.getFullYear();
+  $scope.mon = [];
+  $scope.tue = [];
+  $scope.wed = [];
+  $scope.thu = [];
+  $scope.fri = [];
   $scope.date = todayMonth + '/' + todayDate + '/' + todayYear;
-  console.log(today.getDate());
+  // console.log(today.getDate());
   $scope.getLesson = function () {
     mainSvc.getLesson().then(function (response) {
-      $scope.lessons = [];
+      console.log(response);
       for (var i = 0; i < response.length; i++) {
-        if (response[i].date === today.getDate()) {
-          $scope.lessons.push(response[i]);
-          console.log(response[i]);
+        console.log(response[i].day);
+        switch (response[i].day) {
+          case 1:
+            $scope.mon.push(response[i]);
+            break;
+          case 2:
+            $scope.tue.push(response[i]);
+            break;
+          case 3:
+            $scope.wed.push(response[i]);
+            break;
+          case 4:
+            $scope.thu.push(response[i]);
+            break;
+          case 5:
+            $scope.fri.push(response[i]);
+            break;
         }
       }
-      for (var _i = 0; _i < $scope.lessons.length; _i++) {
-        switch ($scope.lessons[_i].timeid) {
-          case 1:
-            $scope.lessons[_i].startTime = '8:00';
-            break;
-          case 2:
-            $scope.lessons[_i].startTime = '9:00';
-            break;
-          case 3:
-            $scope.lessons[_i].startTime = '10:00';
-            break;
-          case 4:
-            $scope.lessons[_i].startTime = '11:00';
-            break;
-          case 5:
-            $scope.lessons[_i].startTime = '12:00';
-            break;
-          case 6:
-            $scope.lessons[_i].startTime = '1:00';
-            break;
-          case 7:
-            $scope.lessons[_i].startTime = '2:00';
-            break;
-          case 8:
-            $scope.lessons[_i].startTime = '3:00';
+      // console.log($scope.wed);
+      $scope.lessons = [];
+      for (var _i = 0; _i < response.length; _i++) {
+        if (response[_i].date === today.getDate()) {
+          $scope.lessons.push(response[_i]);
+          // console.log(response[i]);
         }
-        switch ($scope.lessons[_i].timeendid) {
+      }
+      for (var _i2 = 0; _i2 < $scope.lessons.length; _i2++) {
+        switch ($scope.lessons[_i2].timeid) {
           case 1:
-            $scope.lessons[_i].endTime = '8:00';
+            $scope.lessons[_i2].startTime = '8:00';
             break;
           case 2:
-            $scope.lessons[_i].endTime = '9:00';
+            $scope.lessons[_i2].startTime = '9:00';
             break;
           case 3:
-            $scope.lessons[_i].endTime = '10:00';
+            $scope.lessons[_i2].startTime = '10:00';
             break;
           case 4:
-            $scope.lessons[_i].endTime = '11:00';
+            $scope.lessons[_i2].startTime = '11:00';
             break;
           case 5:
-            $scope.lessons[_i].endTime = '12:00';
+            $scope.lessons[_i2].startTime = '12:00';
             break;
           case 6:
-            $scope.lessons[_i].endTime = '1:00';
+            $scope.lessons[_i2].startTime = '1:00';
             break;
           case 7:
-            $scope.lessons[_i].endTime = '2:00';
+            $scope.lessons[_i2].startTime = '2:00';
             break;
           case 8:
-            $scope.lessons[_i].endTime = '3:00';
+            $scope.lessons[_i2].startTime = '3:00';
+        }
+        switch ($scope.lessons[_i2].timeendid) {
+          case 1:
+            $scope.lessons[_i2].endTime = '8:00';
+            break;
+          case 2:
+            $scope.lessons[_i2].endTime = '9:00';
+            break;
+          case 3:
+            $scope.lessons[_i2].endTime = '10:00';
+            break;
+          case 4:
+            $scope.lessons[_i2].endTime = '11:00';
+            break;
+          case 5:
+            $scope.lessons[_i2].endTime = '12:00';
+            break;
+          case 6:
+            $scope.lessons[_i2].endTime = '1:00';
+            break;
+          case 7:
+            $scope.lessons[_i2].endTime = '2:00';
+            break;
+          case 8:
+            $scope.lessons[_i2].endTime = '3:00';
         }
       }
     });
@@ -505,29 +554,29 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
       addMats.push('Crayons');
     }
     if (newLesson.misc !== []) {
-      addedLesson.misc = newLesson.misc.split(',');
+      newLesson.misc = newLesson.misc.split(',');
     }
-    var date = addedLesson.name = newLesson.name;
-    addedLesson.activity = newLesson.activity;
-    addedLesson.info = newLesson.info;
-    addedLesson.objective = newLesson.objective;
-    addedLesson.requiredMats = addMats;
-    addedLesson.verification = newLesson.verification;
+    // addedLesson.name = newLesson.name
+    // addedLesson.activity = newLesson.activity
+    // addedLesson.info = newLesson.info
+    // addedLesson.objective = newLesson.objective
+    // addedLesson.requiredMats = addMats
+    // addedLesson.verification = newLesson.verification
+    // addedLesson.subject = newLesson.subject
+    // addedLesson.timeStart = newLesson.timeStart
+    // addedLesson.timeEnd = newLesson.timeEnd
+    newLesson.day = newLesson.date.getDay();
+    newLesson.date = newLesson.date.getDate();
 
-    addedLesson.timeStart = newLesson.timeStart;
-    addedLesson.timeEnd = newLesson.timeEnd;
-    addedLesson.year = newLesson.date.getFullYear();
-    addedLesson.date = newLesson.date.getDate();
-    addedLesson.month = newLesson.date.getMonth();
-    console.log(addedLesson);
-    mainSvc.addLesson(addedLesson).then(function (response) {
+    // console.log(addedLesson);
+    mainSvc.addLesson(newLesson).then(function (response) {
       alert(response);
     });
   };
   $scope.getLessons = function () {
     mainSvc.getLesson().then(function (response) {
       $scope.lessons = response;
-      console.log($scope.lessons);
+      // console.log($scope.lessons);
     });
   };
   $scope.getLessons();

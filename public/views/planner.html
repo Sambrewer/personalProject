@@ -1,8 +1,8 @@
-<div class="control">
+<!-- <div class="control">
   <button data-toggle="modal" data-target="#assignModal">New Assignment</button>
   <button data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</button>
   <button data-toggle="modal" data-target="#studentModal">Add Student</button>
-</div>
+</div> -->
 <div class="plannerWrapper">
   <md-content class="plannerContent">
     <md-nav-bar style="background: white;" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
@@ -11,14 +11,20 @@
       <md-nav-item md-nav-sref="students" name="page3">Students:</md-nav-item>
     </md-nav-bar>
       <ui-view>
-      <div ng-repeat="assignment in assignments"  class="listCard">
-        <p>{{assignment.name}}</p>
-        <button ng-click="removeAssignment(assignment.id)"><i class="fa fa-trash-o"></i></button>
-      </div>
+        <div class="plannerViews">
+          <div ng-repeat="assignment in assignments"  class="listCard">
+            <p>{{assignment.name}}</p>
+            <md-button class="md-raised md-warn" ng-click="removeAssignment(assignment.id)"><i class="fa fa-trash-o"></i></md-button>
+          </div>
+        </div>
     </ui-view>
   </md-content>
 </div>
-
+<div class="control">
+  <md-button class="md-raised md-primary" data-toggle="modal" data-target="#assignModal">New Assignment</md-button>
+  <md-button class="md-raised md-primary" data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</md-button>
+  <md-button class="md-raised md-primary" data-toggle="modal" data-target="#studentModal">Add Student</md-button>
+</div>
 
 <div class="modal fade" id="assignModal">
   <div class="modal-dialog">

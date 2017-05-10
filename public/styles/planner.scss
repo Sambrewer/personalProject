@@ -4,32 +4,43 @@
   justify-content: space-around;
   height: 50px;
   padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 85%;
   button {
     height: 30px;
   }
 }
 .plannerWrapper  {
-  display: flex;
-  justify-content: space-around;
+  // display: flex;
+  // justify-content:
   .plannerContent {
     // background: grey;
     // width: 90vw;
-    .listCard {
-        background: white;
-        width: 25vw;
-        border: 2px solid black;
-        margin-bottom: 5px;
-        display: flex;
-        justify-content: space-between;
-        height: 50px;
-        padding-left: 10px;
-        padding-right: 10px;
-        align-items: center;
-        border-radius: 5px;
-        button {
-          height: 2em;
-          width: 2em;
-          font-size: 1.25em;
+    .plannerViews {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 85vw;
+      background: grey;
+      padding-top: 20px;
+      .listCard {
+          background: white;
+          width: 25vw;
+          border: 2px solid black;
+          margin-bottom: 5px;
+          display: flex;
+          justify-content: space-between;
+          height: 50px;
+          padding-left: 10px;
+          padding-right: 10px;
+          align-items: center;
+          border-radius: 5px;
+          button {
+            height: 2em;
+            width: 2em;
+            font-size: 1.25em;
+        }
       }
     }
   }

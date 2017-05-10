@@ -1,0 +1,14 @@
+<h1>{{date}}</h1>
+<div class="homeViewWrapper">
+  <div class="timeBlock" ng-repeat="lesson in dayLessons">
+    <div>
+      <h3>{{lesson.name}}</h3>
+      <p>{{lesson.startTime}} - {{lesson.endTime}}</p> <br>
+      <button ui-sref="lesson({id: lesson.id})">View Lesson</button>
+    </div>
+    <div>
+      <h3>{{lesson.subject}}</h3>
+      <p>{{lesson.verification}}</p>
+    </div>
+  </div>
+</div>

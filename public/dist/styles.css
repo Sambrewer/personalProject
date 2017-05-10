@@ -142,7 +142,7 @@ body {
   height: 50px;
   width: 50px;
   position: absolute;
-  left: 20px;
+  right: 20px;
   bottom: 40px;
   font-size: 32px;
   color: green;
@@ -151,7 +151,8 @@ body {
 
 .menuBar {
   height: 80vh;
-  width: 12.5vw;
+  width: 200px;
+  position: fixed;
   background-color: green;
   display: flex;
   flex-direction: column;
@@ -167,18 +168,25 @@ body {
     height: 100%; }
     .menuBar ul li {
       margin-bottom: 15px; }
-      .menuBar ul li a {
-        color: black;
-        text-decoration: none; }
+      .menuBar ul li .menuBarLink {
+        display: flex;
+        flex-wrap: wrap;
+        width: 12vw;
+        font-size: 1em; }
 
 .viewsWrapper {
   overflow: auto;
   height: 80vh;
   background: grey; }
-  .viewsWrapper h1 {
-    text-align: center;
-    font-size: 1.3em;
-    margin-top: 20px; }
+  .viewsWrapper .weekWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
+    .viewsWrapper .weekWrapper .dayWrapper {
+      height: 200px;
+      width: 15vw;
+      background: white;
+      display: inline-block; }
 
 .lessonSection h1 {
   font-size: 2em; }
@@ -223,7 +231,8 @@ body {
   .menuButton {
     display: none; }
   .menuBar {
-    display: block; } }
+    display: block;
+    position: relative; } }
 
 .login-page {
   background: url("../images/logbg.jpeg") no-repeat;
@@ -273,14 +282,21 @@ body {
   display: flex;
   justify-content: space-around;
   height: 50px;
-  padding: 10px; }
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 85%; }
   .control button {
     height: 30px; }
 
-.plannerWrapper {
+.plannerWrapper .plannerContent .plannerViews {
   display: flex;
-  justify-content: space-around; }
-  .plannerWrapper .plannerContent .listCard {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85vw;
+  background: grey;
+  padding-top: 20px; }
+  .plannerWrapper .plannerContent .plannerViews .listCard {
     background: white;
     width: 25vw;
     border: 2px solid black;
@@ -292,7 +308,7 @@ body {
     padding-right: 10px;
     align-items: center;
     border-radius: 5px; }
-    .plannerWrapper .plannerContent .listCard button {
+    .plannerWrapper .plannerContent .plannerViews .listCard button {
       height: 2em;
       width: 2em;
       font-size: 1.25em; }

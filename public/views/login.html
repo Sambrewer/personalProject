@@ -5,8 +5,8 @@
       <input type="text" ng-model="user.username" placeholder="Username">
       <input type="password" ng-model="user.password" placeholder="Password">
       <div class="buttonWrapper">
-        <button data-toggle="modal" data-target="#teacherModal">New User</button>
-        <button ng-click="login(user)" type="submit">Log In</button>
+        <md-button class="md-raised md-primary" data-toggle="modal" data-target="#teacherModal">New User</md-button>
+        <md-button class="md-raised md-primary" ng-click="login(user)" type="submit">Log In</md-button>
       </div>
     </form>
   </div>

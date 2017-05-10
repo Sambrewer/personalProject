@@ -13,29 +13,47 @@
   <button ng-click="show = !show" class="menuButton"><i class="fa fa-bars"></i></button>
   <div class="menuBar" ng-show="show">
     <ul>
-      <li><a ui-sref="home" ng-click="getLesson()">Lesson Plan</a></li>
-      <li><a ui-sref="class">Student Performance</a></li>
-      <li><a ui-sref="planner">Planner</a></li>
-      <li><a ui-sref="classroom">Behaviour</a></li>
-      <li><a ui-sref="login">Log Out</a></li>
+      <li><md-button class="md-primary menuBarLink" ui-sref="home">Lesson</md-button></li>
+      <li><md-button class="md-primary menuBarLink" ui-sref="class">Grades</md-button></li>
+      <li><md-button class="md-primary menuBarLink" ui-sref="planner">Planner</md-button></li>
+      <li><md-button class="md-primary menuBarLink" ui-sref="classroom">Behavior</md-button></li>
+      <li><md-button class="md-primary menuBarLink" ui-sref="login">Log Out</md-button></li>
     </ul>
   </div>
   <div class="viewsWrapper">
-    <ui-view>
-      <h1>{{date}}</h1>
-      <div class="homeViewWrapper">
-        <div class="timeBlock" ng-repeat="lesson in lessons">
-          <div>
-            <h3>{{lesson.name}}</h3>
-            <p>{{lesson.startTime}} - {{lesson.endTime}}</p> <br>
-            <button ui-sref="lesson({id: lesson.id})">View Lesson</button>
-          </div>
-          <div>
-            <h3>{{lesson.subject}}</h3>
-            <p>{{lesson.verification}}</p>
-          </div>
-        </div>
+  <ui-view>
+    <div class="weekWrapper">
+      <div class="dayWrapper">
+        <md-button ui-sref="dayView({day: 1})">Monday</md-button>
+        <ul>
+          <li ng-repeat="lesson in mon">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+        </ul>
       </div>
-    </ui-view>
-  </div>
+      <div class="dayWrapper">
+        <md-button ui-sref="dayView({day: 2})">Tuesday</md-button>
+        <ul>
+          <li ng-repeat="lesson in tue">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+        </ul>
+      </div>
+      <div class="dayWrapper">
+        <md-button ui-sref="dayView({day: 3})">Wednesday</md-button>
+        <ul>
+          <li ng-repeat="lesson in wed">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+        </ul>
+      </div>
+      <div class="dayWrapper">
+        <md-button ui-sref="dayView({day: 4})">Thursday</md-button>
+        <ul>
+          <li ng-repeat="lesson in thu">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+        </ul>
+      </div>
+      <div class="dayWrapper">
+        <md-button ui-sref="dayView({day: 5})">Friday</md-button>
+        <ul>
+          <li ng-repeat="lesson in fri">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+        </ul>
+      </div>
+    </div>
+  </ui-view>
+</div>
 </section>

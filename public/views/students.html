@@ -1,4 +1,6 @@
-<div ng-repeat="student in students" class="listCard">
-  <p>{{student.name}}</p>
-  <button ng-click="removeStudent(student.id)"><i class="fa fa-trash-o"></i></button>
+<div class="plannerViews">
+  <div ng-repeat="student in students" class="listCard">
+    <p>{{student.name}}</p>
+    <md-button class="md-raised md-warn" ng-click="removeStudent(student.id)"><i class="fa fa-trash-o"></i></md-button>
+  </div>
 </div>

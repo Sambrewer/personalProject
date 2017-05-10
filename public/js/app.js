@@ -60,6 +60,12 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
         templateUrl: '../views/students.html',
         contoller: 'plannerCtrl'
       })
+      .state('dayView', {
+        url: '/:day',
+        parent: 'home',
+        templateUrl: '../views/dayView.html',
+        controller: 'dayViewCtrl'
+      })
 
     $urlRouterProvider
       .otherwise('/')

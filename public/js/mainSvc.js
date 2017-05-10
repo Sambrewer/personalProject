@@ -37,19 +37,19 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.getGrades = (id)=>{
     console.log('get grades');
     return $http.get(`${baseUrl}test/${id}`).then((response) => {
-      console.log('Get Request', response.data);
+      // console.log('Get Request', response.data);
       return response.data
     })
   }
   this.getBehaviour = () => {
     return $http.get(`${baseUrl}behaviour`).then((response) => {
-      console.log('service', response.data);
+      // console.log('service', response.data);
       return response.data
     })
   }
   this.getLesson = () => {
     return $http.get(`${baseUrl}api/lesson`).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data
     })
   }
@@ -68,7 +68,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       url: baseUrl + 'api/assignments',
       data: assignment
     }).then((response) => {
-      console.log(response);
+      // console.log(response);
       return response.data;
     })
   }
@@ -78,7 +78,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       url: `${baseUrl}api/lesson`,
       data: lesson
     }).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     })
   }
@@ -106,7 +106,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       url: `${baseUrl}api/behave`,
       data: behave
     }).then((response) => {
-      console.log(response);
+      // console.log(response);
       return response.data
     })
   }
@@ -129,14 +129,14 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.deleteLesson = (id) => {
     return $http.delete(`${baseUrl}api/lesson/${id}`)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data
     })
   }
   this.deleteStudent = (id) => {
     return $http.delete(`${baseUrl}api/student/${id}`)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     })
   }

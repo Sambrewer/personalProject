@@ -20,15 +20,42 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
   let todayMonth = today.getMonth() + 1;
   let todayDate = today.getDate()
   let todayYear = today.getFullYear()
-  $scope.date = `${todayMonth}/${todayDate}/${todayYear}`  
-  console.log(today.getDate());
+  $scope.mon = [];
+  $scope.tue = [];
+  $scope.wed = [];
+  $scope.thu = [];
+  $scope.fri = [];
+  $scope.date = `${todayMonth}/${todayDate}/${todayYear}`
+  // console.log(today.getDate());
   $scope.getLesson = () => {
     mainSvc.getLesson().then((response) => {
+      console.log(response);
+      for (let i = 0; i < response.length; i++) {
+        console.log(response[i].day);
+        switch (response[i].day) {
+          case 1:
+            $scope.mon.push(response[i])
+            break;
+          case 2:
+            $scope.tue.push(response[i])
+            break;
+          case 3:
+            $scope.wed.push(response[i])
+            break;
+          case 4:
+            $scope.thu.push(response[i])
+            break;
+          case 5:
+            $scope.fri.push(response[i])
+            break;
+        }
+      }
+      // console.log($scope.wed);
       $scope.lessons = [];
       for (let i = 0; i < response.length; i++) {
         if (response[i].date === today.getDate()) {
           $scope.lessons.push(response[i])
-          console.log(response[i]);
+          // console.log(response[i]);
         }
       }
       for (let i = 0; i < $scope.lessons.length; i++) {

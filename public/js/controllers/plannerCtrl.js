@@ -34,30 +34,29 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
       addMats.push('Crayons')
     }
     if (newLesson.misc !== []) {
-      addedLesson.misc = newLesson.misc.split(',')
+      newLesson.misc = newLesson.misc.split(',')
     }
-    let date =
-    addedLesson.name = newLesson.name
-    addedLesson.activity = newLesson.activity
-    addedLesson.info = newLesson.info
-    addedLesson.objective = newLesson.objective
-    addedLesson.requiredMats = addMats
-    addedLesson.verification = newLesson.verification
+    // addedLesson.name = newLesson.name
+    // addedLesson.activity = newLesson.activity
+    // addedLesson.info = newLesson.info
+    // addedLesson.objective = newLesson.objective
+    // addedLesson.requiredMats = addMats
+    // addedLesson.verification = newLesson.verification
+    // addedLesson.subject = newLesson.subject
+    // addedLesson.timeStart = newLesson.timeStart
+    // addedLesson.timeEnd = newLesson.timeEnd
+    newLesson.day = newLesson.date.getDay();
+    newLesson.date = newLesson.date.getDate()
 
-    addedLesson.timeStart = newLesson.timeStart
-    addedLesson.timeEnd = newLesson.timeEnd
-    addedLesson.year = newLesson.date.getFullYear()
-    addedLesson.date = newLesson.date.getDate()
-    addedLesson.month = newLesson.date.getMonth()
-    console.log(addedLesson);
-    mainSvc.addLesson(addedLesson).then((response) => {
+    // console.log(addedLesson);
+    mainSvc.addLesson(newLesson).then((response) => {
       alert(response);
     })
   }
   $scope.getLessons = () => {
     mainSvc.getLesson().then((response) => {
       $scope.lessons = response
-      console.log($scope.lessons);
+      // console.log($scope.lessons);
     })
   }
   $scope.getLessons()

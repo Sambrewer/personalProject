@@ -91,4 +91,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
       $scope.getStudents()
     })
   }
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+  }
 })

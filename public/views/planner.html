@@ -4,30 +4,19 @@
   <button data-toggle="modal" data-target="#studentModal">Add Student</button>
 </div>
 <div class="plannerWrapper">
-  <div class="listWrapper">
-    <h1>Assignments:</h1>
-    <div ng-repeat="assignment in assignments"  class="listCard">
-      <p>{{assignment.name}}</p>
-      <button ng-click="removeAssignment(assignment.id)"><i class="fa fa-trash-o"></i></button>
-    </div>
-  </div>
-  <div class="listWrapper">
-    <h1>Lesson Plans:</h1>
-    <div ng-repeat="lesson in lessons" class="listCard">
-      <p>{{lesson.name}}</p>
-      <div>
-        <button ui-sref="lesson({id: lesson.id})"><i class="fa fa-pencil-square-o"></i></button>
-        <button ng-click="removeLesson(lesson.id)"><i class="fa fa-trash-o"></i></button>
+  <md-content class="plannerContent">
+    <md-nav-bar style="background: white;" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-sref="planner" name="page1">Assignments:</md-nav-item>
+      <md-nav-item md-nav-sref="lessons" name="page2">Lesson Plans:</md-nav-item>
+      <md-nav-item md-nav-sref="students" name="page3">Students:</md-nav-item>
+    </md-nav-bar>
+      <ui-view>
+      <div ng-repeat="assignment in assignments"  class="listCard">
+        <p>{{assignment.name}}</p>
+        <button ng-click="removeAssignment(assignment.id)"><i class="fa fa-trash-o"></i></button>
       </div>
-    </div>
-  </div>
-  <div class="listWrapper">
-    <h1>Students:</h1>
-    <div ng-repeat="student in students" class="listCard">
-      <p>{{student.name}}</p>
-      <button ng-click="removeStudent(student.id)"><i class="fa fa-trash-o"></i></button>
-    </div>
-  </div>
+    </ui-view>
+  </md-content>
 </div>
 
 

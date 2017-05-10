@@ -151,7 +151,7 @@ body {
 
 .menuBar {
   height: 80vh;
-  width: 200px;
+  width: 12.5vw;
   background-color: green;
   display: flex;
   flex-direction: column;
@@ -280,7 +280,7 @@ body {
 .plannerWrapper {
   display: flex;
   justify-content: space-around; }
-  .plannerWrapper .listCard {
+  .plannerWrapper .plannerContent .listCard {
     background: white;
     width: 25vw;
     border: 2px solid black;
@@ -292,7 +292,7 @@ body {
     padding-right: 10px;
     align-items: center;
     border-radius: 5px; }
-    .plannerWrapper .listCard button {
+    .plannerWrapper .plannerContent .listCard button {
       height: 2em;
       width: 2em;
       font-size: 1.25em; }

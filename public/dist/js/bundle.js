@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $urlRouterProvider) {
+angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']).config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('login', {
     url: '/',
@@ -35,6 +35,21 @@ angular.module('classroomApp', ['ui.router']).config(function ($stateProvider, $
     parent: 'home',
     templateUrl: '../views/lesson.html',
     controller: 'lessonCtrl'
+  }).state('assignments', {
+    url: '/assignments',
+    parent: 'planner',
+    templateUrl: '../views/assignments.html',
+    contoller: 'plannerCtrl'
+  }).state('lessons', {
+    url: '/lessons',
+    parent: 'planner',
+    templateUrl: '../views/lessons.html',
+    contoller: 'plannerCtrl'
+  }).state('students', {
+    url: '/students',
+    parent: 'planner',
+    templateUrl: '../views/students.html',
+    contoller: 'plannerCtrl'
   });
 
   $urlRouterProvider.otherwise('/');
@@ -546,6 +561,9 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
       $scope.getStudents();
     });
   };
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+  }
 });
 'use strict';
 

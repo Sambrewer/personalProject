@@ -1,0 +1,7 @@
+<div ng-repeat="lesson in lessons" class="listCard">
+  <p>{{lesson.name}}</p>
+  <div>
+    <button ui-sref="lesson({id: lesson.id})"><i class="fa fa-pencil-square-o"></i></button>
+    <button ng-click="removeLesson(lesson.id)"><i class="fa fa-trash-o"></i></button>
+  </div>
+</div>

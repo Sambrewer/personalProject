@@ -27,6 +27,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
       .state('classroom', {
         url: '/classroom',
         parent: 'home',
+        reload: true,
         templateUrl: '../views/classroom.html',
         controller: 'classroomCtrl'
       })

@@ -51,30 +51,40 @@ angular.module('classroomApp').controller('scoresCtrl', ($scope, $stateParams, m
             var mthChart = new JSChart('mathChart', 'bar');
             mthChart.setDataArray(mathScore);
             mthChart.setTitle('Math')
+            mthChart.setAxisNameX('Assignment');
+            mthChart.setAxisNameY('')
             mthChart.draw()
           }
           if (literacyScore.length > 0) {
             var litChart = new JSChart('literacyChart', 'bar');
             litChart.setDataArray(literacyScore);
             litChart.setTitle('Literacy')
+            litChart.setAxisNameX('Assignment');
+            litChart.setAxisNameY('')
             litChart.draw()
           }
           if (writingScore.length > 0) {
             var writChart = new JSChart('writingChart', 'bar');
             writChart.setDataArray(writingScore);
             writChart.setTitle('Writing')
+            writChart.setAxisNameX('Assignment');
+            writChart.setAxisNameY('')
             writChart.draw()
           }
           if (readingScore.length > 0) {
             var readChart = new JSChart('readingChart', 'bar');
             readChart.setDataArray(readingScore);
             readChart.setTitle('Reading')
+            readChart.setAxisNameX('Assignment');
+            readChart.setAxisNameY('')
             readChart.draw()
           }
           if (scienceScore.length > 0) {
             var sciChart = new JSChart('scienceChart', 'bar');
             sciChart.setDataArray(scienceScore);
             sciChart.setTitle('Science')
+            sciChart.setAxisNameX('Assignment');
+            sciChart.setAxisNameY('')
             sciChart.draw()
           }
         }
@@ -94,6 +104,8 @@ angular.module('classroomApp').controller('scoresCtrl', ($scope, $stateParams, m
        let gradesChart = new JSChart('gradeChart', 'bar');
        gradesChart.setDataArray(grades)
        gradesChart.setTitle('Grades')
+       gradesChart.setAxisNameX('');
+       gradesChart.setAxisNameY('')
        gradesChart.draw()
 
        console.log(grades);

@@ -164,15 +164,14 @@ body {
   .menuBar ul {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%; }
     .menuBar ul li {
-      margin-bottom: 15px; }
+      border-bottom: 2px solid black; }
       .menuBar ul li .menuBarLink {
         display: flex;
         flex-wrap: wrap;
         width: 12vw;
-        font-size: 1em; }
+        font-size: .75em; }
 
 .viewsWrapper {
   overflow: auto;
@@ -181,18 +180,31 @@ body {
   .viewsWrapper .weekWrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; }
+    justify-content: space-around;
+    margin-top: 50px; }
     .viewsWrapper .weekWrapper .dayWrapper {
       height: 200px;
-      width: 15vw;
+      width: 187.5px;
       background: white;
-      display: inline-block; }
+      display: inline-block;
+      border: 1px solid black;
+      overflow: hidden; }
+      .viewsWrapper .weekWrapper .dayWrapper ul {
+        padding-right: 20px; }
+        .viewsWrapper .weekWrapper .dayWrapper ul li {
+          border-bottom: 1px solid black;
+          border-left: 1px solid black;
+          padding-left: 5px; }
+
+.lessonWrapper {
+  background: white; }
 
 .lessonSection h1 {
   font-size: 2em; }
 
 .lessonSection .lessonCard {
   height: 22.5vh;
+  overflow: auto;
   border: 2px solid black; }
   .lessonSection .lessonCard h1 {
     font-size: 2em; }
@@ -281,8 +293,8 @@ body {
   background: black;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 50px;
-  padding: 10px;
   position: absolute;
   bottom: 0;
   width: 85%; }
@@ -312,6 +324,26 @@ body {
       height: 2em;
       width: 2em;
       font-size: 1.25em; }
+
+.inputRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; }
+  .inputRow input {
+    height: 40px; }
+  .inputRow p {
+    font-size: .75em;
+    color: red; }
+
+.inputRow2 {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px; }
+  .inputRow2 .selectSection {
+    width: 40%; }
+
+.timeSelect {
+  width: 10%; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -355,5 +387,18 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+.scoresSection {
+  background: #ddd; }
+  .scoresSection .scoresHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    padding: 10px;
+    background: black;
+    font-size: 1em; }
+    .scoresSection .scoresHeader h1 {
+      color: white; }
 
 /*# sourceMappingURL=maps/styles.css.map */

@@ -60,16 +60,18 @@
   ul {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
     height: 100%;
     li {
-      margin-bottom: 15px;
+      // margin-bottom: 15px;
       // width: 12.5vw;
+      border-bottom: 2px solid black;
       .menuBarLink {
         display: flex;
         flex-wrap: wrap;
         width: 12vw;
-        font-size: 1em;
+        font-size: .75em;
+
       }
     }
   }
@@ -83,13 +85,27 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top: 50px;
     .dayWrapper {
       height: 200px;
-      width: 15vw;
+      width: 187.5px;
       background: white;
       display: inline-block;
+      border: 1px solid black;
+      overflow: hidden;
+      ul {
+        padding-right: 20px;
+        li {
+          border-bottom: 1px solid black;
+          border-left: 1px solid black;
+          padding-left: 5px;
+        }
+      }
     }
   }
+}
+.lessonWrapper {
+  background: white;
 }
 .lessonSection {
   h1 {
@@ -97,6 +113,7 @@
   }
 .lessonCard {
     height: 22.5vh;
+    overflow: auto;
     border: 2px solid black;
     h1 {
       font-size: 2em;

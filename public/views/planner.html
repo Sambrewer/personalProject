@@ -14,6 +14,7 @@
         <div class="plannerViews">
           <div ng-repeat="assignment in assignments"  class="listCard">
             <p>{{assignment.name}}</p>
+            <p>{{assignment.subject}}</p>
             <md-button class="md-raised md-warn" ng-click="removeAssignment(assignment.id)"><i class="fa fa-trash-o"></i></md-button>
           </div>
         </div>
@@ -65,26 +66,38 @@
         <h4 class="modal-title">New Lesson Plan</h4>
         <div class="modal-body">
           <div class="form-group">
-            <div>
-              <label for="name">Lesson Name:</label><br />
-              <input type="text" name="name" ng-model="newLesson.name">
+            <div class="inputRow">
+              <div>
+                <label for="name">Lesson Name:</label><br />
+                <input type="text" name="name" ng-model="newLesson.name">
+              </div>
+              <div>
+                <label for="obj">Objective:</label> <br />
+                <input type="text" ng-model="newLesson.objective" required>
+              </div>
+              <div>
+                <label>Subject:</label><br>
+                <input type="text" ng-model="newLesson.subject" required>
+              </div>
             </div>
-            <div>
-              <label for="obj">Objective:</label> <br />
-              <input type="text" ng-model="newLesson.objective" placeholder="Lesson Goals" required>
+            <div class="inputRow">
+              <div>
+                <label for="info">Information:</label><br />
+                <input type="text" ng-model="newLesson.info" required>
             </div>
-            <div>
-              <label for="info">Information:</label><br />
-              <input type="text" ng-model="newLesson.info" placeholder="The lesson is about..." required>
+              <div>
+                <label for="activity">Activity:</label><br />
+                <input type="text" ng-model="newLesson.activity" required>
+              </div>
             </div>
+            <div class="inputRow2">
+              <div class="selectSection">
+                <label for="verification">Verification</label><br />
+                <select class="form-control" ng-model="newLesson.verification" ng-options='assignment.name as (assignment.name + " " + assignment.subject) for assignment in assignments' required>
+                </select>
+              </div>
             <div>
-              <label for="activity">Activity:</label><br />
-              <input type="text" ng-model="newLesson.activity" placeholder="Activity for the lesson" required>
-            </div>
-              <label for="verification">Verification</label><br />
-              <select class="form-control" ng-model="newLesson.verification" ng-options='assignment.name as (assignment.name + " " + assignment.subject) for assignment in assignments' required>
-            </select>
-            <label>Required Materials</label>
+              <label>Required Materials</label>
               <div>
                 <input type="checkbox" id="pencil" name="mats" ng-model="newLesson.reqMatsPen" value="pencil">
                 <label for="pencil">Pencil</label>
@@ -109,42 +122,42 @@
                 <input type="checkbox" id="crayons" name="mats" ng-model="newLesson.reqMatsCray" value="crayons">
                 <label for="crayons">Crayons</label>
               </div>
+            </div>
+          </div>
+          <div class="inputRow">
               <div>
-                <label>Additional Materials:</label>
-                <input type="text" ng-model="newLesson.misc" required>
-                <caption>Seperate Entries with a comma</caption>
+                <label>Additional Materials:</label> <br>
+                <input type="text" ng-model="newLesson.misc" required> <br>
+                <p>Seperate Entries with a comma</p>
               </div>
               <div>
-                <label>Subject:</label><br>
-                <input type="text" ng-model="newLesson.subject" required>
-              </div>
-              <div>
-                <label>Time:</label>
-                <select class="form-control" ng-model="newLesson.timeStart" required>
-                  <option value="1">8:00</option>
-                  <option value="2">9:00</option>
-                  <option value="3">10:00</option>
-                  <option value="4">11:00</option>
-                  <option value="5">12:00</option>
-                  <option value="6">1:00</option>
-                  <option value="7">2:00</option>
-                  <option value="8">3:00</option>
-                </select>
-                <select class="form-control" ng-model="newLesson.timeEnd" required>
-                  <option value="1">8:00</option>
-                  <option value="2">9:00</option>
-                  <option value="3">10:00</option>
-                  <option value="4">11:00</option>
-                  <option value="5">12:00</option>
-                  <option value="6">1:00</option>
-                  <option value="7">2:00</option>
-                  <option value="8">3:00</option>
-                </select>
-              </div>
-              <div>
-                <label>Date:</label>
+                <label>Date:</label> <br>
                 <input type="date" ng-model="newLesson.date" required>
               </div>
+            </div>
+            <div class="timeSelect">
+              <label>Time:</label>
+              <select class="form-control" ng-model="newLesson.timeStart" required>
+                <option value="1">8:00</option>
+                <option value="2">9:00</option>
+                <option value="3">10:00</option>
+                <option value="4">11:00</option>
+                <option value="5">12:00</option>
+                <option value="6">1:00</option>
+                <option value="7">2:00</option>
+                <option value="8">3:00</option>
+              </select>
+              <select class="form-control" ng-model="newLesson.timeEnd" required>
+                <option value="1">8:00</option>
+                <option value="2">9:00</option>
+                <option value="3">10:00</option>
+                <option value="4">11:00</option>
+                <option value="5">12:00</option>
+                <option value="6">1:00</option>
+                <option value="7">2:00</option>
+                <option value="8">3:00</option>
+              </select>
+            </div>
           </div>
         </div>
         <div class="modal-footer">

@@ -1,24 +1,26 @@
 angular.module('classroomApp').controller('lessonCtrl', ($scope, mainSvc, $stateParams) => {
+
+
   $scope.getThisLesson = () => {
     let id = parseInt($stateParams.id)
     mainSvc.getLesson().then((response) => {
-      console.log($stateParams.id);
-      console.log(id);
       for (let i = 0; i < response.length; i++) {
-        if (id = response[i].id) {
-          return $scope.lesson = response[i];
-          console.log($scope.lesson.id);
+        if (id === response[i].id) {
+          $scope.lesson = response[i];
         }
       }
     })
   }
   $scope.getThisLesson();
+
+
   $scope.getAssignments = () => {
     mainSvc.getAssignments().then((response) => {
       $scope.assignments = response;
     })
   }
   $scope.getAssignments();
+
 
   $scope.updateLesson = (upLess, id) => {
     // console.log(id);

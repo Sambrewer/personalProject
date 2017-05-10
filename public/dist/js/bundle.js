@@ -23,6 +23,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
   }).state('classroom', {
     url: '/classroom',
     parent: 'home',
+    reload: true,
     templateUrl: '../views/classroom.html',
     controller: 'classroomCtrl'
   }).state('scores', {
@@ -314,9 +315,61 @@ angular.module('classroomApp').controller('dayViewCtrl', function ($scope, $stat
   $scope.getLessons = function () {
     mainSvc.getLesson().then(function (response) {
       for (var i = 0; i < response.length; i++) {
+        switch (response[i].timeid) {
+          case 1:
+            response[i].startTime = '8:00';
+            break;
+          case 2:
+            response[i].startTime = '9:00';
+            break;
+          case 3:
+            response[i].startTime = '10:00';
+            break;
+          case 4:
+            response[i].startTime = '11:00';
+            break;
+          case 5:
+            response[i].startTime = '12:00';
+            break;
+          case 6:
+            response[i].startTime = '1:00';
+            break;
+          case 7:
+            response[i].startTime = '2:00';
+            break;
+          case 8:
+            response[i].startTime = '3:00';
+        }
+        switch (response[i].timeendid) {
+          case 1:
+            response[i].endTime = '8:00';
+            break;
+          case 2:
+            response[i].endTime = '9:00';
+            break;
+          case 3:
+            response[i].endTime = '10:00';
+            break;
+          case 4:
+            response[i].endTime = '11:00';
+            break;
+          case 5:
+            response[i].endTime = '12:00';
+            break;
+          case 6:
+            response[i].endTime = '1:00';
+            break;
+          case 7:
+            response[i].endTime = '2:00';
+            break;
+          case 8:
+            response[i].endTime = '3:00';
+        }
+      }
+      for (var _i = 0; _i < response.length; _i++) {
         console.log($scope.lessons);
-        if (response[i].day === parseInt($stateParams.day)) {
-          $scope.dayLessons.push(response[i]);
+        if (response[_i].day === parseInt($stateParams.day)) {
+          $scope.dayLessons.push(response[_i]);
         }
       }
     });
@@ -357,84 +410,85 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
   $scope.getLesson = function () {
     mainSvc.getLesson().then(function (response) {
       console.log(response);
-      for (var i = 0; i < response.length; i++) {
-        console.log(response[i].day);
-        switch (response[i].day) {
-          case 1:
-            $scope.mon.push(response[i]);
-            break;
-          case 2:
-            $scope.tue.push(response[i]);
-            break;
-          case 3:
-            $scope.wed.push(response[i]);
-            break;
-          case 4:
-            $scope.thu.push(response[i]);
-            break;
-          case 5:
-            $scope.fri.push(response[i]);
-            break;
-        }
-      }
+
       // console.log($scope.wed);
       $scope.lessons = [];
-      for (var _i = 0; _i < response.length; _i++) {
-        if (response[_i].date === today.getDate()) {
-          $scope.lessons.push(response[_i]);
+      for (var i = 0; i < response.length; i++) {
+        if (response[i].date === today.getDate()) {
+          $scope.lessons.push(response[i]);
           // console.log(response[i]);
         }
       }
-      for (var _i2 = 0; _i2 < $scope.lessons.length; _i2++) {
-        switch ($scope.lessons[_i2].timeid) {
+      for (var _i = 0; _i < response.length; _i++) {
+        switch (response[_i].timeid) {
           case 1:
-            $scope.lessons[_i2].startTime = '8:00';
+            response[_i].startTime = '8:00';
             break;
           case 2:
-            $scope.lessons[_i2].startTime = '9:00';
+            response[_i].startTime = '9:00';
             break;
           case 3:
-            $scope.lessons[_i2].startTime = '10:00';
+            response[_i].startTime = '10:00';
             break;
           case 4:
-            $scope.lessons[_i2].startTime = '11:00';
+            response[_i].startTime = '11:00';
             break;
           case 5:
-            $scope.lessons[_i2].startTime = '12:00';
+            response[_i].startTime = '12:00';
             break;
           case 6:
-            $scope.lessons[_i2].startTime = '1:00';
+            response[_i].startTime = '1:00';
             break;
           case 7:
-            $scope.lessons[_i2].startTime = '2:00';
+            response[_i].startTime = '2:00';
             break;
           case 8:
-            $scope.lessons[_i2].startTime = '3:00';
+            response[_i].startTime = '3:00';
         }
-        switch ($scope.lessons[_i2].timeendid) {
+        switch (response[_i].timeendid) {
           case 1:
-            $scope.lessons[_i2].endTime = '8:00';
+            response[_i].endTime = '8:00';
             break;
           case 2:
-            $scope.lessons[_i2].endTime = '9:00';
+            response[_i].endTime = '9:00';
             break;
           case 3:
-            $scope.lessons[_i2].endTime = '10:00';
+            response[_i].endTime = '10:00';
             break;
           case 4:
-            $scope.lessons[_i2].endTime = '11:00';
+            response[_i].endTime = '11:00';
             break;
           case 5:
-            $scope.lessons[_i2].endTime = '12:00';
+            response[_i].endTime = '12:00';
             break;
           case 6:
-            $scope.lessons[_i2].endTime = '1:00';
+            response[_i].endTime = '1:00';
             break;
           case 7:
-            $scope.lessons[_i2].endTime = '2:00';
+            response[_i].endTime = '2:00';
             break;
           case 8:
-            $scope.lessons[_i2].endTime = '3:00';
+            response[_i].endTime = '3:00';
+        }
+      }
+      for (var _i2 = 0; _i2 < response.length; _i2++) {
+        console.log(response[_i2].day);
+        switch (response[_i2].day) {
+          case 1:
+            $scope.mon.push(response[_i2]);
+            break;
+          case 2:
+            $scope.tue.push(response[_i2]);
+            break;
+          case 3:
+            $scope.wed.push(response[_i2]);
+            break;
+          case 4:
+            $scope.thu.push(response[_i2]);
+            break;
+          case 5:
+            $scope.fri.push(response[_i2]);
+            break;
         }
       }
     });
@@ -445,20 +499,19 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
 'use strict';
 
 angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSvc, $stateParams) {
+
   $scope.getThisLesson = function () {
     var id = parseInt($stateParams.id);
     mainSvc.getLesson().then(function (response) {
-      console.log($stateParams.id);
-      console.log(id);
       for (var i = 0; i < response.length; i++) {
-        if (id = response[i].id) {
-          return $scope.lesson = response[i];
-          console.log($scope.lesson.id);
+        if (id === response[i].id) {
+          $scope.lesson = response[i];
         }
       }
     });
   };
   $scope.getThisLesson();
+
   $scope.getAssignments = function () {
     mainSvc.getAssignments().then(function (response) {
       $scope.assignments = response;
@@ -669,30 +722,40 @@ angular.module('classroomApp').controller('scoresCtrl', function ($scope, $state
           var mthChart = new JSChart('mathChart', 'bar');
           mthChart.setDataArray(mathScore);
           mthChart.setTitle('Math');
+          mthChart.setAxisNameX('Assignment');
+          mthChart.setAxisNameY('');
           mthChart.draw();
         }
         if (literacyScore.length > 0) {
           var litChart = new JSChart('literacyChart', 'bar');
           litChart.setDataArray(literacyScore);
           litChart.setTitle('Literacy');
+          litChart.setAxisNameX('Assignment');
+          litChart.setAxisNameY('');
           litChart.draw();
         }
         if (writingScore.length > 0) {
           var writChart = new JSChart('writingChart', 'bar');
           writChart.setDataArray(writingScore);
           writChart.setTitle('Writing');
+          writChart.setAxisNameX('Assignment');
+          writChart.setAxisNameY('');
           writChart.draw();
         }
         if (readingScore.length > 0) {
           var readChart = new JSChart('readingChart', 'bar');
           readChart.setDataArray(readingScore);
           readChart.setTitle('Reading');
+          readChart.setAxisNameX('Assignment');
+          readChart.setAxisNameY('');
           readChart.draw();
         }
         if (scienceScore.length > 0) {
           var sciChart = new JSChart('scienceChart', 'bar');
           sciChart.setDataArray(scienceScore);
           sciChart.setTitle('Science');
+          sciChart.setAxisNameX('Assignment');
+          sciChart.setAxisNameY('');
           sciChart.draw();
         }
       }
@@ -712,6 +775,8 @@ angular.module('classroomApp').controller('scoresCtrl', function ($scope, $state
       var gradesChart = new JSChart('gradeChart', 'bar');
       gradesChart.setDataArray(grades);
       gradesChart.setTitle('Grades');
+      gradesChart.setAxisNameX('');
+      gradesChart.setAxisNameY('');
       gradesChart.draw();
 
       console.log(grades);

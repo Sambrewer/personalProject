@@ -1,5 +1,8 @@
 <section class="lessonSection">
-  <h1>{{lesson.name}}</h1>
+  <div class="scoresHeader">
+    <h1>{{lesson.name}}</h1>
+    <md-button class="md-raised md-primary" data-toggle="modal" data-target="#editLessonModal">Edit</button>
+  </div>
   <div class="lessonWrapper">
     <div class="row">
       <div class="col-md-4 objective lessonCard">
@@ -36,7 +39,6 @@
       </div>
     </div>
   </div>
-  <button data-toggle="modal" data-target="#editLessonModal">Edit</button>
 </section>
 
 <div class="modal fade" id="editLessonModal">

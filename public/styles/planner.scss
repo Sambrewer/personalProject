@@ -2,8 +2,9 @@
   background: black;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 50px;
-  padding: 10px;
+  // padding: 10px;
   position: absolute;
   bottom: 0;
   width: 85%;
@@ -44,4 +45,28 @@
       }
     }
   }
+}
+.inputRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  input {
+    height: 40px;
+  }
+  p {
+    font-size: .75em;
+    color: red;
+  }
+
+}
+.inputRow2 {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  .selectSection {
+    width: 40%;
+  }
+}
+.timeSelect {
+  width: 10%;
 }

@@ -2,8 +2,12 @@
   <div class="studentContainer">
     <div ng-repeat="student in class">
       <h1>{{student.name}}</h1>
-      <button class="addScore" data-toggle="modal" data-target="#myModal">Add Score <i class="fa fa-plus"></i></button>
-      <button class="seeScore" ui-sref="scores({id: student.id})">See Scores</button>
+      <section class="addScore">
+        <md-button class="md-raised md-primary" data-toggle="modal" data-target="#myModal">Add Score <i class="fa fa-plus"></i></button>
+      </section>
+      <section class="seeScore">
+        <md-button class="md-raised md-primary" ui-sref="scores({id: student.id})">See Scores</md-button>
+      </section>
     </div>
   </div>
 </div>

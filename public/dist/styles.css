@@ -15,14 +15,11 @@
     .classWrapper .studentContainer div h1 {
       margin-bottom: 10px; }
     .classWrapper .studentContainer div button {
-      background: black;
-      color: white;
       margin-bottom: 10px;
-      border: none;
       border-radius: 5px; }
     .classWrapper .studentContainer div .addScore {
       position: absolute;
-      bottom: 35px; }
+      bottom: 45px; }
     .classWrapper .studentContainer div .seeScore {
       position: absolute;
       bottom: 5px; }
@@ -151,7 +148,7 @@ body {
 
 .menuBar {
   height: 80vh;
-  width: 200px;
+  width: 11.25vw;
   position: fixed;
   background-color: green;
   display: flex;
@@ -170,8 +167,9 @@ body {
       .menuBar ul li .menuBarLink {
         display: flex;
         flex-wrap: wrap;
-        width: 12vw;
-        font-size: .75em; }
+        width: 132px;
+        font-size: .75em;
+        color: black; }
 
 .viewsWrapper {
   overflow: auto;
@@ -297,7 +295,7 @@ body {
   height: 50px;
   position: absolute;
   bottom: 0;
-  width: 85%; }
+  width: 88.75vw; }
   .control button {
     height: 30px; }
 
@@ -305,12 +303,12 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 85vw;
+  width: 88.75vw;
   background: grey;
   padding-top: 20px; }
   .plannerWrapper .plannerContent .plannerViews .listCard {
     background: white;
-    width: 25vw;
+    width: 375px;
     border: 2px solid black;
     margin-bottom: 5px;
     display: flex;

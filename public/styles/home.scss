@@ -47,7 +47,7 @@
 }
 .menuBar {
   height: 80vh;
-  width: 200px;
+  width: 11.25vw;
   position: fixed;
   background-color: green;
   display: flex;
@@ -69,9 +69,9 @@
       .menuBarLink {
         display: flex;
         flex-wrap: wrap;
-        width: 12vw;
+        width: 132px;
         font-size: .75em;
-
+        color: black;
       }
     }
   }

@@ -7,7 +7,7 @@
   // padding: 10px;
   position: absolute;
   bottom: 0;
-  width: 85%;
+  width: 88.75vw;
   button {
     height: 30px;
   }
@@ -22,12 +22,12 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      width: 85vw;
+      width: 88.75vw;
       background: grey;
       padding-top: 20px;
       .listCard {
           background: white;
-          width: 25vw;
+          width: 375px;
           border: 2px solid black;
           margin-bottom: 5px;
           display: flex;

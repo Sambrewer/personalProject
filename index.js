@@ -155,17 +155,42 @@ app.put('/api/behave', (req, res) => {
     }
   })
 })
-app.put(`/api/lesson/:id`, (req, res) => {
-  let data = [req.body.name, req.body.objective, req.body.info, req.body.activity, req.body.verification, req.body.requiredMats, req.body.misc, req.body.timeStart, req.body.timeEnd, req.body.date, parseInt(req.params.id)]
+app.put(`/api/lesson/:id/objective`, (req, res) => {
+  let data = [req.body.objective, parseInt(req.params.id)]
   console.log(req.params.id);
   console.log(data);
-  db.update_lesson(data, (err, lesson) => {
-    if (!err) {
-      res.send('Update Successful')
-    } else {
-      console.log(err);
-      res.send(err)
-    }
+  db.update_lesson_objective(data, (err, lesson) => {
+    (!err)?res.send(`Update Successful`):res.send(err)
+  })
+})
+app.put(`/api/lesson/:id/verification`, (req, res) => {
+  let data = [req.body.verification, parseInt(req.params.id)]
+  db.update_lesson_verification(data, (err, ver) => {
+    (!err)?res.send(`Update Successful`):res.send(err)
+  })
+})
+app.put(`/api/lesson/:id/information`, (req, res) => {
+  let data = [req.body.information, parseInt(req.params.id)]
+  db.update_lesson_information(data, (err, info) => {
+    (!err)?res.send(`Update Successful`):res.send(err)
+  })
+})
+app.put(`/api/lesson/:id/activity`, (req, res) => {
+  let data = [req.body.activity, parseInt(req.params.id)]
+  db.update_lesson_activity(data, (err, act) => {
+    (!err)?res.send(`Update Successful`):res.send(err)
+  })
+})
+app.put(`/api/lesson/:id/materials`, (req, res) => {
+  let data = [req.body.materials, parseInt(req.params.id)]
+  db.update_lesson_materials(data, (err, mats) => {
+    (!err)?res.send(`Update Successful`):res.send(err)
+  })
+})
+app.put(`/api/lesson/:id/other`, (req, res) => {
+  let data = [req.body.other, parseInt(req.params.id)]
+  db.update_lesson_other(data, (err, misc) => {
+    (!err)?res.send(`Update Successful`):res.send(err)
   })
 })
 app.delete('/api/assignment/:id', (req, res) => {

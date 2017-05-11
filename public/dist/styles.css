@@ -148,7 +148,7 @@ body {
 
 .menuBar {
   height: 80vh;
-  width: 11.25vw;
+  width: 160px;
   position: fixed;
   background-color: green;
   display: flex;
@@ -167,7 +167,7 @@ body {
       .menuBar ul li .menuBarLink {
         display: flex;
         flex-wrap: wrap;
-        width: 132px;
+        width: 100px;
         font-size: .75em;
         color: black; }
 
@@ -203,7 +203,12 @@ body {
 .lessonSection .lessonCard {
   height: 22.5vh;
   overflow: auto;
-  border: 2px solid black; }
+  border: 2px solid black;
+  position: relative; }
+  .lessonSection .lessonCard .lessonEdit {
+    position: absolute;
+    bottom: 20px;
+    right: 20px; }
   .lessonSection .lessonCard h1 {
     font-size: 2em; }
   .lessonSection .lessonCard p {

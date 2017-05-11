@@ -22,32 +22,58 @@ angular.module('classroomApp').controller('lessonCtrl', ($scope, mainSvc, $state
   $scope.getAssignments();
 
 
-  $scope.updateLesson = (upLess, id) => {
-    // console.log(id);
-    let addMats = [];
-    let addedLesson = {};
-    if (upLess.reqMatsPen) {
-      addMats.push('Pencil')
+  $scope.updateObj = (editObj) => {
+    console.log(editObj);
+    mainSvc.updateObj(editObj, $stateParams.id).then((response) => {
+      alert(response)
+      $scope.getThisLesson()
+    })
+  }
+  $scope.updateVer = (editVer) => {
+    mainSvc.updateVer(editVer, $stateParams.id).then((response) => {
+      alert(response)
+      $scope.getThisLesson()
+    })
+  }
+  $scope.updateInfo = (editInfo) => {
+    mainSvc.updateInfo(editInfo, $stateParams.id).then((response) => {
+      alert(response)
+      $scope.getThisLesson()
+    })
+  }
+  $scope.updateAct = (editAct) => {
+    mainSvc.updateAct(editAct, $stateParams.id).then((response) => {
+      alert(response)
+      $scope.getThisLesson()
+    })
+  }
+  $scope.updateMat = (mat) => {
+    let editMat = []
+    if (mat.paper) {
+      editMat.push('Paper')
     }
-    if (upLess.reqMatsPap) {
-      addMats.push('Paper')
+    if (mat.pencil) {
+      editMat.push('Pencil')
     }
-    if (upLess.reqMatsBook) {
-      addMats.push('Book')
+    if (mat.book) {
+      editMat.push('Book')
     }
-    if (upLess.reqMatsSci) {
-      addMats.push('Scissors')
+    if (mat.scissors) {
+      editMat.push('Scissors')
     }
-    if (upLess.reqMatsGlue) {
-      addMats.push('Glue')
+    if (mat.glue) {
+      editMat.push('Glue')
     }
-    if (upLess.reqMatsCray) {
-      addMats.push('Crayons')
+    if (mat.crayons) {
+      editMat.push('Crayons')
     }
-    upLess.misc = upLess.misc.split(',')
-    upLess.date = upLess.date.getDate();
-    upLess.requiredMats = addMats;
-    mainSvc.updateLesson(upLess, id).then((response) => {
+    mainSvc.updateMat(editMat, $stateParams.id).then((response) => {
+      alert(response)
+      $scope.getThisLesson();
+    })
+  }
+  $scope.updateMisc = (editMisc) => {
+    mainSvc.updateMisc(editMisc.split(','), $stateParams.id).then((response) => {
       alert(response)
       $scope.getThisLesson();
     })

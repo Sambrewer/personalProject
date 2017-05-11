@@ -47,7 +47,7 @@
 }
 .menuBar {
   height: 80vh;
-  width: 11.25vw;
+  width: 160px;;
   position: fixed;
   background-color: green;
   display: flex;
@@ -69,7 +69,7 @@
       .menuBarLink {
         display: flex;
         flex-wrap: wrap;
-        width: 132px;
+        width: 100px;
         font-size: .75em;
         color: black;
       }
@@ -115,6 +115,12 @@
     height: 22.5vh;
     overflow: auto;
     border: 2px solid black;
+    position: relative;
+    .lessonEdit {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
     h1 {
       font-size: 2em;
     }

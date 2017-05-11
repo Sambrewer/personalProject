@@ -174,12 +174,70 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
       return response.data;
     });
   };
-  this.updateLesson = function (upLess, id) {
-    console.log(id);
+  this.updateObj = function (upObj, id) {
+    console.log(upObj);
     return $http({
       method: 'PUT',
-      url: baseUrl + 'api/lesson/' + id,
-      data: upLess
+      url: baseUrl + 'api/lesson/' + id + '/objective',
+      data: {
+        objective: upObj
+      }
+    }).then(function (response) {
+      return response.data;
+    });
+  };
+  this.updateVer = function (upVer, id) {
+    return $http({
+      method: 'PUT',
+      url: baseUrl + 'api/lesson/' + id + '/verification',
+      data: {
+        verification: upVer
+      }
+    }).then(function (response) {
+      return response.data;
+    });
+  };
+  this.updateInfo = function (upInfo, id) {
+    return $http({
+      method: 'PUT',
+      url: baseUrl + 'api/lesson/' + id + '/information',
+      data: {
+        information: upInfo
+      }
+    }).then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  };
+  this.updateAct = function (upAct, id) {
+    return $http({
+      method: 'PUT',
+      url: baseUrl + 'api/lesson/' + id + '/activity',
+      data: {
+        activity: upAct
+      }
+    }).then(function (response) {
+      return response.data;
+    });
+  };
+  this.updateMat = function (upMat, id) {
+    return $http({
+      method: 'PUT',
+      url: baseUrl + 'api/lesson/' + id + '/materials',
+      data: {
+        materials: upMat
+      }
+    }).then(function (response) {
+      return response.data;
+    });
+  };
+  this.updateMisc = function (upMisc, id) {
+    return $http({
+      method: 'PUT',
+      url: baseUrl + 'api/lesson/' + id + '/other',
+      data: {
+        other: upMisc
+      }
     }).then(function (response) {
       return response.data;
     });
@@ -519,32 +577,58 @@ angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSv
   };
   $scope.getAssignments();
 
-  $scope.updateLesson = function (upLess, id) {
-    // console.log(id);
-    var addMats = [];
-    var addedLesson = {};
-    if (upLess.reqMatsPen) {
-      addMats.push('Pencil');
+  $scope.updateObj = function (editObj) {
+    console.log(editObj);
+    mainSvc.updateObj(editObj, $stateParams.id).then(function (response) {
+      alert(response);
+      $scope.getThisLesson();
+    });
+  };
+  $scope.updateVer = function (editVer) {
+    mainSvc.updateVer(editVer, $stateParams.id).then(function (response) {
+      alert(response);
+      $scope.getThisLesson();
+    });
+  };
+  $scope.updateInfo = function (editInfo) {
+    mainSvc.updateInfo(editInfo, $stateParams.id).then(function (response) {
+      alert(response);
+      $scope.getThisLesson();
+    });
+  };
+  $scope.updateAct = function (editAct) {
+    mainSvc.updateAct(editAct, $stateParams.id).then(function (response) {
+      alert(response);
+      $scope.getThisLesson();
+    });
+  };
+  $scope.updateMat = function (mat) {
+    var editMat = [];
+    if (mat.paper) {
+      editMat.push('Paper');
     }
-    if (upLess.reqMatsPap) {
-      addMats.push('Paper');
+    if (mat.pencil) {
+      editMat.push('Pencil');
     }
-    if (upLess.reqMatsBook) {
-      addMats.push('Book');
+    if (mat.book) {
+      editMat.push('Book');
     }
-    if (upLess.reqMatsSci) {
-      addMats.push('Scissors');
+    if (mat.scissors) {
+      editMat.push('Scissors');
     }
-    if (upLess.reqMatsGlue) {
-      addMats.push('Glue');
+    if (mat.glue) {
+      editMat.push('Glue');
     }
-    if (upLess.reqMatsCray) {
-      addMats.push('Crayons');
+    if (mat.crayons) {
+      editMat.push('Crayons');
     }
-    upLess.misc = upLess.misc.split(',');
-    upLess.date = upLess.date.getDate();
-    upLess.requiredMats = addMats;
-    mainSvc.updateLesson(upLess, id).then(function (response) {
+    mainSvc.updateMat(editMat, $stateParams.id).then(function (response) {
+      alert(response);
+      $scope.getThisLesson();
+    });
+  };
+  $scope.updateMisc = function (editMisc) {
+    mainSvc.updateMisc(editMisc.split(','), $stateParams.id).then(function (response) {
       alert(response);
       $scope.getThisLesson();
     });

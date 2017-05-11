@@ -110,12 +110,70 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data
     })
   }
-  this.updateLesson = (upLess, id) => {
-    console.log(id);
+  this.updateObj = (upObj, id) => {
+    console.log(upObj);
     return $http({
       method: 'PUT',
-      url: `${baseUrl}api/lesson/${id}`,
-      data: upLess
+      url: `${baseUrl}api/lesson/${id}/objective`,
+      data: {
+        objective: upObj
+      }
+    }).then((response) => {
+      return response.data;
+    })
+  }
+  this.updateVer = (upVer, id) => {
+    return $http({
+      method: 'PUT',
+      url: `${baseUrl}api/lesson/${id}/verification`,
+      data: {
+        verification: upVer
+      }
+    }).then((response) => {
+      return response.data;
+    })
+  }
+  this.updateInfo = (upInfo, id) => {
+    return $http({
+      method: `PUT`,
+      url: `${baseUrl}api/lesson/${id}/information`,
+      data: {
+        information: upInfo
+      }
+    }).then((response) => {
+      console.log(response.data);
+      return response.data;
+    })
+  }
+  this.updateAct = (upAct, id) => {
+    return $http({
+      method: `PUT`,
+      url: `${baseUrl}api/lesson/${id}/activity`,
+      data: {
+        activity: upAct
+      }
+    }).then((response) => {
+      return response.data;
+    })
+  }
+  this.updateMat = (upMat, id) => {
+    return $http({
+      method: `PUT`,
+      url: `${baseUrl}api/lesson/${id}/materials`,
+      data: {
+        materials: upMat
+      }
+    }).then((response) => {
+      return response.data;
+    })
+  }
+  this.updateMisc = (upMisc, id) => {
+    return $http({
+      method: `PUT`,
+      url: `${baseUrl}api/lesson/${id}/other`,
+      data: {
+        other: upMisc
+      }
     }).then((response) => {
       return response.data;
     })

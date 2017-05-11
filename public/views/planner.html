@@ -67,96 +67,92 @@
         <div class="modal-body">
           <div class="form-group">
             <div class="inputRow">
-              <div>
+              <md-input-container class="md-block" flex-gt-sm="">
                 <label for="name">Lesson Name:</label><br />
                 <input type="text" name="name" ng-model="newLesson.name">
-              </div>
-              <div>
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm="">
                 <label for="obj">Objective:</label> <br />
                 <input type="text" ng-model="newLesson.objective" required>
-              </div>
-              <div>
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm="">
                 <label>Subject:</label><br>
                 <input type="text" ng-model="newLesson.subject" required>
-              </div>
+              </md-input-container>
             </div>
             <div class="inputRow">
-              <div>
+              <md-input-container class="md-block" flex-gt-sm="">
                 <label for="info">Information:</label><br />
                 <input type="text" ng-model="newLesson.info" required>
-            </div>
-              <div>
-                <label for="activity">Activity:</label><br />
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm="">
+                <label for="activity">Guided Practice:</label><br />
                 <input type="text" ng-model="newLesson.activity" required>
-              </div>
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm="">
+                <label>Additional Materials:</label> <br>
+                <input type="text" ng-model="newLesson.misc" required> <br>
+                <p>Seperate Entries with a comma</p>
+              </md-input-container>
             </div>
             <div class="inputRow2">
               <div class="selectSection">
-                <label for="verification">Verification</label><br />
+                <label for="verification">Independant Practice</label><br />
                 <select class="form-control" ng-model="newLesson.verification" ng-options='assignment.name as (assignment.name + " " + assignment.subject) for assignment in assignments' required>
                 </select>
+                <div class="timeSelect">
+                  <label>Time:</label>
+                  <select class="form-control" ng-model="newLesson.timeStart" required>
+                    <option value="1">8:00</option>
+                    <option value="2">9:00</option>
+                    <option value="3">10:00</option>
+                    <option value="4">11:00</option>
+                    <option value="5">12:00</option>
+                    <option value="6">1:00</option>
+                    <option value="7">2:00</option>
+                    <option value="8">3:00</option>
+                  </select>
+                  <select class="form-control" ng-model="newLesson.timeEnd" required>
+                    <option value="1">8:00</option>
+                    <option value="2">9:00</option>
+                    <option value="3">10:00</option>
+                    <option value="4">11:00</option>
+                    <option value="5">12:00</option>
+                    <option value="6">1:00</option>
+                    <option value="7">2:00</option>
+                    <option value="8">3:00</option>
+                  </select>
+                </div>
               </div>
             <div>
               <label>Required Materials</label>
-              <div>
-                <input type="checkbox" id="pencil" name="mats" ng-model="newLesson.reqMatsPen" value="pencil">
-                <label for="pencil">Pencil</label>
-              </div>
-              <div>
-                <input type="checkbox" id="paper" name="mats" ng-model="newLesson.reqMatsPap" value="paper">
-                <label for="paper">Paper</label>
-              </div>
-              <div>
-                <input type="checkbox" id="book" name="mats" ng-model="newLesson.reqMatsBook" value="book">
-                <label for="book">Book</label>
-              </div>
-              <div>
-                <input type="checkbox" id="scissors" name="mats" ng-model="newLesson.reqMatsSci" value="scissors">
-                <label for="scissors">Scissors</label>
-              </div>
-              <div>
-                <input type="checkbox" id="glue" name="mats" ng-model="newLesson.reqMatsGlue" value="glue">
-                <label for="glue">Glue</label>
-              </div>
-              <div>
-                <input type="checkbox" id="crayons" name="mats" ng-model="newLesson.reqMatsCray" value="crayons">
-                <label for="crayons">Crayons</label>
-              </div>
+              <md-input-container class="md-block" flex-gt-sm="">
+                <div>
+                  <md-checkbox ng-model="newLesson.reqMatsPen" value="pencil">Pencil</md-checkbox>
+                </div>
+                <div>
+                  <md-checkbox ng-model="newLesson.reqMatsPap" value="paper">Paper</md-checkbox>
+                </div>
+                <div>
+                  <md-checkbox ng-model="newLesson.reqMatsBook" value="book">Book</md-checkbox>
+                </div>
+                <div>
+                  <md-checkbox ng-model="newLesson.reqMatsSci" value="scissors">Scissors</md-checkbox>
+                </div>
+                <div>
+                  <md-checkbox ng-model="newLesson.reqMatsGlue" value="glue">Glue</md-checkbox>
+                </div>
+                <div>
+                  <md-checkbox ng-model="newLesson.reqMatsCray" value="crayons">Crayons</md-checkbox>
+                </div>
+              </md-inputcontainer>
             </div>
           </div>
           <div class="inputRow">
               <div>
-                <label>Additional Materials:</label> <br>
-                <input type="text" ng-model="newLesson.misc" required> <br>
-                <p>Seperate Entries with a comma</p>
-              </div>
-              <div>
                 <label>Date:</label> <br>
                 <input type="date" ng-model="newLesson.date" required>
               </div>
-            </div>
-            <div class="timeSelect">
-              <label>Time:</label>
-              <select class="form-control" ng-model="newLesson.timeStart" required>
-                <option value="1">8:00</option>
-                <option value="2">9:00</option>
-                <option value="3">10:00</option>
-                <option value="4">11:00</option>
-                <option value="5">12:00</option>
-                <option value="6">1:00</option>
-                <option value="7">2:00</option>
-                <option value="8">3:00</option>
-              </select>
-              <select class="form-control" ng-model="newLesson.timeEnd" required>
-                <option value="1">8:00</option>
-                <option value="2">9:00</option>
-                <option value="3">10:00</option>
-                <option value="4">11:00</option>
-                <option value="5">12:00</option>
-                <option value="6">1:00</option>
-                <option value="7">2:00</option>
-                <option value="8">3:00</option>
-              </select>
             </div>
           </div>
         </div>

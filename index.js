@@ -121,7 +121,7 @@ app.post('/api/scores', (req, res) => {
   })
 })
 app.post(`/api/lesson`, (req, res) => {
-  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id), req.body.date, req.body.subject, req.body.day]
+  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id), req.body.date, req.body.subject]
   console.log(data, req.body);
   db.add_lesson(data, (err, lesson) => {
     if (!err) {

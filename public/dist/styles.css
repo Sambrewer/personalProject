@@ -344,9 +344,8 @@ body {
   margin-bottom: 20px; }
   .inputRow2 .selectSection {
     width: 40%; }
-
-.timeSelect {
-  width: 10%; }
+  .inputRow2 .timeSelect {
+    width: 25%; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

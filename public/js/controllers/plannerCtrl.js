@@ -36,19 +36,8 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     if (newLesson.misc !== []) {
       newLesson.misc = newLesson.misc.split(',')
     }
-    // addedLesson.name = newLesson.name
-    // addedLesson.activity = newLesson.activity
-    // addedLesson.info = newLesson.info
-    // addedLesson.objective = newLesson.objective
-    // addedLesson.requiredMats = addMats
-    // addedLesson.verification = newLesson.verification
-    // addedLesson.subject = newLesson.subject
-    // addedLesson.timeStart = newLesson.timeStart
-    // addedLesson.timeEnd = newLesson.timeEnd
-    newLesson.day = newLesson.date.getDay();
-    newLesson.date = newLesson.date.getDate()
 
-    // console.log(addedLesson);
+    console.log(addedLesson);
     mainSvc.addLesson(newLesson).then((response) => {
       alert(response);
     })

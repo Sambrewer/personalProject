@@ -468,14 +468,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
   $scope.getLesson = function () {
     mainSvc.getLesson().then(function (response) {
       console.log(response);
-
       // console.log($scope.wed);
-      $scope.lessons = [];
       for (var i = 0; i < response.length; i++) {
-        if (response[i].date === today.getDate()) {
-          $scope.lessons.push(response[i]);
-          // console.log(response[i]);
-        }
+        response[i].date = new Date(response[i].date);
+        response[i].day = response[i].date.getDay();
+        // console.log(response[i]);
       }
       for (var _i = 0; _i < response.length; _i++) {
         switch (response[_i].timeid) {
@@ -693,19 +690,8 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     if (newLesson.misc !== []) {
       newLesson.misc = newLesson.misc.split(',');
     }
-    // addedLesson.name = newLesson.name
-    // addedLesson.activity = newLesson.activity
-    // addedLesson.info = newLesson.info
-    // addedLesson.objective = newLesson.objective
-    // addedLesson.requiredMats = addMats
-    // addedLesson.verification = newLesson.verification
-    // addedLesson.subject = newLesson.subject
-    // addedLesson.timeStart = newLesson.timeStart
-    // addedLesson.timeEnd = newLesson.timeEnd
-    newLesson.day = newLesson.date.getDay();
-    newLesson.date = newLesson.date.getDate();
 
-    // console.log(addedLesson);
+    console.log(addedLesson);
     mainSvc.addLesson(newLesson).then(function (response) {
       alert(response);
     });

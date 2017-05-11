@@ -30,14 +30,11 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
   $scope.getLesson = () => {
     mainSvc.getLesson().then((response) => {
       console.log(response);
-
       // console.log($scope.wed);
-      $scope.lessons = [];
-      for (let i = 0; i < response.length; i++) {
-        if (response[i].date === today.getDate()) {
-          $scope.lessons.push(response[i])
-          // console.log(response[i]);
-        }
+      for (var i = 0; i < response.length; i++) {
+        response[i].date = new Date(response[i].date);
+        response[i].day = response[i].date.getDay()
+        // console.log(response[i]);
       }
       for (let i = 0; i < response.length; i++) {
         switch (response[i].timeid) {

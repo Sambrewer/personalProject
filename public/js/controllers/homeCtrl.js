@@ -28,14 +28,14 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
     lessons: []
   };
   $scope.thu = {
-    lesson: []
+    lessons: []
   };
   $scope.fri = {
-    lesson: []
+    lessons: []
   };
   // $scope.yesterDate = new Date(`${todayMonth}/${yesterDate}/${todayYear}`)
   // console.log(today.getDate());
-  console.log($scope.yesterDate);
+  // console.log($scope.yesterDate);
 
   $scope.getLesson = () => {
     mainSvc.getLesson().then((response) => {
@@ -55,9 +55,24 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.wed.date = new date(`${todayMonth}/${todayDate + 2}/${todayYear}`)
           $scope.thu.date = new date(`${todayMonth}/${todayDate + 3}/${todayYear}`)
           $scope.wed.date = new date(`${todayMonth}/${todayDate + 4}/${todayYear}`)
-          // for (let i = 0; i < response.length; i++) {
-          //   if (response[i].date === )
-          // }
+
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
+              $scope.mon.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.tue.date.getTime()) {
+              $scope.tue.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.wed.date.getTime()) {
+              $scope.wed.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.thu.date.getTime()) {
+              $scope.thu.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.fri.date.getTime()) {
+              $scope.fri.lessons.push(response[i])
+            }
+          }
         }
           break;
         case 2:{
@@ -66,6 +81,24 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.wed.date = new Date(`${todayMonth}/${todayDate + 1}/${todayYear}`);
           $scope.thu.date = new Date(`${todayMonth}/${todayDate + 2}/${todayYear}`)
           $scope.fri.date = new Date(`${todayMonth}/${todayDate + 3}/${todayYear}`)
+
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
+              $scope.mon.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.tue.date.getTime()) {
+              $scope.tue.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.wed.date.getTime()) {
+              $scope.wed.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.thu.date.getTime()) {
+              $scope.thu.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.fri.date.getTime()) {
+              $scope.fri.lessons.push(response[i])
+            }
+          }
         }
           break;
         case 3: {
@@ -74,6 +107,24 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.wed.date = today;
           $scope.thu.date = new Date(`${todayMonth}/${todayDate + 1}/${todayYear}`)
           $scope.fri.date = new Date(`${todayMonth}/${todayDate + 2}/${todayYear}`)
+
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
+              $scope.mon.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.tue.date.getTime()) {
+              $scope.tue.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.wed.date.getTime()) {
+              $scope.wed.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.thu.date.getTime()) {
+              $scope.thu.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.fri.date.getTime()) {
+              $scope.fri.lessons.push(response[i])
+            }
+          }
         }
           break;
         case 4: {
@@ -82,30 +133,24 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.wed.date = new Date(`${todayMonth}/${todayDate - 1}/${todayYear}`)
           $scope.thu.date = today
           $scope.fri.date = new Date(`${todayMonth}/${todayDate +  1}/${todayYear}`)
-          console.log(typeof(response[0].date), $scope.mon.date.toString());
+
           for (let i = 0; i < response.length; i++) {
-            let monDate = `${$scope.mon.date.getDate()}/${$scope.mon.date.getMonth() + 1}`
-
-            console.log(monDate);
-            if (`${response[i].date.getDate()}/${response[i].date.getMonth() + 1}` == `${$scope.mon.date.getDate()}/${$scope.mon.date.getMonth + 1}`) {
-              console.log('i fired');
-
+            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
               $scope.mon.lessons.push(response[i])
             }
-            if (new Date(response[i].date) === $scope.tue.date) {
+            if (response[i].date.getTime() === $scope.tue.date.getTime()) {
               $scope.tue.lessons.push(response[i])
             }
-            if (new Date(response[i].date) === $scope.wed.date) {
+            if (response[i].date.getTime() === $scope.wed.date.getTime()) {
               $scope.wed.lessons.push(response[i])
             }
-            if (new Date(response[i].date) === $scope.thu.date) {
+            if (response[i].date.getTime() === $scope.thu.date.getTime()) {
               $scope.thu.lessons.push(response[i])
             }
-            if (new Date(response[i].date) === $scope.fri.date) {
+            if (response[i].date.getTime() === $scope.fri.date.getTime()) {
               $scope.fri.lessons.push(response[i])
             }
           }
-          console.log($scope.mon, $scope.tue, $scope.wed, $scope.thu, $scope.fri);
         }
           break;
         case 5: {
@@ -114,6 +159,23 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.wed.date = new Date(`${todayMonth}/${todayDate - 2}/${todayYear}`)
           $scope.thu.date = new Date(`${todayMonth}/${todayDate - 1}/${todayYear}`)
           $scope.fri.date = today;
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
+              $scope.mon.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.tue.date.getTime()) {
+              $scope.tue.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.wed.date.getTime()) {
+              $scope.wed.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.thu.date.getTime()) {
+              $scope.thu.lessons.push(response[i])
+            }
+            if (response[i].date.getTime() === $scope.fri.date.getTime()) {
+              $scope.fri.lessons.push(response[i])
+            }
+          }
         }
           break;
       }
@@ -173,10 +235,6 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           case 8:
             response[i].endTime = '3:00'
         }
-      }
-      for (let i = 0; i < response.length; i++) {
-        console.log(response[i].day);
-
       }
     })
   }

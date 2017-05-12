@@ -194,11 +194,16 @@ body {
           border-left: 1px solid black;
           padding-left: 5px; }
 
-.lessonWrapper {
-  background: white; }
+.lessonSection .lessonHeader {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .lessonSection .lessonHeader h1 {
+    font-size: 2em; }
 
-.lessonSection h1 {
-  font-size: 2em; }
+.lessonSection .lessonWrapper {
+  background: white; }
 
 .lessonSection .lessonCard {
   height: 22.5vh;
@@ -223,6 +228,14 @@ body {
   border: 3px ridge black;
   border-radius: 15px;
   background: white; }
+  .homeViewWrapper .dayViewHeader {
+    text-align: center;
+    font-size: 1.25em;
+    border-bottom: 3px solid black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
   .homeViewWrapper .timeBlock {
     display: flex;
     justify-content: space-between;
@@ -298,35 +311,53 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 50px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 88.75vw; }
+  width: 87.5%; }
   .control button {
     height: 30px; }
 
-.plannerWrapper .plannerContent .plannerViews {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 88.75vw;
+.plannerWrapper .plannerContent {
   background: grey;
-  padding-top: 20px; }
-  .plannerWrapper .plannerContent .plannerViews .listCard {
-    background: white;
-    width: 375px;
-    border: 2px solid black;
-    margin-bottom: 5px;
+  width: 100%;
+  height: 80vh; }
+  .plannerWrapper .plannerContent .plannerHeader {
     display: flex;
     justify-content: space-between;
-    height: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-    align-items: center;
-    border-radius: 5px; }
-    .plannerWrapper .plannerContent .plannerViews .listCard button {
-      height: 2em;
-      width: 2em;
-      font-size: 1.25em; }
+    background: white;
+    padding: 10px;
+    align-items: center; }
+    .plannerWrapper .plannerContent .plannerHeader .plannerNavBar ul {
+      background: white;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid black; }
+  .plannerWrapper .plannerContent .plannerViews {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    background: grey;
+    padding-top: 20px; }
+    .plannerWrapper .plannerContent .plannerViews .listCard {
+      background: white;
+      width: 350px;
+      border: 2px solid black;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      height: 50px;
+      padding-left: 10px;
+      padding-right: 10px;
+      align-items: center;
+      border-radius: 5px; }
+      .plannerWrapper .plannerContent .plannerViews .listCard button {
+        height: 2em;
+        width: 2em;
+        font-size: 1.25em; }
+
+.mobilePlannerNav {
+  display: none; }
 
 .inputRow {
   display: flex;
@@ -346,6 +377,12 @@ body {
     width: 40%; }
   .inputRow2 .timeSelect {
     width: 25%; }
+
+@media (max-width: 599px) {
+  .plannerNavBar {
+    display: none; }
+  .mobilePlannerNav {
+    display: block; } }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

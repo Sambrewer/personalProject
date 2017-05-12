@@ -24,31 +24,31 @@
   <ui-view>
     <div class="weekWrapper">
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 1})">Monday {{mon.date | date: 'dd/MM'}}</md-button>
+        <md-button ui-sref="dayView({date: mon.date})">Monday {{mon.date | date: 'dd/MM'}}</md-button>
         <ul>
           <li ng-repeat="lesson in mon.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 2})">Tuesday {{tue.date | date: 'dd/MM'}}</md-button>
+        <md-button ui-sref="dayView({date: tue.date})">Tuesday {{tue.date | date: 'dd/MM'}}</md-button>
         <ul>
           <li ng-repeat="lesson in tue.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 3})">Wednesday {{wed.date | date: 'dd/MM'}}</md-button>
+        <md-button ui-sref="dayView({date: wed.date})">Wednesday {{wed.date | date: 'dd/MM'}}</md-button>
         <ul>
           <li ng-repeat="lesson in wed.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 4})">Thursday {{thu.date | date: 'dd/MM'}}</md-button>
+        <md-button ui-sref="dayView({date: thu.date})">Thursday {{thu.date | date: 'dd/MM'}}</md-button>
         <ul>
           <li ng-repeat="lesson in thu.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 5})">Friday {{fri.date | date: 'dd/MM'}}</md-button>
+        <md-button ui-sref="dayView({date: fri.date})">Friday {{fri.date | date: 'dd/MM'}}</md-button>
         <ul>
           <li ng-repeat="lesson in fri.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>

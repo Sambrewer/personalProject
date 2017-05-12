@@ -1,6 +1,7 @@
 angular.module('classroomApp').controller('dayViewCtrl', ($scope, $stateParams, mainSvc, $state) => {
   $scope.dayLessons = [];
-  console.log($stateParams.day);
+  console.log($stateParams.date);
+  $scope.date = new Date($stateParams.date)
   $scope.getLessons = () => {
     mainSvc.getLesson().then((response) => {
       for (let i = 0; i < response.length; i++) {
@@ -56,13 +57,14 @@ angular.module('classroomApp').controller('dayViewCtrl', ($scope, $stateParams, 
         }
       }
       for (let i = 0; i < response.length; i++) {
-        console.log($scope.lessons);
-        if (response[i].day === parseInt($stateParams.day)) {
+        response[i].date = new Date(response[i].date)
+        if (response[i].date.getTime() === $scope.date.getTime()) {
           $scope.dayLessons.push(response[i]);
 
         }
       }
     })
   }
+
   $scope.getLessons();
 })

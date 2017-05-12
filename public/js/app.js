@@ -10,6 +10,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
       .state('home', {
         url: '/home',
         templateUrl: '../views/home.html',
+        reload: true,
         controller: 'homeCtrl'
       })
       .state('class', {
@@ -64,7 +65,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
         contoller: 'plannerCtrl'
       })
       .state('dayView', {
-        url: '/:day',
+        url: '/:date',
         parent: 'home',
         templateUrl: '../views/dayView.html',
         controller: 'dayViewCtrl'

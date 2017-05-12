@@ -104,13 +104,21 @@
     }
   }
 }
-.lessonWrapper {
-  background: white;
-}
+
 .lessonSection {
-  h1 {
-    font-size: 2em;
+  .lessonHeader {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-size: 2em;
+    }
   }
+  .lessonWrapper {
+    background: white;
+  }
+
 .lessonCard {
     height: 22.5vh;
     overflow: auto;
@@ -140,7 +148,15 @@
   border: 3px ridge black;
   border-radius: 15px;
   background: white;
-
+  .dayViewHeader {
+    text-align: center;
+    font-size: 1.25em;
+    border-bottom: 3px solid black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .timeBlock {
     display: flex;
     justify-content: space-between;

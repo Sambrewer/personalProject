@@ -1,15 +1,52 @@
-<!-- <div class="control">
-  <button data-toggle="modal" data-target="#assignModal">New Assignment</button>
-  <button data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</button>
-  <button data-toggle="modal" data-target="#studentModal">Add Student</button>
-</div> -->
+<!-- <md-menu>
+  <md-button ng-click="$mdMenu.open()">New...</md-button>
+  <md-menu-content>
+    <md-menu-item>
+      <md-button data-toggle="modal" data-target="#assignModal">New Assignment</md-button>
+    </md-menu-item>
+    <md-menu-item>
+      <md-button data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</md-button>
+    </md-menu-item>
+    <md-menu-item>
+      <md-button data-toggle="modal" data-target="#studentModal">Add Student</md-button>
+    </md-menu-item>
+  </md-menu-content>
+</md-menu> -->
 <div class="plannerWrapper">
   <md-content class="plannerContent">
-    <md-nav-bar style="background: white;" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-      <md-nav-item md-nav-sref="planner" name="page1">Assignments:</md-nav-item>
-      <md-nav-item md-nav-sref="lessons" name="page2">Lesson Plans:</md-nav-item>
-      <md-nav-item md-nav-sref="students" name="page3">Students:</md-nav-item>
-    </md-nav-bar>
+    <div class="plannerHeader">
+      <div class="plannerNavBar">
+          <md-nav-bar class="plannerNav" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+          <md-nav-item md-nav-sref="planner" name="page1">Assignments:</md-nav-item>
+          <md-nav-item md-nav-sref="lessons" name="page2">Lesson Plans:</md-nav-item>
+          <md-nav-item md-nav-sref="students" name="page3">Students:</md-nav-item>
+        </md-nav-bar>
+      </div>
+      <div class="mobilePlannerNav">
+        <md-menu>
+          <md-button class="md-raised md-primary" ng-click="$mdMenu.open()"><i class="fa fa-bars"></i></md-button>
+          <md-menu-content>
+            <md-menu-item ui-sref="planner" name="page1">Assignments:</md-menu-item>
+            <md-menu-item ui-sref="lessons" name="page2">Lesson Plans:</md-menu-item>
+            <md-menu-item ui-sref="students" name="page3">Students:</md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+      <md-menu>
+        <md-button class="md-raised md-primary" ng-click="$mdMenu.open()">New...</md-button>
+        <md-menu-content>
+          <md-menu-item>
+            <md-button data-toggle="modal" data-target="#assignModal">New Assignment</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button data-toggle="modal" data-target="#lessonModal">New Lesson Plan</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button data-toggle="modal" data-target="#studentModal">New Student</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
       <ui-view>
         <div class="plannerViews">
           <div ng-repeat="assignment in assignments"  class="listCard">
@@ -19,13 +56,14 @@
           </div>
         </div>
     </ui-view>
+    <!-- <div class="control">
+      <md-button class="md-raised md-primary" data-toggle="modal" data-target="#assignModal">New Assignment</md-button>
+      <md-button class="md-raised md-primary" data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</md-button>
+      <md-button class="md-raised md-primary" data-toggle="modal" data-target="#studentModal">Add Student</md-button>
+    </div> -->
   </md-content>
 </div>
-<div class="control">
-  <md-button class="md-raised md-primary" data-toggle="modal" data-target="#assignModal">New Assignment</md-button>
-  <md-button class="md-raised md-primary" data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</md-button>
-  <md-button class="md-raised md-primary" data-toggle="modal" data-target="#studentModal">Add Student</md-button>
-</div>
+
 
 <div class="modal fade" id="assignModal">
   <div class="modal-dialog">

@@ -1,6 +1,21 @@
 <section class="lessonSection">
-  <div class="scoresHeader">
+  <div class="lessonHeader">
     <h1>{{lesson.name}}</h1>
+    <h1>{{lesson.date | date: 'MM/dd/yy'}}</h1>
+    <md-menu>
+      <md-button class="md-raised md-primary" ng-click="$mdMenu.open()">Edit <i class="fa fa-pencil-square"></i></md-button>
+      <md-menu-content>
+        <md-menu-item data-toggle="modal" data-target="#objModal"><md-button>Edit Objective</md-button></md-menu-item>
+        <md-menu-item data-toggle="modal" data-target="#verModal"><md-button>Edit Independant Practice</md-button></md-menu-item>
+        <md-menu-item data-toggle="modal" data-target="#infoModal"><md-button>Edit Information</md-button></md-menu-item>
+        <md-menu-item data-toggle="modal" data-target="#actModal"><md-button>Edit Guided Practice</md-button></md-menu-item>
+        <md-menu-item data-toggle="modal" data-target="#matModal"><md-button>Edit Materials</md-button></md-menu-item>
+        <md-menu-item data-toggle="modal" data-target="#miscModal"><md-button>Edit Other</md-button></md-menu-item>
+        <md-menu-item>
+          <md-button class="md-warn" ng-click="removeLesson(lesson.id)">Delete <i class="fa fa-trash-o"></i></md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
   </div>
   <div class="lessonWrapper">
     <div class="row">
@@ -9,14 +24,12 @@
           <h1>Objective</h1>
           <p>{{lesson.objective}}</p>
         </div>
-        <md-button class="md-raised md-primary lessonEdit" data-toggle="modal" data-target="#objModal"><i class="fa fa-pencil-square-o"></i></md-button>
       </div>
       <div class="col-md-8 verification lessonCard">
         <div class="">
           <h1>Independent Practice</h1>
           <p>{{lesson.verification}}</p>
         </div>
-        <md-button class="md-raised md-primary lessonEdit" data-toggle="modal" data-target="#verModal"><i class="fa fa-pencil-square-o"></i></md-button>
       </div>
     </div>
     <div class="row">
@@ -25,14 +38,12 @@
           <h1>Information</h1>
           <p>{{lesson.info}}</p>
         </div>
-        <md-button class="md-raised md-primary lessonEdit" data-toggle="modal" data-target="#infoModal"><i class="fa fa-pencil-square-o"></i></md-button>
       </div>
       <div class="col-md-8 activity lessonCard">
         <div class="">
           <h1>Guided Practice</h1>
           <p>{{lesson.activity}}</p>
         </div>
-        <md-button class="md-raised md-primary lessonEdit" data-toggle="modal" data-target="#actModal"><i class="fa fa-pencil-square-o"></i></md-button>
       </div>
     </div>
     <div class="row">
@@ -43,7 +54,6 @@
             <li ng-repeat="mat in lesson.requiredmats">{{mat}}</li>
           </ul>
         </div>
-        <md-button class="md-raised md-primary lessonEdit" data-toggle="modal" data-target="#matModal"><i class="fa fa-pencil-square-o"></i></md-button>
       </div>
       <div class="col-md-8 resources lessonCard">
         <div class="">
@@ -52,7 +62,6 @@
             <li ng-repeat="misc in lesson.other">{{misc}}</li>
           </ul>
         </div>
-        <md-button class="md-raised md-primary lessonEdit" data-toggle="modal" data-target="#miscModal"><i class="fa fa-pencil-square-o"></i></md-button>
       </div>
     </div>
   </div>

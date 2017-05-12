@@ -1,4 +1,4 @@
-angular.module('classroomApp').controller('lessonCtrl', ($scope, mainSvc, $stateParams) => {
+angular.module('classroomApp').controller('lessonCtrl', ($scope, mainSvc, $stateParams, $location) => {
 
 
   $scope.getThisLesson = () => {
@@ -23,7 +23,7 @@ angular.module('classroomApp').controller('lessonCtrl', ($scope, mainSvc, $state
 
 
   $scope.updateObj = (editObj) => {
-    console.log(editObj);
+    // console.log(editObj);
     mainSvc.updateObj(editObj, $stateParams.id).then((response) => {
       alert(response)
       $scope.getThisLesson()
@@ -76,6 +76,13 @@ angular.module('classroomApp').controller('lessonCtrl', ($scope, mainSvc, $state
     mainSvc.updateMisc(editMisc.split(','), $stateParams.id).then((response) => {
       alert(response)
       $scope.getThisLesson();
+    })
+  }
+  $scope.removeLesson = (id) => {
+    mainSvc.deleteLesson(id).then((response) => {
+      alert(response)
+      $location.path('/home')
+      $scope.getLessons()
     })
   }
 })

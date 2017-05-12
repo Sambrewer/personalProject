@@ -9,6 +9,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
   }).state('home', {
     url: '/home',
     templateUrl: '../views/home.html',
+    reload: true,
     controller: 'homeCtrl'
   }).state('class', {
     url: '/class',
@@ -54,7 +55,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
     templateUrl: '../views/students.html',
     contoller: 'plannerCtrl'
   }).state('dayView', {
-    url: '/:day',
+    url: '/:date',
     parent: 'home',
     templateUrl: '../views/dayView.html',
     controller: 'dayViewCtrl'
@@ -371,7 +372,8 @@ angular.module('classroomApp').controller('classroomCtrl', function ($scope, mai
 
 angular.module('classroomApp').controller('dayViewCtrl', function ($scope, $stateParams, mainSvc, $state) {
   $scope.dayLessons = [];
-  console.log($stateParams.day);
+  console.log($stateParams.date);
+  $scope.date = new Date($stateParams.date);
   $scope.getLessons = function () {
     mainSvc.getLesson().then(function (response) {
       for (var i = 0; i < response.length; i++) {
@@ -427,18 +429,17 @@ angular.module('classroomApp').controller('dayViewCtrl', function ($scope, $stat
         }
       }
       for (var _i = 0; _i < response.length; _i++) {
-        console.log($scope.lessons);
-        if (response[_i].day === parseInt($stateParams.day)) {
+        response[_i].date = new Date(response[_i].date);
+        if (response[_i].date.getTime() === $scope.date.getTime()) {
           $scope.dayLessons.push(response[_i]);
         }
       }
     });
   };
+
   $scope.getLessons();
 });
 'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc, $location) {
   var screenWidth = $window.innerWidth;
@@ -469,14 +470,14 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
     lessons: []
   };
   $scope.thu = {
-    lesson: []
+    lessons: []
   };
   $scope.fri = {
-    lesson: []
+    lessons: []
   };
   // $scope.yesterDate = new Date(`${todayMonth}/${yesterDate}/${todayYear}`)
   // console.log(today.getDate());
-  console.log($scope.yesterDate);
+  // console.log($scope.yesterDate);
 
   $scope.getLesson = function () {
     mainSvc.getLesson().then(function (response) {
@@ -497,9 +498,24 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.wed.date = new date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
             $scope.thu.date = new date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
             $scope.wed.date = new date(todayMonth + '/' + (todayDate + 4) + '/' + todayYear);
-            // for (let i = 0; i < response.length; i++) {
-            //   if (response[i].date === )
-            // }
+
+            for (var _i = 0; _i < response.length; _i++) {
+              if (response[_i].date.getTime() == $scope.mon.date.getTime()) {
+                $scope.mon.lessons.push(response[_i]);
+              }
+              if (response[_i].date.getTime() === $scope.tue.date.getTime()) {
+                $scope.tue.lessons.push(response[_i]);
+              }
+              if (response[_i].date.getTime() === $scope.wed.date.getTime()) {
+                $scope.wed.lessons.push(response[_i]);
+              }
+              if (response[_i].date.getTime() === $scope.thu.date.getTime()) {
+                $scope.thu.lessons.push(response[_i]);
+              }
+              if (response[_i].date.getTime() === $scope.fri.date.getTime()) {
+                $scope.fri.lessons.push(response[_i]);
+              }
+            }
           }
           break;
         case 2:
@@ -509,6 +525,24 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
             $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
             $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
+
+            for (var _i2 = 0; _i2 < response.length; _i2++) {
+              if (response[_i2].date.getTime() == $scope.mon.date.getTime()) {
+                $scope.mon.lessons.push(response[_i2]);
+              }
+              if (response[_i2].date.getTime() === $scope.tue.date.getTime()) {
+                $scope.tue.lessons.push(response[_i2]);
+              }
+              if (response[_i2].date.getTime() === $scope.wed.date.getTime()) {
+                $scope.wed.lessons.push(response[_i2]);
+              }
+              if (response[_i2].date.getTime() === $scope.thu.date.getTime()) {
+                $scope.thu.lessons.push(response[_i2]);
+              }
+              if (response[_i2].date.getTime() === $scope.fri.date.getTime()) {
+                $scope.fri.lessons.push(response[_i2]);
+              }
+            }
           }
           break;
         case 3:
@@ -518,6 +552,24 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.wed.date = today;
             $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
             $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
+
+            for (var _i3 = 0; _i3 < response.length; _i3++) {
+              if (response[_i3].date.getTime() == $scope.mon.date.getTime()) {
+                $scope.mon.lessons.push(response[_i3]);
+              }
+              if (response[_i3].date.getTime() === $scope.tue.date.getTime()) {
+                $scope.tue.lessons.push(response[_i3]);
+              }
+              if (response[_i3].date.getTime() === $scope.wed.date.getTime()) {
+                $scope.wed.lessons.push(response[_i3]);
+              }
+              if (response[_i3].date.getTime() === $scope.thu.date.getTime()) {
+                $scope.thu.lessons.push(response[_i3]);
+              }
+              if (response[_i3].date.getTime() === $scope.fri.date.getTime()) {
+                $scope.fri.lessons.push(response[_i3]);
+              }
+            }
           }
           break;
         case 4:
@@ -527,30 +579,24 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.wed.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
             $scope.thu.date = today;
             $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
-            console.log(_typeof(response[0].date), $scope.mon.date.toString());
-            for (var _i = 0; _i < response.length; _i++) {
-              var monDate = $scope.mon.date.getDate() + '/' + ($scope.mon.date.getMonth() + 1);
 
-              console.log(monDate);
-              if (response[_i].date.getDate() + '/' + (response[_i].date.getMonth() + 1) == $scope.mon.date.getDate() + '/' + ($scope.mon.date.getMonth + 1)) {
-                console.log('i fired');
-
-                $scope.mon.lessons.push(response[_i]);
+            for (var _i4 = 0; _i4 < response.length; _i4++) {
+              if (response[_i4].date.getTime() == $scope.mon.date.getTime()) {
+                $scope.mon.lessons.push(response[_i4]);
               }
-              if (new Date(response[_i].date) === $scope.tue.date) {
-                $scope.tue.lessons.push(response[_i]);
+              if (response[_i4].date.getTime() === $scope.tue.date.getTime()) {
+                $scope.tue.lessons.push(response[_i4]);
               }
-              if (new Date(response[_i].date) === $scope.wed.date) {
-                $scope.wed.lessons.push(response[_i]);
+              if (response[_i4].date.getTime() === $scope.wed.date.getTime()) {
+                $scope.wed.lessons.push(response[_i4]);
               }
-              if (new Date(response[_i].date) === $scope.thu.date) {
-                $scope.thu.lessons.push(response[_i]);
+              if (response[_i4].date.getTime() === $scope.thu.date.getTime()) {
+                $scope.thu.lessons.push(response[_i4]);
               }
-              if (new Date(response[_i].date) === $scope.fri.date) {
-                $scope.fri.lessons.push(response[_i]);
+              if (response[_i4].date.getTime() === $scope.fri.date.getTime()) {
+                $scope.fri.lessons.push(response[_i4]);
               }
             }
-            console.log($scope.mon, $scope.tue, $scope.wed, $scope.thu, $scope.fri);
           }
           break;
         case 5:
@@ -560,6 +606,23 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.wed.date = new Date(todayMonth + '/' + (todayDate - 2) + '/' + todayYear);
             $scope.thu.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
             $scope.fri.date = today;
+            for (var _i5 = 0; _i5 < response.length; _i5++) {
+              if (response[_i5].date.getTime() == $scope.mon.date.getTime()) {
+                $scope.mon.lessons.push(response[_i5]);
+              }
+              if (response[_i5].date.getTime() === $scope.tue.date.getTime()) {
+                $scope.tue.lessons.push(response[_i5]);
+              }
+              if (response[_i5].date.getTime() === $scope.wed.date.getTime()) {
+                $scope.wed.lessons.push(response[_i5]);
+              }
+              if (response[_i5].date.getTime() === $scope.thu.date.getTime()) {
+                $scope.thu.lessons.push(response[_i5]);
+              }
+              if (response[_i5].date.getTime() === $scope.fri.date.getTime()) {
+                $scope.fri.lessons.push(response[_i5]);
+              }
+            }
           }
           break;
       }
@@ -568,60 +631,57 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
         response[i].day = response[i].date.getDay();
         // console.log(response[i]);
       }
-      for (var _i2 = 0; _i2 < response.length; _i2++) {
-        switch (response[_i2].timeid) {
+      for (var _i6 = 0; _i6 < response.length; _i6++) {
+        switch (response[_i6].timeid) {
           case 1:
-            response[_i2].startTime = '8:00';
+            response[_i6].startTime = '8:00';
             break;
           case 2:
-            response[_i2].startTime = '9:00';
+            response[_i6].startTime = '9:00';
             break;
           case 3:
-            response[_i2].startTime = '10:00';
+            response[_i6].startTime = '10:00';
             break;
           case 4:
-            response[_i2].startTime = '11:00';
+            response[_i6].startTime = '11:00';
             break;
           case 5:
-            response[_i2].startTime = '12:00';
+            response[_i6].startTime = '12:00';
             break;
           case 6:
-            response[_i2].startTime = '1:00';
+            response[_i6].startTime = '1:00';
             break;
           case 7:
-            response[_i2].startTime = '2:00';
+            response[_i6].startTime = '2:00';
             break;
           case 8:
-            response[_i2].startTime = '3:00';
+            response[_i6].startTime = '3:00';
         }
-        switch (response[_i2].timeendid) {
+        switch (response[_i6].timeendid) {
           case 1:
-            response[_i2].endTime = '8:00';
+            response[_i6].endTime = '8:00';
             break;
           case 2:
-            response[_i2].endTime = '9:00';
+            response[_i6].endTime = '9:00';
             break;
           case 3:
-            response[_i2].endTime = '10:00';
+            response[_i6].endTime = '10:00';
             break;
           case 4:
-            response[_i2].endTime = '11:00';
+            response[_i6].endTime = '11:00';
             break;
           case 5:
-            response[_i2].endTime = '12:00';
+            response[_i6].endTime = '12:00';
             break;
           case 6:
-            response[_i2].endTime = '1:00';
+            response[_i6].endTime = '1:00';
             break;
           case 7:
-            response[_i2].endTime = '2:00';
+            response[_i6].endTime = '2:00';
             break;
           case 8:
-            response[_i2].endTime = '3:00';
+            response[_i6].endTime = '3:00';
         }
-      }
-      for (var _i3 = 0; _i3 < response.length; _i3++) {
-        console.log(response[_i3].day);
       }
     });
   };
@@ -630,7 +690,7 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
 });
 'use strict';
 
-angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSvc, $stateParams) {
+angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSvc, $stateParams, $location) {
 
   $scope.getThisLesson = function () {
     var id = parseInt($stateParams.id);
@@ -652,7 +712,7 @@ angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSv
   $scope.getAssignments();
 
   $scope.updateObj = function (editObj) {
-    console.log(editObj);
+    // console.log(editObj);
     mainSvc.updateObj(editObj, $stateParams.id).then(function (response) {
       alert(response);
       $scope.getThisLesson();
@@ -705,6 +765,13 @@ angular.module('classroomApp').controller('lessonCtrl', function ($scope, mainSv
     mainSvc.updateMisc(editMisc.split(','), $stateParams.id).then(function (response) {
       alert(response);
       $scope.getThisLesson();
+    });
+  };
+  $scope.removeLesson = function (id) {
+    mainSvc.deleteLesson(id).then(function (response) {
+      alert(response);
+      $location.path('/home');
+      $scope.getLessons();
     });
   };
 });

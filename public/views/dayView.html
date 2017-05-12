@@ -1,5 +1,8 @@
-<h1>{{date}}</h1>
+
 <div class="homeViewWrapper">
+  <div class="dayViewHeader">
+    <h1>{{date | date: 'MM/dd/yy'}}</h1>
+  </div>
   <div class="timeBlock" ng-repeat="lesson in dayLessons">
     <div>
       <h3>{{lesson.name}}</h3>

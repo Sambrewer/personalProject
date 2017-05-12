@@ -18,6 +18,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
   }).state('planner', {
     url: '/planner',
     parent: 'home',
+    reload: true,
     templateUrl: '../views/planner.html',
     controller: 'plannerCtrl'
   }).state('classroom', {
@@ -44,6 +45,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
   }).state('lessons', {
     url: '/lessons',
     parent: 'planner',
+    reload: true,
     templateUrl: '../views/lessons.html',
     contoller: 'plannerCtrl'
   }).state('students', {
@@ -436,6 +438,8 @@ angular.module('classroomApp').controller('dayViewCtrl', function ($scope, $stat
 });
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc, $location) {
   var screenWidth = $window.innerWidth;
   if (screenWidth <= 600) {
@@ -454,97 +458,170 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
     // console.log($scope.currentUser);
   };
   $scope.getUser();
-  var today = new Date();
-  var todayMonth = today.getMonth() + 1;
-  var todayDate = today.getDate();
-  var todayYear = today.getFullYear();
-  $scope.mon = [];
-  $scope.tue = [];
-  $scope.wed = [];
-  $scope.thu = [];
-  $scope.fri = [];
-  $scope.date = todayMonth + '/' + todayDate + '/' + todayYear;
+
+  $scope.mon = {
+    lessons: []
+  };
+  $scope.tue = {
+    lessons: []
+  };
+  $scope.wed = {
+    lessons: []
+  };
+  $scope.thu = {
+    lesson: []
+  };
+  $scope.fri = {
+    lesson: []
+  };
+  // $scope.yesterDate = new Date(`${todayMonth}/${yesterDate}/${todayYear}`)
   // console.log(today.getDate());
+  console.log($scope.yesterDate);
+
   $scope.getLesson = function () {
     mainSvc.getLesson().then(function (response) {
       console.log(response);
+      for (var i = 0; i < response.length; i++) {
+        response[i].date = new Date(response[i].date);
+      }
+      var today = new Date();
+      var todayMonth = today.getMonth() + 1;
+      var todayDate = today.getDate();
+      var todayYear = today.getFullYear();
       // console.log($scope.wed);
+      switch (today.getDay()) {
+        case 1:
+          {
+            $scope.mon.date = today;
+            $scope.tue.date = new date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
+            $scope.wed.date = new date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
+            $scope.thu.date = new date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
+            $scope.wed.date = new date(todayMonth + '/' + (todayDate + 4) + '/' + todayYear);
+            // for (let i = 0; i < response.length; i++) {
+            //   if (response[i].date === )
+            // }
+          }
+          break;
+        case 2:
+          {
+            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.tue.date = today;
+            $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
+            $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
+            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
+          }
+          break;
+        case 3:
+          {
+            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 2) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.wed.date = today;
+            $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
+            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
+          }
+          break;
+        case 4:
+          {
+            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 3) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todayDate - 2) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.thu.date = today;
+            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
+            console.log(_typeof(response[0].date), $scope.mon.date.toString());
+            for (var _i = 0; _i < response.length; _i++) {
+              var monDate = $scope.mon.date.getDate() + '/' + ($scope.mon.date.getMonth() + 1);
+
+              console.log(monDate);
+              if (response[_i].date.getDate() + '/' + (response[_i].date.getMonth() + 1) == $scope.mon.date.getDate() + '/' + ($scope.mon.date.getMonth + 1)) {
+                console.log('i fired');
+
+                $scope.mon.lessons.push(response[_i]);
+              }
+              if (new Date(response[_i].date) === $scope.tue.date) {
+                $scope.tue.lessons.push(response[_i]);
+              }
+              if (new Date(response[_i].date) === $scope.wed.date) {
+                $scope.wed.lessons.push(response[_i]);
+              }
+              if (new Date(response[_i].date) === $scope.thu.date) {
+                $scope.thu.lessons.push(response[_i]);
+              }
+              if (new Date(response[_i].date) === $scope.fri.date) {
+                $scope.fri.lessons.push(response[_i]);
+              }
+            }
+            console.log($scope.mon, $scope.tue, $scope.wed, $scope.thu, $scope.fri);
+          }
+          break;
+        case 5:
+          {
+            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 4) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todayDate - 3) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todayDate - 2) + '/' + todayYear);
+            $scope.thu.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.fri.date = today;
+          }
+          break;
+      }
       for (var i = 0; i < response.length; i++) {
         response[i].date = new Date(response[i].date);
         response[i].day = response[i].date.getDay();
         // console.log(response[i]);
       }
-      for (var _i = 0; _i < response.length; _i++) {
-        switch (response[_i].timeid) {
+      for (var _i2 = 0; _i2 < response.length; _i2++) {
+        switch (response[_i2].timeid) {
           case 1:
-            response[_i].startTime = '8:00';
+            response[_i2].startTime = '8:00';
             break;
           case 2:
-            response[_i].startTime = '9:00';
+            response[_i2].startTime = '9:00';
             break;
           case 3:
-            response[_i].startTime = '10:00';
+            response[_i2].startTime = '10:00';
             break;
           case 4:
-            response[_i].startTime = '11:00';
+            response[_i2].startTime = '11:00';
             break;
           case 5:
-            response[_i].startTime = '12:00';
+            response[_i2].startTime = '12:00';
             break;
           case 6:
-            response[_i].startTime = '1:00';
+            response[_i2].startTime = '1:00';
             break;
           case 7:
-            response[_i].startTime = '2:00';
+            response[_i2].startTime = '2:00';
             break;
           case 8:
-            response[_i].startTime = '3:00';
+            response[_i2].startTime = '3:00';
         }
-        switch (response[_i].timeendid) {
+        switch (response[_i2].timeendid) {
           case 1:
-            response[_i].endTime = '8:00';
+            response[_i2].endTime = '8:00';
             break;
           case 2:
-            response[_i].endTime = '9:00';
+            response[_i2].endTime = '9:00';
             break;
           case 3:
-            response[_i].endTime = '10:00';
+            response[_i2].endTime = '10:00';
             break;
           case 4:
-            response[_i].endTime = '11:00';
+            response[_i2].endTime = '11:00';
             break;
           case 5:
-            response[_i].endTime = '12:00';
+            response[_i2].endTime = '12:00';
             break;
           case 6:
-            response[_i].endTime = '1:00';
+            response[_i2].endTime = '1:00';
             break;
           case 7:
-            response[_i].endTime = '2:00';
+            response[_i2].endTime = '2:00';
             break;
           case 8:
-            response[_i].endTime = '3:00';
+            response[_i2].endTime = '3:00';
         }
       }
-      for (var _i2 = 0; _i2 < response.length; _i2++) {
-        console.log(response[_i2].day);
-        switch (response[_i2].day) {
-          case 1:
-            $scope.mon.push(response[_i2]);
-            break;
-          case 2:
-            $scope.tue.push(response[_i2]);
-            break;
-          case 3:
-            $scope.wed.push(response[_i2]);
-            break;
-          case 4:
-            $scope.thu.push(response[_i2]);
-            break;
-          case 5:
-            $scope.fri.push(response[_i2]);
-            break;
-        }
+      for (var _i3 = 0; _i3 < response.length; _i3++) {
+        console.log(response[_i3].day);
       }
     });
   };
@@ -666,6 +743,12 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
       $scope.getAssignments();
     });
   };
+  $scope.getLessons = function () {
+    mainSvc.getLesson().then(function (response) {
+      $scope.lessons = response;
+      // console.log($scope.lessons);
+    });
+  };
   $scope.addLesson = function (newLesson) {
     var addMats = [];
     var addedLesson = {};
@@ -694,12 +777,7 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     console.log(addedLesson);
     mainSvc.addLesson(newLesson).then(function (response) {
       alert(response);
-    });
-  };
-  $scope.getLessons = function () {
-    mainSvc.getLesson().then(function (response) {
-      $scope.lessons = response;
-      // console.log($scope.lessons);
+      $scope.getLessons();
     });
   };
   $scope.getLessons();

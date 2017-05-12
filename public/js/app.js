@@ -21,6 +21,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
       .state('planner', {
         url: '/planner',
         parent: 'home',
+        reload: true,
         templateUrl: '../views/planner.html',
         controller: 'plannerCtrl'
       })
@@ -52,6 +53,7 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
       .state('lessons', {
         url: '/lessons',
         parent: 'planner',
+        reload: true,
         templateUrl: '../views/lessons.html',
         contoller: 'plannerCtrl'
       })

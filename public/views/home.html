@@ -24,33 +24,33 @@
   <ui-view>
     <div class="weekWrapper">
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 1})">Monday</md-button>
+        <md-button ui-sref="dayView({day: 1})">Monday {{mon.date | date: 'dd/MM'}}</md-button>
         <ul>
-          <li ng-repeat="lesson in mon">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+          <li ng-repeat="lesson in mon.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 2})">Tuesday</md-button>
+        <md-button ui-sref="dayView({day: 2})">Tuesday {{tue.date | date: 'dd/MM'}}</md-button>
         <ul>
-          <li ng-repeat="lesson in tue">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+          <li ng-repeat="lesson in tue.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 3})">Wednesday</md-button>
+        <md-button ui-sref="dayView({day: 3})">Wednesday {{wed.date | date: 'dd/MM'}}</md-button>
         <ul>
-          <li ng-repeat="lesson in wed">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+          <li ng-repeat="lesson in wed.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 4})">Thursday</md-button>
+        <md-button ui-sref="dayView({day: 4})">Thursday {{thu.date | date: 'dd/MM'}}</md-button>
         <ul>
-          <li ng-repeat="lesson in thu">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+          <li ng-repeat="lesson in thu.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
       <div class="dayWrapper">
-        <md-button ui-sref="dayView({day: 5})">Friday</md-button>
+        <md-button ui-sref="dayView({day: 5})">Friday {{fri.date | date: 'dd/MM'}}</md-button>
         <ul>
-          <li ng-repeat="lesson in fri">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
+          <li ng-repeat="lesson in fri.lessons">{{lesson.name}} {{lesson.startTime}} - {{lesson.endTime}}</li>
         </ul>
       </div>
     </div>

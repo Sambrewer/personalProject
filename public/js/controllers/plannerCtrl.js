@@ -12,6 +12,12 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
       $scope.getAssignments();
     })
   }
+  $scope.getLessons = () => {
+    mainSvc.getLesson().then((response) => {
+      $scope.lessons = response
+      // console.log($scope.lessons);
+    })
+  }
   $scope.addLesson = (newLesson) => {
     let addMats = [];
     let addedLesson = {};
@@ -40,12 +46,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     console.log(addedLesson);
     mainSvc.addLesson(newLesson).then((response) => {
       alert(response);
-    })
-  }
-  $scope.getLessons = () => {
-    mainSvc.getLesson().then((response) => {
-      $scope.lessons = response
-      // console.log($scope.lessons);
+      $scope.getLessons();
     })
   }
   $scope.getLessons()

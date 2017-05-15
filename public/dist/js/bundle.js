@@ -434,7 +434,8 @@ angular.module('classroomApp').controller('dayViewCtrl', function ($scope, $stat
       }
       for (var _i = 0; _i < response.length; _i++) {
         response[_i].date = new Date(response[_i].date);
-        if (response[_i].date.getTime() === $scope.date.getTime()) {
+        response[_i].date.setHours(0);
+        if (response[_i].date.getTime() === $scope.date.getTime) {
           $scope.dayLessons.push(response[_i]);
         }
       }

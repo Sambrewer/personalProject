@@ -1,13 +1,11 @@
 const express = require('express')
-    // , bodyParser = require('body-parser')
+    , bodyParser = require('body-parser')
     , session = require('express-session')
     , cors = require('cors')
     , massive = require('massive')
     , axios = require('axios')
     , config = require('./config.js')
     // , babel = require('babel')
-const bodyParser = require('body-parser');
-require('body-parser-xml')(bodyParser)
 
 const port = 3000;
 const conn = massive.connectSync({
@@ -28,7 +26,6 @@ app.use(session({
 }));
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json());
-app.use(bodyParser.xml())
 const parseString = require('xml2js').parseString
 app.get('/api/users', (req, res) => {
   res.send(req.session.currentUser)

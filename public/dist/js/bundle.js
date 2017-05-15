@@ -492,7 +492,7 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
       }
       var today = new Date();
       var todayMonth = today.getMonth() + 1;
-      var todayDate = today.getDate();
+      var todayDate = today.getDate() + 1;
       var todayYear = today.getFullYear();
       // console.log($scope.wed);
       switch (today.getDay()) {

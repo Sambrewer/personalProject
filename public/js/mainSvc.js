@@ -1,11 +1,10 @@
 angular.module('classroomApp').service('mainSvc', function($http) {
-  const baseUrl = 'http://localhost:3000/';
   this.login = function(user) {
     // console.log(user);
 
      return $http({
        method: 'POST',
-       url: baseUrl + 'api/users',
+       url: '/api/users',
        data: user
      }).then((response) => {
       //  console.log(response);
@@ -13,48 +12,48 @@ angular.module('classroomApp').service('mainSvc', function($http) {
      })
   }
   this.getUser = function() {
-    return $http.get(baseUrl + 'api/users').then(function(response) {
+    return $http.get( + '/api/users').then(function(response) {
       // console.log(response.data[0]);
       return response.data[0]
     })
   }
   this.getStudents = function() {
-    return $http.get(baseUrl + 'api/students').then(function(response) {
+    return $http.get('/api/students').then(function(response) {
       // console.log(response);
       return response.data;
     })
   }
   this.getAssignments = () => {
-    return $http.get(baseUrl + 'api/assignments').then((response) => {
+    return $http.get('/api/assignments').then((response) => {
       return response.data;
     })
   }
   this.getScore = (id)=>{
-    return $http.get(`${baseUrl}api/scores/${id}`).then((response) => {
+    return $http.get(`/api/scores/${id}`).then((response) => {
       return response.data;
     })
   }
   this.getGrades = (id)=>{
     console.log('get grades');
-    return $http.get(`${baseUrl}test/${id}`).then((response) => {
+    return $http.get(`/test/${id}`).then((response) => {
       // console.log('Get Request', response.data);
       return response.data
     })
   }
   this.getBehaviour = () => {
-    return $http.get(`${baseUrl}behaviour`).then((response) => {
+    return $http.get(`/behaviour`).then((response) => {
       // console.log('service', response.data);
       return response.data
     })
   }
   this.getLesson = () => {
-    return $http.get(`${baseUrl}api/lesson`).then((response) => {
+    return $http.get(`/api/lesson`).then((response) => {
       // console.log(response.data);
       return response.data
     })
   }
   this.getDef = (word) => {
-    return $http.get(`${baseUrl}api/definition/${word}`).then((response) => {
+    return $http.get(`/api/definition/${word}`).then((response) => {
       console.log(response.data.entry_list.entry[0]);
       return response.data.entry_list.entry[0];
     })
@@ -62,7 +61,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.addScore = (score) => {
     return $http({
       method: 'POST',
-      url: baseUrl + 'api/scores',
+      url: '/api/scores',
       data: score
     }).then((response) => {
       return response.data;
@@ -71,7 +70,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.addAssignment = (assignment) => {
     return $http({
       method: 'POST',
-      url: baseUrl + 'api/assignments',
+      url: '/api/assignments',
       data: assignment
     }).then((response) => {
       // console.log(response);
@@ -81,7 +80,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.addLesson = (lesson) => {
     return $http({
       method: 'POST',
-      url: `${baseUrl}api/lesson`,
+      url: `/api/lesson`,
       data: lesson
     }).then((response) => {
       // console.log(response.data);
@@ -91,7 +90,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.addStudent = (student) => {
     return $http({
       method: 'POST',
-      url: `${baseUrl}api/students`,
+      url: `/api/students`,
       data: student
     }).then((response) => {
       return response.data;
@@ -100,7 +99,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.addTeacher = (teacher) => {
     return $http({
       method: `POST`,
-      url: `${baseUrl}api/teachers`,
+      url: `/api/teachers`,
       data: teacher
     }).then((response) => {
       return response.data
@@ -109,7 +108,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.behaveUpdate = (behave) => {
     return $http({
       method: 'PUT',
-      url: `${baseUrl}api/behave`,
+      url: `/api/behave`,
       data: behave
     }).then((response) => {
       // console.log(response);
@@ -120,7 +119,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
     console.log(upObj);
     return $http({
       method: 'PUT',
-      url: `${baseUrl}api/lesson/${id}/objective`,
+      url: `/api/lesson/${id}/objective`,
       data: {
         objective: upObj
       }
@@ -131,7 +130,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.updateVer = (upVer, id) => {
     return $http({
       method: 'PUT',
-      url: `${baseUrl}api/lesson/${id}/verification`,
+      url: `/api/lesson/${id}/verification`,
       data: {
         verification: upVer
       }
@@ -142,7 +141,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.updateInfo = (upInfo, id) => {
     return $http({
       method: `PUT`,
-      url: `${baseUrl}api/lesson/${id}/information`,
+      url: `/api/lesson/${id}/information`,
       data: {
         information: upInfo
       }
@@ -154,7 +153,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.updateAct = (upAct, id) => {
     return $http({
       method: `PUT`,
-      url: `${baseUrl}api/lesson/${id}/activity`,
+      url: `/api/lesson/${id}/activity`,
       data: {
         activity: upAct
       }
@@ -165,7 +164,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.updateMat = (upMat, id) => {
     return $http({
       method: `PUT`,
-      url: `${baseUrl}api/lesson/${id}/materials`,
+      url: `/api/lesson/${id}/materials`,
       data: {
         materials: upMat
       }
@@ -176,7 +175,7 @@ angular.module('classroomApp').service('mainSvc', function($http) {
   this.updateMisc = (upMisc, id) => {
     return $http({
       method: `PUT`,
-      url: `${baseUrl}api/lesson/${id}/other`,
+      url: `/api/lesson/${id}/other`,
       data: {
         other: upMisc
       }
@@ -185,20 +184,20 @@ angular.module('classroomApp').service('mainSvc', function($http) {
     })
   }
   this.deleteAssignment = (id) => {
-    return $http.delete(`${baseUrl}api/assignment/${id}`)
+    return $http.delete(`/api/assignment/${id}`)
     .then((response) => {
       return response.data
     })
   }
   this.deleteLesson = (id) => {
-    return $http.delete(`${baseUrl}api/lesson/${id}`)
+    return $http.delete(`/api/lesson/${id}`)
     .then((response) => {
       // console.log(response.data);
       return response.data
     })
   }
   this.deleteStudent = (id) => {
-    return $http.delete(`${baseUrl}api/student/${id}`)
+    return $http.delete(`/api/student/${id}`)
     .then((response) => {
       // console.log(response.data);
       return response.data;

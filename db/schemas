@@ -1,0 +1,6 @@
+INSERT INTO teachers(username,password,name,imgurl) VALUES ('gtheog','friend','Gan Grey','someurl');
+INSERT INTO teachers(username,password,name,imgurl) VALUES ('uronlyhope','oldben','Ben Kenobi','someurl');
+INSERT INTO teachers(username,password,name,imgurl) VALUES ('ravenboi','oldmistakes','Med Ivh','someurl');
+INSERT INTO teachers(username,password,name,imgurl) VALUES ('profx','coexist','Charlie Xavier','someurl');
+INSERT INTO teachers(username,password,name,imgurl) VALUES ('bumblebee','i<3fawx','Dumb L Door','someurl');
+INSERT INTO teachers(username,password,name,imgurl) VALUES ('dnabatman','Blink-182','Sam Brewer','someurl');

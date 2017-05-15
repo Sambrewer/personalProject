@@ -9,7 +9,7 @@ const express = require('express')
 
 const port = 3000;
 const conn = massive.connectSync({
-  connectionString: "postgres://postgres:Blink-182@localhost/personalproj"
+  connectionString: config.dbconn
 })
 const corsOptions = {
   origin: 'http://localhost:3000'

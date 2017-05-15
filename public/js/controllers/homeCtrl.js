@@ -73,20 +73,20 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.fri.date = new Date(`${todayMonth}/${todaysDate + 4}/${todayYear}`)
 
           for (let i = 0; i < response.length; i++) {
-            if (response[i].date.getTime() === $scope.mon.date.getTime()) {
+            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
               console.log('hola');
               $scope.mon.lessons.push(response[i])
             }
-            if (response[i].date.getTime() === $scope.tue.date.getTime()) {
+            if (response[i].date.getTime() == $scope.tue.date.getTime()) {
               $scope.tue.lessons.push(response[i])
             }
-            if (response[i].date.getTime() === $scope.wed.date.getTime()) {
+            if (response[i].date.getTime() == $scope.wed.date.getTime()) {
               $scope.wed.lessons.push(response[i])
             }
-            if (response[i].date.getTime() === $scope.thu.date.getTime()) {
+            if (response[i].date.getTime() == $scope.thu.date.getTime()) {
               $scope.thu.lessons.push(response[i])
             }
-            if (response[i].date.getTime() === $scope.fri.date.getTime()) {
+            if (response[i].date.getTime() == $scope.fri.date.getTime()) {
               $scope.fri.lessons.push(response[i])
             }
           }

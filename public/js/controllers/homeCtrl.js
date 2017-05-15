@@ -74,11 +74,11 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.fri.date = new Date(`${todayMonth}/${todaysDate + 4}/${todayYear}`)
 
           for (let i = 0; i < response.length; i++) {
-            if (response[i].date.getTime() == $scope.mon.date.getTime() - 18) {
+            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
               console.log('hola');
               $scope.mon.lessons.push(response[i])
             }
-            if (response[i].date.getTime() == $scope.tue.date.getTime() - 18) {
+            if (response[i].date.getTime() == $scope.tue.date.getTime()) {
               $scope.tue.lessons.push(response[i])
             }
             if (response[i].date.getTime() == $scope.wed.date.getTime()) {

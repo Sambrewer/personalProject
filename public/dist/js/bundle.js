@@ -521,11 +521,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.fri.date = new Date(todayMonth + '/' + (todaysDate + 4) + '/' + todayYear);
 
             for (var _i = 0; _i < response.length; _i++) {
-              if (response[_i].date.getTime() == $scope.mon.date.getTime() - 18) {
+              if (response[_i].date.getTime() == $scope.mon.date.getTime()) {
                 console.log('hola');
                 $scope.mon.lessons.push(response[_i]);
               }
-              if (response[_i].date.getTime() == $scope.tue.date.getTime() - 18) {
+              if (response[_i].date.getTime() == $scope.tue.date.getTime()) {
                 $scope.tue.lessons.push(response[_i]);
               }
               if (response[_i].date.getTime() == $scope.wed.date.getTime()) {

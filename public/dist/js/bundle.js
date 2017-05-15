@@ -905,8 +905,8 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     if (newLesson.misc !== []) {
       newLesson.misc = newLesson.misc.split(',');
     }
-    // let date = `${newLesson.date.getMonth() + 1}/${newLesson.date.getDate()}/${newLesson.date.getYear() + 1900}`
-    console.log(newLesson.date);
+    var date = newLesson.date.getMonth() + 1 + '/' + newLesson.date.getDate() + '/' + (newLesson.date.getYear() + 1900);
+    console.log(date);
     newLesson.vocabulary = newLesson.vocabulary.split(',');
     console.log(newLesson);
     mainSvc.addLesson(newLesson).then(function (response) {

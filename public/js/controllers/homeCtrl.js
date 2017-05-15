@@ -57,7 +57,7 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
       }
       let todayDate = new Date();
       let todayMonth = todayDate.getMonth() + 1;
-      let todaysDate = todayDate.getDate() + 1
+      let todaysDate = todayDate.getDate()
       let todayYear = todayDate.getFullYear()
       let today = new Date(`${todayMonth}/${todaysDate}/${todayYear}`)
       console.log(today);

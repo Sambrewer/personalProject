@@ -499,7 +499,9 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
       $scope.thu.lessons.splice(0);
       $scope.fri.lessons.splice(0);
       for (var i = 0; i < response.length; i++) {
-        response[i].date = new Date(response[i].date);
+        var newDate = new Date(response[i].date);
+        response[i].date = newDate;
+        console.log(newDate);
       }
       var todayDate = new Date();
       var todayMonth = todayDate.getMonth() + 1;

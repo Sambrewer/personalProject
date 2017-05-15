@@ -877,7 +877,7 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
   $scope.getAssignments();
   $scope.addAssignment = function (assignment) {
     mainSvc.addAssignment(assignment).then(function (response) {
-      $mdToast.show($mdToast.simple().textContent('Incorrect Username/Password').hideDelay(3000));
+      $mdToast.show($mdToast.simple().textContent(response).hideDelay(3000));
       $scope.getAssignments();
     });
   };

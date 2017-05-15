@@ -10,7 +10,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     mainSvc.addAssignment(assignment).then(function(response) {
       $mdToast.show(
         $mdToast.simple()
-        .textContent('Incorrect Username/Password')
+        .textContent(response)
         .hideDelay(3000)
       )
       $scope.getAssignments();

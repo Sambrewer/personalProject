@@ -701,11 +701,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             response[_i6].endTime = '3:00';
         }
       }
+      console.log('homeCtrl', $scope);
     });
   };
 
   $scope.getLesson();
-  console.log('homeCtrl', $scope);
 });
 'use strict';
 

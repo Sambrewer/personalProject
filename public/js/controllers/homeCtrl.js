@@ -250,9 +250,10 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
             response[i].endTime = '3:00'
         }
       }
+      console.log('homeCtrl', $scope);
     })
   }
 
   $scope.getLesson();
-  console.log('homeCtrl', $scope);
+
 })

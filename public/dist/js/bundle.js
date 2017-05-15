@@ -503,7 +503,7 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
       }
       var todayDate = new Date();
       var todayMonth = todayDate.getMonth() + 1;
-      var todaysDate = todayDate.getDate();
+      var todaysDate = todayDate.getDate() + 1;
       var todayYear = todayDate.getFullYear();
       var today = new Date(todayMonth + '/' + todaysDate + '/' + todayYear);
       console.log(today);

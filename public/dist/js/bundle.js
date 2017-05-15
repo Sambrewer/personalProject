@@ -79,7 +79,7 @@ angular.module('classroomApp').service('mainSvc', function ($http) {
     });
   };
   this.getUser = function () {
-    return $http.get(+'/api/users').then(function (response) {
+    return $http.get('/api/users').then(function (response) {
       // console.log(response.data[0]);
       return response.data[0];
     });

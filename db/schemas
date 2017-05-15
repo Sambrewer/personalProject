@@ -4,3 +4,61 @@ INSERT INTO teachers(username,password,name,imgurl) VALUES ('ravenboi','oldmista
 INSERT INTO teachers(username,password,name,imgurl) VALUES ('profx','coexist','Charlie Xavier','someurl');
 INSERT INTO teachers(username,password,name,imgurl) VALUES ('bumblebee','i<3fawx','Dumb L Door','someurl');
 INSERT INTO teachers(username,password,name,imgurl) VALUES ('dnabatman','Blink-182','Sam Brewer','someurl');
+
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Andy Groundflyer','Sammy Groundflyer','darkside@rulez.com',6,4);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Billy Baggins','Bungo Baggins','whatsinmy@pocket.com',5,4);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Phil Took','Pappy Took','shineyorbs@palantir.com',5,4);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Froad Baggins','Billy Baggins','missmyfinger@doom.com',5,4);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Sammy Gamgee','Gaffer Gamgee','froadbff@froad.com',5,4);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Merry BB','Pappy BB','intelligent@persons.com',5,4);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Arrtoo Deetoo','Internal CPUs','beepbeep@boop.com',6,5);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Seethri Peo','Internal CPUs','errthing@ishard.com',6,4);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Lacy Groundflyer','New Asteroids','alderaan@rulez.com',6,3);
+INSERT INTO students(name,guardian,email,roomid,behaveid) VALUES ('Larry Groundflyer','Burnt Skeletons','bored@tattooine.com',6,6);
+
+INSERT INTO behaviour(behaveid,name) VALUES (behaveid,'name');
+INSERT INTO behaviour(behaveid,name) VALUES (1,'Parent Contact');
+INSERT INTO behaviour(behaveid,name) VALUES (2,'Teachers Choice');
+INSERT INTO behaviour(behaveid,name) VALUES (3,'Stop and Think');
+INSERT INTO behaviour(behaveid,name) VALUES (4,'Ready To Learn');
+INSERT INTO behaviour(behaveid,name) VALUES (5,'Good Day');
+INSERT INTO behaviour(behaveid,name) VALUES (6,'Great Job');
+INSERT INTO behaviour(behaveid,name) VALUES (7,'Outstanding');
+
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (id,'subject','type',teacherid,'name');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (3,'Reading','In Class Work',NULL,'Section 1');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (7,'Math','Quiz',6,'Toy Problem');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (9,'Writing','In Class Work',6,'Creative Writing');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (10,'Science','Test',6,'Astronomy 1');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (11,'Reading','Test',6,'Chapter 2');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (12,'Reading','Test',6,'Chapter 3');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (13,'Reading','Test',6,'Chapter 4');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (14,'Reading','Test',6,'Chapter 5');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (15,'Science','Test',6,'Chapter 2');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (16,'Science','Test',6,'Chapter 3');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (17,'Science','Test',6,'Chapter 4');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (18,'Science','Test',6,'Chapter 5');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (19,'Writing','Test',6,'Chapter 2');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (20,'Writing','Test',6,'Chapter 3');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (21,'Writing','Test',6,'Chapter 4');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (22,'Writing','Test',6,'Chapter 5');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (26,'Math','Quiz',5,'test1gan');
+INSERT INTO assignments(id,subject,type,teacherid,name) VALUES (27,'Math','Quiz',5,'test2gan');
+
+
+INSERT INTO score(studentid,assignid,score,id) VALUES (1,26,100,25);
+INSERT INTO score(studentid,assignid,score,id) VALUES (6,7,100,26);
+INSERT INTO score(studentid,assignid,score,id) VALUES (6,9,100,27);
+INSERT INTO score(studentid,assignid,score,id) VALUES (6,10,96,28);
+
+
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (2,'test1','test1','test1','[u''Pencil'', u''Paper'']','[u''test1'', u'' test1'', u'' test1'', u'' test1'']',6,'Chapter 10','test1',4,5,'Reading','2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (6,'test4','test4','test4','[u''Pencil'', u''Paper'', u''Book'', u''Scissors'', u''Glue'', u''Crayons'']','[u''fork'', u''spoon'', u''knife'']',6,'Astronomy 1','test4',6,7,'Reading','2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (7,'test5','test5','test5','[u''Pencil'', u''Paper'', u''Book'', u''Scissors'', u''Glue'', u''Crayons'']','[u''fork'', u''spoon'', u''knife'']',6,'Astronomy 1','test5',7,8,'Reading','2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (8,'test6','TEST6','test6','[u''Pencil'', u''Glue'']','[u''test6'', u''test6'', u''test6'']',6,'Creative Writing','test6',3,4,'Reading','2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (24,'test','test','test','[u''Pencil'', u''Book'']','[u''test'', u''test'']',6,'Creative Writing','test',4,5,NULL,'2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (29,'Learn to add numbers','Numbers and the sum of them','We will add more numbers',NULL,'[u''Calculator'']',6,'Toy Problem','Addition',2,3,'Math','2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (28,'Learn to read more betterrer','Reading from left to right','Read Chapter 2',NULL,'[u''Eyeballs'', u''Hands'']',6,'Chapter 2','Reading',1,2,'Reading','2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (23,'Learn to update','This lesson is about updating','Update something as a class','[u''Paper'', u''Pencil'', u''Book'', u''Scissors'', u''Glue'', u''Crayons'']','[u''test1'', u''test2'', u''test3'', u''test4'']',6,'Update something','update',2,3,'Reading','2017-05-11');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (31,'Read dates','We Will be talking about dates and such','make a Schedule',NULL,'[u''calendar'', u''watch'']',6,'Creative Writing','Date Sort',1,2,'Math','2017-05-08');
+INSERT INTO lesson(id,objective,info,activity,requiredmats,other,teacherid,verification,name,timeid,timeendid,subject,date) VALUES (32,'see if this shows up despite being in a different week','testing the date sort algorithm','add this to the calendar',NULL,'[u''calendar'', u''watch'']',6,'Creative Writing','non-sort',2,3,'Math','2017-05-15');

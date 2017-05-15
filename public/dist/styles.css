@@ -15,9 +15,6 @@
     color: black; }
     .classWrapper .studentContainer div h1 {
       margin-bottom: 10px; }
-    .classWrapper .studentContainer div button {
-      margin-bottom: 10px;
-      border-radius: 5px; }
     .classWrapper .studentContainer div .addScore {
       position: absolute;
       bottom: 45px; }

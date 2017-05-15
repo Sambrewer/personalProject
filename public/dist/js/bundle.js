@@ -499,10 +499,10 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
         case 1:
           {
             $scope.mon.date = today;
-            $scope.tue.date = new date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
-            $scope.wed.date = new date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
-            $scope.thu.date = new date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
-            $scope.wed.date = new date(todayMonth + '/' + (todayDate + 4) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
+            $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 4) + '/' + todayYear);
 
             for (var _i = 0; _i < response.length; _i++) {
               if (response[_i].date.getTime() == $scope.mon.date.getTime()) {

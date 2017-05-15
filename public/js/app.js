@@ -10,7 +10,6 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
       .state('home', {
         url: '/home',
         templateUrl: '../views/home.html',
-        reload: true,
         controller: 'homeCtrl'
       })
       .state('class', {

@@ -9,7 +9,6 @@ angular.module('classroomApp', ['ui.router', 'ngMaterial', 'ngMessages', 'materi
   }).state('home', {
     url: '/home',
     templateUrl: '../views/home.html',
-    reload: true,
     controller: 'homeCtrl'
   }).state('class', {
     url: '/class',
@@ -446,7 +445,8 @@ angular.module('classroomApp').controller('dayViewCtrl', function ($scope, $stat
 });
 'use strict';
 
-angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc, $location) {
+angular.module('classroomApp').controller('homeCtrl', function ($scope, $window, mainSvc, $location, $state) {
+  // $state.reload()
   var screenWidth = $window.innerWidth;
   if (screenWidth <= 600) {
     $scope.show = false;
@@ -480,32 +480,45 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
   $scope.fri = {
     lessons: []
   };
+  // $scope.mon.lessons.splice(0)
+  // $scope.tue.lessons.splice(0)
+  // $scope.wed.lessons.splice(0)
+  // $scope.thu.lessons.splice(0)
+  // $scope.fri.lessons.splice(0)
   // $scope.yesterDate = new Date(`${todayMonth}/${yesterDate}/${todayYear}`)
   // console.log(today.getDate());
   // console.log($scope.yesterDate);
 
   $scope.getLesson = function () {
+    console.log('hello');
     mainSvc.getLesson().then(function (response) {
       console.log(response);
+      $scope.mon.lessons.splice(0);
+      $scope.tue.lessons.splice(0);
+      $scope.wed.lessons.splice(0);
+      $scope.thu.lessons.splice(0);
+      $scope.fri.lessons.splice(0);
       for (var i = 0; i < response.length; i++) {
         response[i].date = new Date(response[i].date);
       }
-      var today = new Date();
-      var todayMonth = today.getMonth() + 1;
-      var todayDate = today.getDate();
-      var todayYear = today.getFullYear();
+      var todayDate = new Date();
+      var todayMonth = todayDate.getMonth() + 1;
+      var todaysDate = todayDate.getDate();
+      var todayYear = todayDate.getFullYear();
+      var today = new Date(todayMonth + '/' + todaysDate + '/' + todayYear);
+      console.log(today);
       // console.log($scope.wed);
       switch (today.getDay()) {
         case 1:
           {
             $scope.mon.date = today;
-            $scope.tue.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
-            $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
-            $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
-            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 4) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todaysDate + 1) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todaysDate + 2) + '/' + todayYear);
+            $scope.thu.date = new Date(todayMonth + '/' + (todaysDate + 3) + '/' + todayYear);
+            $scope.fri.date = new Date(todayMonth + '/' + (todaysDate + 4) + '/' + todayYear);
 
             for (var _i = 0; _i < response.length; _i++) {
-              if (response[_i].date.getTime() == $scope.mon.date.getTime()) {
+              if (response[_i].date.getTime() === $scope.mon.date.getTime()) {
                 $scope.mon.lessons.push(response[_i]);
               }
               if (response[_i].date.getTime() === $scope.tue.date.getTime()) {
@@ -525,11 +538,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
           break;
         case 2:
           {
-            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.mon.date = new Date(todayMonth + '/' + (todaysDate - 1) + '/' + todayYear);
             $scope.tue.date = today;
-            $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
-            $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
-            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todaysDate + 1) + '/' + todayYear);
+            $scope.thu.date = new Date(todayMonth + '/' + (todaysDate + 2) + '/' + todayYear);
+            $scope.fri.date = new Date(todayMonth + '/' + (todaysDate + 3) + '/' + todayYear);
 
             for (var _i2 = 0; _i2 < response.length; _i2++) {
               if (response[_i2].date.getTime() == $scope.mon.date.getTime()) {
@@ -552,11 +565,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
           break;
         case 3:
           {
-            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 2) + '/' + todayYear);
-            $scope.tue.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.mon.date = new Date(todayMonth + '/' + (todaysDate - 2) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todaysDate - 1) + '/' + todayYear);
             $scope.wed.date = today;
-            $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
-            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
+            $scope.thu.date = new Date(todayMonth + '/' + (todaysDate + 1) + '/' + todayYear);
+            $scope.fri.date = new Date(todayMonth + '/' + (todaysDate + 2) + '/' + todayYear);
 
             for (var _i3 = 0; _i3 < response.length; _i3++) {
               if (response[_i3].date.getTime() == $scope.mon.date.getTime()) {
@@ -579,11 +592,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
           break;
         case 4:
           {
-            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 3) + '/' + todayYear);
-            $scope.tue.date = new Date(todayMonth + '/' + (todayDate - 2) + '/' + todayYear);
-            $scope.wed.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.mon.date = new Date(todayMonth + '/' + (todaysDate - 3) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todaysDate - 2) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todaysDate - 1) + '/' + todayYear);
             $scope.thu.date = today;
-            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
+            $scope.fri.date = new Date(todayMonth + '/' + (todaysDate + 1) + '/' + todayYear);
 
             for (var _i4 = 0; _i4 < response.length; _i4++) {
               if (response[_i4].date.getTime() == $scope.mon.date.getTime()) {
@@ -606,10 +619,10 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
           break;
         case 5:
           {
-            $scope.mon.date = new Date(todayMonth + '/' + (todayDate - 4) + '/' + todayYear);
-            $scope.tue.date = new Date(todayMonth + '/' + (todayDate - 3) + '/' + todayYear);
-            $scope.wed.date = new Date(todayMonth + '/' + (todayDate - 2) + '/' + todayYear);
-            $scope.thu.date = new Date(todayMonth + '/' + (todayDate - 1) + '/' + todayYear);
+            $scope.mon.date = new Date(todayMonth + '/' + (todaysDate - 4) + '/' + todayYear);
+            $scope.tue.date = new Date(todayMonth + '/' + (todaysDate - 3) + '/' + todayYear);
+            $scope.wed.date = new Date(todayMonth + '/' + (todaysDate - 2) + '/' + todayYear);
+            $scope.thu.date = new Date(todayMonth + '/' + (todaysDate - 1) + '/' + todayYear);
             $scope.fri.date = today;
             for (var _i5 = 0; _i5 < response.length; _i5++) {
               if (response[_i5].date.getTime() == $scope.mon.date.getTime()) {
@@ -892,10 +905,10 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     if (newLesson.misc !== []) {
       newLesson.misc = newLesson.misc.split(',');
     }
-    var date = newLesson.date.getMonth() + '/' + (newLesson.date.getDate() + 1) + '/' + newLesson.date.getYear();
+    var date = newLesson.date.getMonth() + 1 + '/' + newLesson.date.getDate() + '/' + (newLesson.date.getYear() + 1900);
     newLesson.date = new Date(date);
     newLesson.vocabulary = newLesson.vocabulary.split(',');
-    console.log(addedLesson);
+    console.log(newLesson);
     mainSvc.addLesson(newLesson).then(function (response) {
       $mdToast.show($mdToast.simple().textContent(response).hideDelay(3000));
       $scope.getLessons();

@@ -1,4 +1,5 @@
-angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc, $location) => {
+angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc, $location, $state) => {
+  // $state.reload()
   let screenWidth = $window.innerWidth;
   if (screenWidth <= 600) {
     $scope.show = false;
@@ -33,31 +34,44 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
   $scope.fri = {
     lessons: []
   };
+  // $scope.mon.lessons.splice(0)
+  // $scope.tue.lessons.splice(0)
+  // $scope.wed.lessons.splice(0)
+  // $scope.thu.lessons.splice(0)
+  // $scope.fri.lessons.splice(0)
   // $scope.yesterDate = new Date(`${todayMonth}/${yesterDate}/${todayYear}`)
   // console.log(today.getDate());
   // console.log($scope.yesterDate);
 
   $scope.getLesson = () => {
+    console.log('hello');
     mainSvc.getLesson().then((response) => {
       console.log(response);
+      $scope.mon.lessons.splice(0)
+      $scope.tue.lessons.splice(0)
+      $scope.wed.lessons.splice(0)
+      $scope.thu.lessons.splice(0)
+      $scope.fri.lessons.splice(0)
       for (var i = 0; i < response.length; i++) {
         response[i].date = new Date(response[i].date)
       }
-      let today = new Date();
-      let todayMonth = today.getMonth() + 1;
-      let todayDate = today.getDate()
-      let todayYear = today.getFullYear()
+      let todayDate = new Date();
+      let todayMonth = todayDate.getMonth() + 1;
+      let todaysDate = todayDate.getDate()
+      let todayYear = todayDate.getFullYear()
+      let today = new Date(`${todayMonth}/${todaysDate}/${todayYear}`)
+      console.log(today);
       // console.log($scope.wed);
       switch (today.getDay()) {
         case 1: {
           $scope.mon.date = today;
-          $scope.tue.date = new Date(`${todayMonth}/${todayDate + 1}/${todayYear}`)
-          $scope.wed.date = new Date(`${todayMonth}/${todayDate + 2}/${todayYear}`)
-          $scope.thu.date = new Date(`${todayMonth}/${todayDate + 3}/${todayYear}`)
-          $scope.fri.date = new Date(`${todayMonth}/${todayDate + 4}/${todayYear}`)
+          $scope.tue.date = new Date(`${todayMonth}/${todaysDate + 1}/${todayYear}`)
+          $scope.wed.date = new Date(`${todayMonth}/${todaysDate + 2}/${todayYear}`)
+          $scope.thu.date = new Date(`${todayMonth}/${todaysDate + 3}/${todayYear}`)
+          $scope.fri.date = new Date(`${todayMonth}/${todaysDate + 4}/${todayYear}`)
 
           for (let i = 0; i < response.length; i++) {
-            if (response[i].date.getTime() == $scope.mon.date.getTime()) {
+            if (response[i].date.getTime() === $scope.mon.date.getTime()) {
               $scope.mon.lessons.push(response[i])
             }
             if (response[i].date.getTime() === $scope.tue.date.getTime()) {
@@ -76,11 +90,11 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
         }
           break;
         case 2:{
-          $scope.mon.date = new Date(`${todayMonth}/${todayDate - 1}/${todayYear}`)
+          $scope.mon.date = new Date(`${todayMonth}/${todaysDate - 1}/${todayYear}`)
           $scope.tue.date = today
-          $scope.wed.date = new Date(`${todayMonth}/${todayDate + 1}/${todayYear}`);
-          $scope.thu.date = new Date(`${todayMonth}/${todayDate + 2}/${todayYear}`)
-          $scope.fri.date = new Date(`${todayMonth}/${todayDate + 3}/${todayYear}`)
+          $scope.wed.date = new Date(`${todayMonth}/${todaysDate + 1}/${todayYear}`);
+          $scope.thu.date = new Date(`${todayMonth}/${todaysDate + 2}/${todayYear}`)
+          $scope.fri.date = new Date(`${todayMonth}/${todaysDate + 3}/${todayYear}`)
 
           for (let i = 0; i < response.length; i++) {
             if (response[i].date.getTime() == $scope.mon.date.getTime()) {
@@ -102,11 +116,11 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
         }
           break;
         case 3: {
-          $scope.mon.date = new Date(`${todayMonth}/${todayDate - 2}/${todayYear}`)
-          $scope.tue.date = new Date(`${todayMonth}/${todayDate - 1}/${todayYear}`)
+          $scope.mon.date = new Date(`${todayMonth}/${todaysDate - 2}/${todayYear}`)
+          $scope.tue.date = new Date(`${todayMonth}/${todaysDate - 1}/${todayYear}`)
           $scope.wed.date = today;
-          $scope.thu.date = new Date(`${todayMonth}/${todayDate + 1}/${todayYear}`)
-          $scope.fri.date = new Date(`${todayMonth}/${todayDate + 2}/${todayYear}`)
+          $scope.thu.date = new Date(`${todayMonth}/${todaysDate + 1}/${todayYear}`)
+          $scope.fri.date = new Date(`${todayMonth}/${todaysDate + 2}/${todayYear}`)
 
           for (let i = 0; i < response.length; i++) {
             if (response[i].date.getTime() == $scope.mon.date.getTime()) {
@@ -128,11 +142,11 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
         }
           break;
         case 4: {
-          $scope.mon.date = new Date(`${todayMonth}/${todayDate - 3}/${todayYear}`)
-          $scope.tue.date = new Date(`${todayMonth}/${todayDate - 2}/${todayYear}`)
-          $scope.wed.date = new Date(`${todayMonth}/${todayDate - 1}/${todayYear}`)
+          $scope.mon.date = new Date(`${todayMonth}/${todaysDate - 3}/${todayYear}`)
+          $scope.tue.date = new Date(`${todayMonth}/${todaysDate - 2}/${todayYear}`)
+          $scope.wed.date = new Date(`${todayMonth}/${todaysDate - 1}/${todayYear}`)
           $scope.thu.date = today
-          $scope.fri.date = new Date(`${todayMonth}/${todayDate +  1}/${todayYear}`)
+          $scope.fri.date = new Date(`${todayMonth}/${todaysDate +  1}/${todayYear}`)
 
           for (let i = 0; i < response.length; i++) {
             if (response[i].date.getTime() == $scope.mon.date.getTime()) {
@@ -154,10 +168,10 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
         }
           break;
         case 5: {
-          $scope.mon.date = new Date(`${todayMonth}/${todayDate - 4}/${todayYear}`)
-          $scope.tue.date = new Date(`${todayMonth}/${todayDate - 3}/${todayYear}`)
-          $scope.wed.date = new Date(`${todayMonth}/${todayDate - 2}/${todayYear}`)
-          $scope.thu.date = new Date(`${todayMonth}/${todayDate - 1}/${todayYear}`)
+          $scope.mon.date = new Date(`${todayMonth}/${todaysDate - 4}/${todayYear}`)
+          $scope.tue.date = new Date(`${todayMonth}/${todaysDate - 3}/${todayYear}`)
+          $scope.wed.date = new Date(`${todayMonth}/${todaysDate - 2}/${todayYear}`)
+          $scope.thu.date = new Date(`${todayMonth}/${todaysDate - 1}/${todayYear}`)
           $scope.fri.date = today;
           for (let i = 0; i < response.length; i++) {
             if (response[i].date.getTime() == $scope.mon.date.getTime()) {

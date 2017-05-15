@@ -56,12 +56,26 @@
           </div>
         </div>
     </ui-view>
-    <!-- <div class="control">
-      <md-button class="md-raised md-primary" data-toggle="modal" data-target="#assignModal">New Assignment</md-button>
-      <md-button class="md-raised md-primary" data-toggle="modal" data-target="#lessonModal">Add Lesson Plan</md-button>
-      <md-button class="md-raised md-primary" data-toggle="modal" data-target="#studentModal">Add Student</md-button>
-    </div> -->
-  </md-content>
+    <md-menu>
+      <md-button ng-click="$mdMenu.open()" class="menuButton"><i class="fa fa-bars"></i></md-button>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button class="menuBarLink" ui-sref="home" ng-click="getLesson()">Lesson</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button class="menuBarLink" ui-sref="class">Grades</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button class="menuBarLink" ui-sref="planner">Planner</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button class="menuBarLink" ui-sref="classroom">Behavior</md-button
+        </md-menu-item>
+        <md-menu-item>
+          <md-button class="menuBarLink" ui-sref="login">Log Out</md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
 </div>
 
 

@@ -72,6 +72,7 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
 
           for (let i = 0; i < response.length; i++) {
             if (response[i].date.getTime() === $scope.mon.date.getTime()) {
+              console.log('hola');
               $scope.mon.lessons.push(response[i])
             }
             if (response[i].date.getTime() === $scope.tue.date.getTime()) {

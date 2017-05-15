@@ -498,11 +498,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
       $scope.wed.lessons.splice(0);
       $scope.thu.lessons.splice(0);
       $scope.fri.lessons.splice(0);
-      for (var i = 0; i < response.length; i++) {
-        var newDate = new Date(response[i].date);
-        response[i].date = newDate;
-        console.log(newDate);
-      }
+      // for (var i = 0; i < response.length; i++) {
+      //   let newDate = new Date(response[i].date)
+      //   response[i].date = newDate
+      //   console.log(newDate);
+      // }
       var todayDate = new Date();
       var todayMonth = todayDate.getMonth() + 1;
       var todaysDate = todayDate.getDate();

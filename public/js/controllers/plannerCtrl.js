@@ -52,7 +52,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     mainSvc.addLesson(newLesson).then((response) => {
       $mdToast.show(
         $mdToast.simple()
-        .textContent('Incorrect Username/Password')
+        .textContent(response)
         .hideDelay(3000)
       )
       $scope.getLessons();
@@ -69,7 +69,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     mainSvc.deleteAssignment(id).then((response) => {
       $mdToast.show(
         $mdToast.simple()
-        .textContent('Incorrect Username/Password')
+        .textContent(response)
         .hideDelay(3000)
       )
       $scope.getAssignments();
@@ -79,7 +79,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     mainSvc.addStudent(stud).then((response) => {
       $mdToast.show(
         $mdToast.simple()
-        .textContent('Incorrect Username/Password')
+        .textContent(response)
         .hideDelay(3000)
       )
       $scope.getStudents();
@@ -89,7 +89,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     mainSvc.deleteLesson(id).then((response) => {
       $mdToast.show(
         $mdToast.simple()
-        .textContent('Incorrect Username/Password')
+        .textContent(response)
         .hideDelay(3000)
       )
       $scope.getLessons()
@@ -99,7 +99,7 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     mainSvc.deleteStudent(id).then((response) => {
       $mdToast.show(
         $mdToast.simple()
-        .textContent('Incorrect Username/Password')
+        .textContent(response)
         .hideDelay(3000)
       )
       $scope.getStudents()

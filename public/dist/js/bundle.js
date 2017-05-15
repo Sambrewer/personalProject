@@ -896,7 +896,7 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     newLesson.vocabulary = newLesson.vocabulary.split(',');
     console.log(addedLesson);
     mainSvc.addLesson(newLesson).then(function (response) {
-      $mdToast.show($mdToast.simple().textContent('Incorrect Username/Password').hideDelay(3000));
+      $mdToast.show($mdToast.simple().textContent(response).hideDelay(3000));
       $scope.getLessons();
     });
   };
@@ -909,25 +909,25 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
   $scope.getStudents();
   $scope.removeAssignment = function (id) {
     mainSvc.deleteAssignment(id).then(function (response) {
-      $mdToast.show($mdToast.simple().textContent('Incorrect Username/Password').hideDelay(3000));
+      $mdToast.show($mdToast.simple().textContent(response).hideDelay(3000));
       $scope.getAssignments();
     });
   };
   $scope.addStudent = function (stud) {
     mainSvc.addStudent(stud).then(function (response) {
-      $mdToast.show($mdToast.simple().textContent('Incorrect Username/Password').hideDelay(3000));
+      $mdToast.show($mdToast.simple().textContent(response).hideDelay(3000));
       $scope.getStudents();
     });
   };
   $scope.removeLesson = function (id) {
     mainSvc.deleteLesson(id).then(function (response) {
-      $mdToast.show($mdToast.simple().textContent('Incorrect Username/Password').hideDelay(3000));
+      $mdToast.show($mdToast.simple().textContent(response).hideDelay(3000));
       $scope.getLessons();
     });
   };
   $scope.removeStudent = function (id) {
     mainSvc.deleteStudent(id).then(function (response) {
-      $mdToast.show($mdToast.simple().textContent('Incorrect Username/Password').hideDelay(3000));
+      $mdToast.show($mdToast.simple().textContent(response).hideDelay(3000));
       $scope.getStudents();
     });
   };

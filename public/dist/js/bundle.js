@@ -705,6 +705,7 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
   };
 
   $scope.getLesson();
+  console.log('homeCtrl', $scope);
 });
 'use strict';
 

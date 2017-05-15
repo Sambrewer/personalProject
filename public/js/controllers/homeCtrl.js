@@ -254,4 +254,5 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
   }
 
   $scope.getLesson();
+  console.log('homeCtrl', $scope);
 })

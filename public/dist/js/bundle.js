@@ -492,7 +492,7 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
       }
       var today = new Date();
       var todayMonth = today.getMonth() + 1;
-      var todayDate = today.getDate() + 1;
+      var todayDate = today.getDate();
       var todayYear = today.getFullYear();
       // console.log($scope.wed);
       switch (today.getDay()) {
@@ -892,7 +892,8 @@ angular.module('classroomApp').controller('plannerCtrl', function ($scope, mainS
     if (newLesson.misc !== []) {
       newLesson.misc = newLesson.misc.split(',');
     }
-
+    var date = newLesson.date.getMonth() + '/' + (newLesson.date.getDate() + 1) + '/' + newLesson.date.getYear();
+    newLesson.date = new Date(date);
     newLesson.vocabulary = newLesson.vocabulary.split(',');
     console.log(addedLesson);
     mainSvc.addLesson(newLesson).then(function (response) {

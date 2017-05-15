@@ -46,7 +46,8 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
     if (newLesson.misc !== []) {
       newLesson.misc = newLesson.misc.split(',')
     }
-
+    let date = `${newLesson.date.getMonth()}/${newLesson.date.getDate() + 1}/${newLesson.date.getYear()}`
+    newLesson.date = new Date (date)
     newLesson.vocabulary = newLesson.vocabulary.split(',')
     console.log(addedLesson);
     mainSvc.addLesson(newLesson).then((response) => {

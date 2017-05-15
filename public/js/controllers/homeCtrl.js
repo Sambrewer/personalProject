@@ -54,7 +54,7 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
           $scope.tue.date = new Date(`${todayMonth}/${todayDate + 1}/${todayYear}`)
           $scope.wed.date = new Date(`${todayMonth}/${todayDate + 2}/${todayYear}`)
           $scope.thu.date = new Date(`${todayMonth}/${todayDate + 3}/${todayYear}`)
-          $scope.wed.date = new Date(`${todayMonth}/${todayDate + 4}/${todayYear}`)
+          $scope.fri.date = new Date(`${todayMonth}/${todayDate + 4}/${todayYear}`)
 
           for (let i = 0; i < response.length; i++) {
             if (response[i].date.getTime() == $scope.mon.date.getTime()) {

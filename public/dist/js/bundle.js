@@ -502,7 +502,7 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.tue.date = new Date(todayMonth + '/' + (todayDate + 1) + '/' + todayYear);
             $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 2) + '/' + todayYear);
             $scope.thu.date = new Date(todayMonth + '/' + (todayDate + 3) + '/' + todayYear);
-            $scope.wed.date = new Date(todayMonth + '/' + (todayDate + 4) + '/' + todayYear);
+            $scope.fri.date = new Date(todayMonth + '/' + (todayDate + 4) + '/' + todayYear);
 
             for (var _i = 0; _i < response.length; _i++) {
               if (response[_i].date.getTime() == $scope.mon.date.getTime()) {

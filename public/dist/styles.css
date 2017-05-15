@@ -15,12 +15,6 @@
     color: black; }
     .classWrapper .studentContainer div h1 {
       margin-bottom: 10px; }
-    .classWrapper .studentContainer div .addScore {
-      position: absolute;
-      bottom: 45px; }
-    .classWrapper .studentContainer div .seeScore {
-      position: absolute;
-      bottom: 5px; }
 
 .chartsContainer {
   display: flex;

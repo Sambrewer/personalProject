@@ -55,6 +55,7 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
       for (var i = 0; i < response.length; i++) {
         let newDate = new Date(response[i].date)
         response[i].date = newDate
+        response[i].date.setHours(0)
         console.log(newDate);
       }
       let todayDate = new Date();

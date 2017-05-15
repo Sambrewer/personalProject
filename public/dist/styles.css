@@ -1,20 +1,28 @@
-.classWrapper .studentContainer {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 10px; }
-  .classWrapper .studentContainer div {
-    border: 1px solid black;
-    height: 150px;
-    width: 150px;
-    margin-bottom: 15px;
-    background: #013D83;
-    border-radius: 5px;
-    padding: 5px;
-    position: relative;
-    color: black; }
-    .classWrapper .studentContainer div h1 {
-      margin-bottom: 10px; }
+.classWrapper {
+  overflow: scroll; }
+  .classWrapper .studentContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px; }
+    .classWrapper .studentContainer div {
+      border: 1px solid black;
+      height: 150px;
+      width: 150px;
+      margin-bottom: 15px;
+      background: #013D83;
+      border-radius: 5px;
+      padding: 5px;
+      position: relative;
+      color: black; }
+      .classWrapper .studentContainer div h1 {
+        margin-bottom: 10px; }
+      .classWrapper .studentContainer div .addScore {
+        position: absolute;
+        bottom: 45px; }
+      .classWrapper .studentContainer div .seeScore {
+        position: absolute;
+        bottom: 5px; }
 
 .chartsContainer {
   display: flex;

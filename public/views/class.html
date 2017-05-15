@@ -3,10 +3,10 @@
     <div ng-repeat="student in class">
       <h1>{{student.name}}</h1>
       <section class="addScore">
-        <md-button data-toggle="modal" data-target="#myModal">Add Score <i class="fa fa-plus"></i></button>
+        <md-button class="md-raised md-primary" data-toggle="modal" data-target="#myModal">Add Score <i class="fa fa-plus"></i></button>
       </section>
       <section class="seeScore">
-        <md-button ui-sref="scores({id: student.id})">See Scores</md-button>
+        <md-button class="md-raised md-primary" ui-sref="scores({id: student.id})">See Scores</md-button>
       </section>
     </div>
   </div>

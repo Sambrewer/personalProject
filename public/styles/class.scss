@@ -1,6 +1,7 @@
 .classWrapper {
   // background: grey;
   // background-size: cover;
+  overflow: scroll;
   .studentContainer {
     display: flex;
     justify-content: space-around;
@@ -19,14 +20,14 @@
       h1 {
         margin-bottom: 10px;
       }
-      // .addScore {
-      //   position: absolute;
-      //   bottom: 45px;
-      // }
-      // .seeScore {
-      //   position: absolute;
-      //   bottom: 5px;
-      // }
+      .addScore {
+        position: absolute;
+        bottom: 45px;
+      }
+      .seeScore {
+        position: absolute;
+        bottom: 5px;
+      }
     }
   }
 }

@@ -498,11 +498,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
       $scope.wed.lessons.splice(0);
       $scope.thu.lessons.splice(0);
       $scope.fri.lessons.splice(0);
-      // for (var i = 0; i < response.length; i++) {
-      //   let newDate = new Date(response[i].date)
-      //   response[i].date = newDate
-      //   console.log(newDate);
-      // }
+      for (var i = 0; i < response.length; i++) {
+        var newDate = new Date(response[i].date);
+        response[i].date = newDate;
+        console.log(newDate);
+      }
       var todayDate = new Date();
       var todayMonth = todayDate.getMonth() + 1;
       var todaysDate = todayDate.getDate();
@@ -520,11 +520,11 @@ angular.module('classroomApp').controller('homeCtrl', function ($scope, $window,
             $scope.fri.date = new Date(todayMonth + '/' + (todaysDate + 4) + '/' + todayYear);
 
             for (var _i = 0; _i < response.length; _i++) {
-              if (response[_i].date.getTime() == $scope.mon.date.getTime()) {
+              if (response[_i].date.getTime() == $scope.mon.date.getTime() - 18) {
                 console.log('hola');
                 $scope.mon.lessons.push(response[_i]);
               }
-              if (response[_i].date.getTime() == $scope.tue.date.getTime()) {
+              if (response[_i].date.getTime() == $scope.tue.date.getTime() - 18) {
                 $scope.tue.lessons.push(response[_i]);
               }
               if (response[_i].date.getTime() == $scope.wed.date.getTime()) {

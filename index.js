@@ -1,10 +1,13 @@
 const express = require('express')
-    , bodyParser = require('body-parser')
+    // , bodyParser = require('body-parser')
     , session = require('express-session')
     , cors = require('cors')
     , massive = require('massive')
+    , axios = require('axios')
     , config = require('./config.js')
     // , babel = require('babel')
+const bodyParser = require('body-parser');
+require('body-parser-xml')(bodyParser)
 
 const port = 3000;
 const conn = massive.connectSync({
@@ -25,7 +28,8 @@ app.use(session({
 }));
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json());
-
+app.use(bodyParser.xml())
+const parseString = require('xml2js').parseString
 app.get('/api/users', (req, res) => {
   res.send(req.session.currentUser)
 })
@@ -34,9 +38,7 @@ app.get('/api/students', (req, res) => {
   let userId = parseInt(req.session.currentUser[0].id);
   // console.log(userId);
   db.read_students([userId], (err, students) => {
-    if (!err) {
-      res.send(students)
-    }
+    (!err)? res.send(students): res.send(err)
   })
 })
 app.get('/api/assignments', (req, res) => {
@@ -45,28 +47,29 @@ app.get('/api/assignments', (req, res) => {
     res.send(assignments)
   })
 })
+app.get('/api/definition/:word', (req, res) => {
+  let word = req.params.word
+  axios.get(` http://www.dictionaryapi.com/api/v1/references/sd2/xml/${word}?key=7c4728c7-c3c9-47b6-9653-1166512168c5`).then((response) => {
+    // console.log(typeof(response.data));
+    parseString(response.data, (err, result) => {
+      res.send(result)
+
+    })
+    // res.send(definition)
+  })
+})
 app.get('/api/scores/:id', (req, res) => {
   let id = [parseInt(req.params.id)]
-  console.log(req.params.id);
   db.read_scores(id, (err, scores) => {
-    if (!err) {
-      res.send(scores)
-    } else {
-      console.log(err);
-    }
+    (!err)? res.send(scores):res.send(err);
   })
 })
 
 app.get('/test/:id', (req, res) => {
-  console.log('hello');
   let id = [parseInt(req.params.id)]
   db.read_score_totals(id, (err, totals) => {
     // console.log(totals);
-    if (!err) {
-      res.send(totals)
-    } else {
-      res.send(err)
-    }
+    (!err)? res.send(totals):  res.send(err)
   })
 })
 app.get('/behaviour', (req, res) => {
@@ -82,11 +85,7 @@ app.get('/behaviour', (req, res) => {
 app.get(`/api/lesson`, (req, res) => {
   let id = parseInt(req.session.currentUser[0].id)
   db.read_lesson([id], (err, lesson) => {
-    if (!err) {
-      res.send(lesson)
-    } else {
-      res.send(err)
-    }
+    (!err)?  res.send(lesson):  res.send(err)
   })
 })
 app.post('/api/users', (req, res) => {
@@ -121,7 +120,7 @@ app.post('/api/scores', (req, res) => {
   })
 })
 app.post(`/api/lesson`, (req, res) => {
-  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id), req.body.date, req.body.subject]
+  let data = [req.body.name, req.body.activity, req.body.info, req.body.objective, req.body.requiredMats, req.body.verification, req.body.misc, req.body.timeStart, req.body.timeEnd, parseInt(req.session.currentUser[0].id), req.body.date, req.body.subject, req.body.vocabulary]
   console.log(data, req.body);
   db.add_lesson(data, (err, lesson) => {
     if (!err) {

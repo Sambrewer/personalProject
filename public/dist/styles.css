@@ -5,13 +5,14 @@
   padding: 10px; }
   .classWrapper .studentContainer div {
     border: 1px solid black;
-    height: 20vh;
+    height: 150px;
     width: 150px;
     margin-bottom: 15px;
-    background: green;
+    background: #013D83;
     border-radius: 5px;
     padding: 5px;
-    position: relative; }
+    position: relative;
+    color: black; }
     .classWrapper .studentContainer div h1 {
       margin-bottom: 10px; }
     .classWrapper .studentContainer div button {
@@ -44,17 +45,19 @@ body {
   overflow: hidden; }
 
 .behaviourWrapper {
-  background: grey; }
+  background: grey;
+  margin-top: 10px; }
 
 .behaveCard {
-  width: 50vw;
+  width: 700px;
   height: 14vh;
   display: flex;
   margin: auto;
   justify-content: space-between;
   align-items: center;
   border: 1px solid black;
-  padding-left: 10px; }
+  padding-left: 10px;
+  color: black; }
   .behaveCard .studentCard {
     height: 4em;
     width: 6em;
@@ -114,7 +117,7 @@ body {
   text-align: center;
   width: 100vw;
   padding: 15px;
-  background: #013D83;
+  background: skyblue;
   color: white;
   border-bottom: 1px solid black;
   display: flex;
@@ -142,17 +145,14 @@ body {
   right: 20px;
   bottom: 40px;
   font-size: 32px;
-  color: green;
-  border-radius: 50%;
-  border: none; }
+  color: green; }
 
 .menuBar {
   height: 80vh;
   width: 160px;
   position: fixed;
-  background-color: green;
-  display: flex;
-  flex-direction: column;
+  background-color: #013D83;
+  display: none;
   float: left;
   text-align: center;
   font-size: 1.5em;
@@ -173,11 +173,13 @@ body {
 
 .viewsWrapper {
   overflow: auto;
+  overflow-x: hidden;
   height: 80vh;
   background: grey; }
   .viewsWrapper .weekWrapper {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-around;
     margin-top: 50px; }
     .viewsWrapper .weekWrapper .dayWrapper {
@@ -187,39 +189,14 @@ body {
       display: inline-block;
       border: 1px solid black;
       overflow: hidden; }
+      .viewsWrapper .weekWrapper .dayWrapper .dayButton {
+        border-bottom: 1px dotted grey; }
       .viewsWrapper .weekWrapper .dayWrapper ul {
         padding-right: 20px; }
         .viewsWrapper .weekWrapper .dayWrapper ul li {
           border-bottom: 1px solid black;
           border-left: 1px solid black;
           padding-left: 5px; }
-
-.lessonSection .lessonHeader {
-  background: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-  .lessonSection .lessonHeader h1 {
-    font-size: 2em; }
-
-.lessonSection .lessonWrapper {
-  background: white; }
-
-.lessonSection .lessonCard {
-  height: 22.5vh;
-  overflow: auto;
-  border: 2px solid black;
-  position: relative; }
-  .lessonSection .lessonCard .lessonEdit {
-    position: absolute;
-    bottom: 20px;
-    right: 20px; }
-  .lessonSection .lessonCard h1 {
-    font-size: 2em; }
-  .lessonSection .lessonCard p {
-    font-size: 1.5em; }
-  .lessonSection .lessonCard li {
-    font-size: 1.5em; }
 
 .homeViewWrapper {
   margin: auto;
@@ -257,10 +234,53 @@ body {
 
 @media (min-width: 600px) {
   .menuButton {
-    display: none; }
+    display: none;
+    background: white; }
+  .weekWrapper {
+    display: flex;
+    flex-direction: row; }
   .menuBar {
     display: block;
     position: relative; } }
+
+.lessonSection {
+  position: relative; }
+  .lessonSection .lessonHeader {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .lessonSection .lessonHeader h1 {
+      font-size: 2em; }
+  .lessonSection .lessonWrapper {
+    background: grey;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    padding-bottom: 0;
+    border-top: 3px solid black;
+    color: #3949AB; }
+    .lessonSection .lessonWrapper .lessonCard {
+      height: 22.5vh;
+      overflow: auto;
+      border: 2px solid black;
+      width: 400px;
+      margin: auto;
+      margin-bottom: 7.5px;
+      background: white; }
+      .lessonSection .lessonWrapper .lessonCard .lessonEdit {
+        position: absolute;
+        bottom: 20px;
+        right: 20px; }
+      .lessonSection .lessonWrapper .lessonCard h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        border-bottom: 1.5px solid black; }
+      .lessonSection .lessonWrapper .lessonCard p {
+        font-size: 1.5em; }
+      .lessonSection .lessonWrapper .lessonCard li {
+        font-size: 1.5em; }
 
 .login-page {
   background: url("../images/logbg.jpeg") no-repeat;
@@ -372,11 +392,15 @@ body {
 .inputRow2 {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin-bottom: 20px; }
   .inputRow2 .selectSection {
     width: 40%; }
   .inputRow2 .timeSelect {
     width: 25%; }
+  .inputRow2 p {
+    font-size: .75em;
+    color: red; }
 
 @media (max-width: 599px) {
   .plannerNavBar {

@@ -19,7 +19,11 @@ angular.module('classroomApp').controller('classCtrl', ($scope, mainSvc) => {
     scoreObj.assignmentid = assignmentid;
     scoreObj.score = score;
     mainSvc.addScore(scoreObj).then((response) => {
-      alert(response)
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent(response)
+        .hideDelay(3000)
+      )
     })
   }
 })

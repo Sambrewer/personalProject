@@ -5,9 +5,10 @@ body {
   background: grey;
   // overflow: scroll;
   // height: 100vh;
+  margin-top: 10px;
 }
 .behaveCard {
-  width: 50vw;
+  width: 700px;
   height: 14vh;
   display: flex;
   margin: auto;
@@ -15,6 +16,7 @@ body {
   align-items: center;
   border: 1px solid black;
   padding-left: 10px;
+  color: black;
   .studentCard {
     height: 4em;
     width: 6em;

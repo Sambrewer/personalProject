@@ -5,13 +5,21 @@ angular.module('classroomApp').controller('loginCtrl', function($scope, mainSvc,
         $location.path('/home');
         $scope.currentUser = response.data[0]
       } else {
-        alert('Incorrect Username/Password')
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Incorrect Username/Password')
+          .hideDelay(3000)
+        )
       }
     })
   }
   $scope.addTeacher = (teacher) => {
     mainSvc.addTeacher(teacher).then((response) => {
-      alert(response)
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent(response)
+        .hideDelay(3000)
+      )
     })
   }
 })

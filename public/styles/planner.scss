@@ -81,12 +81,17 @@
 .inputRow2 {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin-bottom: 20px;
   .selectSection {
     width: 40%;
   }
   .timeSelect {
     width: 25%;
+  }
+  p {
+    font-size: .75em;
+    color: red;
   }
 }
 @media (max-width: 599px) {

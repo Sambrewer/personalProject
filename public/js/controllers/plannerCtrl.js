@@ -1,4 +1,4 @@
-angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSvc) {
+angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSvc, $mdToast) {
 
   $scope.getAssignments = () => {
     mainSvc.getAssignments().then((response) => {
@@ -8,7 +8,11 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
   $scope.getAssignments()
   $scope.addAssignment = (assignment) => {
     mainSvc.addAssignment(assignment).then(function(response) {
-      alert(response)
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Incorrect Username/Password')
+        .hideDelay(3000)
+      )
       $scope.getAssignments();
     })
   }
@@ -43,9 +47,14 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
       newLesson.misc = newLesson.misc.split(',')
     }
 
+    newLesson.vocabulary = newLesson.vocabulary.split(',')
     console.log(addedLesson);
     mainSvc.addLesson(newLesson).then((response) => {
-      alert(response);
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Incorrect Username/Password')
+        .hideDelay(3000)
+      )
       $scope.getLessons();
     })
   }
@@ -58,25 +67,41 @@ angular.module('classroomApp').controller('plannerCtrl', function($scope, mainSv
   $scope.getStudents()
   $scope.removeAssignment = (id) => {
     mainSvc.deleteAssignment(id).then((response) => {
-      alert(response)
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Incorrect Username/Password')
+        .hideDelay(3000)
+      )
       $scope.getAssignments();
     })
   }
   $scope.addStudent = (stud) => {
     mainSvc.addStudent(stud).then((response) => {
-      alert(response);
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Incorrect Username/Password')
+        .hideDelay(3000)
+      )
       $scope.getStudents();
     })
   }
   $scope.removeLesson = (id) => {
     mainSvc.deleteLesson(id).then((response) => {
-      alert(response)
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Incorrect Username/Password')
+        .hideDelay(3000)
+      )
       $scope.getLessons()
     })
   }
   $scope.removeStudent = (id) => {
     mainSvc.deleteStudent(id).then((response) => {
-      alert(response)
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Incorrect Username/Password')
+        .hideDelay(3000)
+      )
       $scope.getStudents()
     })
   }

@@ -20,7 +20,11 @@ angular.module('classroomApp').controller('scoresCtrl', ($scope, $stateParams, m
       //  console.log(response);
        $scope.scores = response
       if (response.length < 1) {
-        alert('No scores for this student')
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('No scores for this student')
+          .hideDelay(3000)
+        )
         $location.path('/home/class')
       } else {
         let rawData = response;

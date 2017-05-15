@@ -1,0 +1,53 @@
+.lessonSection {
+  position: relative;
+  .lessonHeader {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-size: 2em;
+    }
+  }
+  .lessonWrapper {
+    background: grey;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    padding-bottom: 0;
+    border-top: 3px solid black;
+    color: #3949AB;
+    .lessonCard {
+        height: 22.5vh;
+        overflow: auto;
+        border: 2px solid black;
+        width: 400px;
+        margin: auto;
+        margin-bottom: 7.5px;
+        background: white;
+        .lessonEdit {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+        }
+        h1 {
+          font-size: 2em;
+          margin-bottom: 10px;
+          border-bottom: 1.5px solid black;
+        }
+        p {
+          font-size: 1.5em;
+        }
+        li {
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+// .definitionWrapper {
+//   position: absolute;
+//   top: 450px;
+//   left: 500px;
+//   background: white;
+// }

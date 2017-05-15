@@ -43,7 +43,7 @@ angular.module('classroomApp').controller('homeCtrl', ($scope, $window, mainSvc,
       for (var i = 0; i < response.length; i++) {
         response[i].date = new Date(response[i].date)
       }
-      let today = new Date();
+      let today = new Date('05/12/17');
       let todayMonth = today.getMonth() + 1;
       let todayDate = today.getDate()
       let todayYear = today.getFullYear()

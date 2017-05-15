@@ -186,20 +186,27 @@
               </md-inputcontainer>
             </div>
           </div>
-          <div class="inputRow">
-              <div>
-                <label>Date:</label> <br>
-                <input type="date" ng-model="newLesson.date" required>
-              </div>
+          <div class="inputRow2">
+            <div>
+              <label>Date:</label> <br>
+              <input type="date" ng-model="newLesson.date" required>
+            </div>
+            <div>
+              <md-input-container class="md-block" flex-gt-sm="">
+                <label>Vocabulary:</label> <br>
+                <input type="text" ng-model="newLesson.vocabulary" required> <br>
+                <p>Seperate Entries with a comma</p>
+              </md-input-container>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addLesson(newLesson)">Submit</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addLesson(newLesson)">Submit</button>
       </div>
     </div>
   </div>
+</div>
 <div class="modal fade" id="studentModal">
   <div class="modal-dialog">
     <div class="modal-content">

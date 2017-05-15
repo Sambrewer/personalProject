@@ -18,53 +18,50 @@
     </md-menu>
   </div>
   <div class="lessonWrapper">
-    <div class="row">
-      <div class="col-md-4 objective lessonCard">
-        <div class="">
-          <h1>Objective</h1>
-          <p>{{lesson.objective}}</p>
-        </div>
-      </div>
-      <div class="col-md-8 verification lessonCard">
-        <div class="">
-          <h1>Independent Practice</h1>
-          <p>{{lesson.verification}}</p>
-        </div>
-      </div>
+    <div class="lessonCard">
+      <h1>Objective</h1>
+      <p>{{lesson.objective}}</p>
     </div>
-    <div class="row">
-      <div class="col-md-4 inform lessonCard">
-        <div class="">
-          <h1>Information</h1>
-          <p>{{lesson.info}}</p>
-        </div>
-      </div>
-      <div class="col-md-8 activity lessonCard">
-        <div class="">
-          <h1>Guided Practice</h1>
-          <p>{{lesson.activity}}</p>
-        </div>
-      </div>
+    <div class="lessonCard">
+      <h1>Independent Practice</h1>
+      <p>{{lesson.verification}}</p>
     </div>
-    <div class="row">
-      <div class="col-md-4 reqMat lessonCard">
-        <div class="">
-          <h1>Required Materials</h1>
-          <ul>
-            <li ng-repeat="mat in lesson.requiredmats">{{mat}}</li>
-          </ul>
-        </div>
+    <div class="lessonCard">
+      <h1>Information</h1>
+      <p>{{lesson.info}}</p>
+    </div>
+    <div class="lessonCard">
+      <h1>Guided Practice</h1>
+      <p>{{lesson.activity}}</p>
+    </div>
+    <div class="lessonCard">
+      <h1>Required Materials</h1>
+      <ul>
+        <li ng-repeat="mat in lesson.requiredmats">{{mat}}</li>
+      </ul>
+    </div>
+    <div class="lessonCard">
+      <h1>Other Resources</h1>
+      <ul>
+        <li ng-repeat="misc in lesson.other">{{misc}}</li>
+      </ul>
+    </div>
+    <div class="lessonCard">
+      <h1>Vocabulary</h1>
+      <ul>
+        <li ng-repeat="vocab in lesson.vocabulary"><md-button ng-click="getDef(vocab)">{{vocab}}</md-button></li>
+      </ul>
+    </div>
+    <div class="lessonCard" ng-if="test">
+      <div class="definitionHeader">
+        <h1>Definition:</h1>
       </div>
-      <div class="col-md-8 resources lessonCard">
-        <div class="">
-          <h1>Other Resources</h1>
-          <ul>
-            <li ng-repeat="misc in lesson.other">{{misc}}</li>
-          </ul>
-        </div>
-      </div>
+      <p>{{word}}{{definition}}</p> <br>
+      <p>{{type}}</p>
+      <md-button ng-click="hide()">Done</md-button>
     </div>
   </div>
+
 </section>
 
 <div class="modal fade" id="objModal">

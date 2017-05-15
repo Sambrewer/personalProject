@@ -10,7 +10,7 @@
   text-align: center;
   width: 100vw;
   padding: 15px;
-  background: #013D83;
+  background: skyblue;
   color: white;
   border-bottom: 1px solid black;
   display: flex;
@@ -42,16 +42,14 @@
   bottom: 40px;
   font-size: 32px;
   color: green;
-  border-radius: 50%;
-  border: none;
 }
 .menuBar {
   height: 80vh;
   width: 160px;;
   position: fixed;
-  background-color: green;
-  display: flex;
-  flex-direction: column;
+  background-color: #013D83;
+  display: none;
+  // flex-direction: column;
   float: left;
   text-align: center;
   font-size: 1.5em;
@@ -78,12 +76,14 @@
 }
 .viewsWrapper {
   overflow: auto;
+  overflow-x: hidden;
   height: 80vh;
   background: grey;
   // align-items: center;
   .weekWrapper {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-around;
     margin-top: 50px;
     .dayWrapper {
@@ -93,6 +93,9 @@
       display: inline-block;
       border: 1px solid black;
       overflow: hidden;
+      .dayButton {
+        border-bottom: 1px dotted grey;
+      }
       ul {
         padding-right: 20px;
         li {
@@ -105,41 +108,7 @@
   }
 }
 
-.lessonSection {
-  .lessonHeader {
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h1 {
-      font-size: 2em;
-    }
-  }
-  .lessonWrapper {
-    background: white;
-  }
 
-.lessonCard {
-    height: 22.5vh;
-    overflow: auto;
-    border: 2px solid black;
-    position: relative;
-    .lessonEdit {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-    }
-    h1 {
-      font-size: 2em;
-    }
-    p {
-      font-size: 1.5em;
-    }
-    li {
-      font-size: 1.5em;
-    }
-  }
-}
 
 .homeViewWrapper {
   margin: auto;
@@ -185,9 +154,19 @@
 @media (min-width: 600px) {
   .menuButton {
     display: none;
+    background: white;
+  }
+  .weekWrapper {
+    display: flex;
+    flex-direction: row;
   }
   .menuBar {
     display: block;
     position: relative;
   }
 }
+// @media (max-width: 599px) {
+//   .weekWrapper {
+//     flex-direction: column;
+//   }
+// }

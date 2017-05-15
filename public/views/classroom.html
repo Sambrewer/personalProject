@@ -1,10 +1,12 @@
 <section class="behaviourWrapper">
-  <div id="outStanding" class="behaveCard">
-    <h1>Outstanding!</h1>
-    <div ng-repeat="student in out" class="studentCard">
-      <div>{{student.name}}</div>
-      <div>
-        <button class="up" class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+  <div class="cardWrapper">
+    <div id="outStanding" class="behaveCard">
+      <h1>Outstanding!</h1>
+      <div ng-repeat="student in out" class="studentCard">
+        <div>{{student.name}}</div>
+        <div>
+          <button class="up" class="down" ng-click="moveDown(student.id, student.behaveid)"><i class="fa fa-arrow-down"></i></button>
+        </div>
       </div>
     </div>
   </div>

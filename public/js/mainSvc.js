@@ -53,6 +53,12 @@ angular.module('classroomApp').service('mainSvc', function($http) {
       return response.data
     })
   }
+  this.getDef = (word) => {
+    return $http.get(`${baseUrl}api/definition/${word}`).then((response) => {
+      console.log(response.data.entry_list.entry[0]);
+      return response.data.entry_list.entry[0];
+    })
+  }
   this.addScore = (score) => {
     return $http({
       method: 'POST',

@@ -7,12 +7,12 @@ const express = require('express')
     , config = require('./config.js')
     // , babel = require('babel')
 
-const port = 8000;
+const port = 80;
 const conn = massive.connectSync({
   connectionString: config.dbconn
 })
 const corsOptions = {
-  origin: 'http://localhost:8000'
+  origin: 'http://localhost:80'
 }
 const app = module.exports = express ();
 app.set('db', conn)

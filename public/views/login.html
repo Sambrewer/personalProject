@@ -2,13 +2,22 @@
   <div class="login-wrapper">
     <h1>Classroom Organizer</h1>
     <form>
-      <input type="text" ng-model="user.username" placeholder="Username">
-      <input type="password" ng-model="user.password" placeholder="Password">
+      <label for="username">Username:</label>
+      <input type="text" ng-model="user.username" placeholder="Username" name="username">
+      <label for="password">Password:</label>
+      <input type="password" ng-model="user.password" placeholder="Password" name="password">
       <div class="buttonWrapper">
         <md-button class="md-raised md-primary" data-toggle="modal" data-target="#teacherModal">New User</md-button>
         <md-button class="md-raised md-primary" ng-click="login(user)" type="submit">Log In</md-button>
       </div>
     </form>
+  </div>
+  <div class="demo-info">
+    <p>Welcome to my website! feel free to take a look around using the following info:</p>
+    <div class="demo-login">
+      <h3>Username: uronlyhope</h3>
+      <h3>Password: oldben</h3>
+    </div>
   </div>
 </div>
 

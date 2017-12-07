@@ -17,6 +17,10 @@
     flex-direction: column;
     border-radius: 20px;
     // position: relative;
+    label {
+      font-size: 24px;
+      font-weight: bold;
+    }
     h1 {
       font-size: 3em;
       text-align: center;
@@ -24,12 +28,13 @@
     form {
       display: flex;
       flex-direction: column;
+      margin: 20px;
       margin-top: 50px;
     }
     input {
       font-size: 1.5em;
-      height: 5vh;
-      width: 25vw;
+      height: 2em;
+      width: 75%;
       margin-bottom: 15px;
     }
     button {
@@ -46,5 +51,25 @@
       display: flex;
       justify-content: space-between;
     }
+  }
+}
+.demo-info {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, .5);
+  color: white;
+  height: 225px;
+  width: 225px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  border: black;
+  .demo-login {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
   }
 }

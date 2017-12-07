@@ -313,7 +313,7 @@ body {
     .login-page .login-wrapper input {
       font-size: 1.5em;
       height: 2em;
-      width: 75%;
+      width: 100%;
       margin-bottom: 15px; }
     .login-page .login-wrapper button {
       background: black;

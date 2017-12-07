@@ -86,11 +86,9 @@ app.get(`/api/lesson`, (req, res) => {
   })
 })
 app.post('/api/users', (req, res) => {
-  console.log(req);
   let data = [req.body.username, req.body.password]
   db.read_user(data, (err, user) => {
     req.session.currentUser = user;
-    console.log(err);
     res.send(user)
   })
 })
